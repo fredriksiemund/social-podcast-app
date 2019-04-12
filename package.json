@@ -7,12 +7,17 @@
     "test": "jest",
     "ios": "react-native run-ios",
     "android": "cd android && ./gradlew clean && cd .. && react-native run-android",
-    "prepush": "npm run lint && npm run test",
-    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit"
+    "prepush": "npm run lint && npm run test"
   },
   "dependencies": {
     "react": "16.8.3",
-    "react-native": "0.59.4"
+    "react-native": "0.59.4",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.7.1",
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

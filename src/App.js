@@ -1,19 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
+
+import reducers from './redux/reducers'
+import Router from './routes'
+
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
 const App = () => (
-  <View style={styles.container}>
-    <Text>Main</Text>
-  </View>
+  <Provider store={store}>
+    <Router />
+  </Provider>
 )
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  }
-})
 
 export default App
