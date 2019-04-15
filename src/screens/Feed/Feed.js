@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BACKGROUND } from '../../styles/common'
-import Post from '../../components/Post/Post'
+import TextPost from '../../components/Post/TextPost'
+import PodPost from '../../components/Post/PodPost'
 import joeImg from '../../../assets/img/joe.jpeg'
 import tedImg from '../../../assets/img/ted.jpg'
+import freaksImg from '../../../assets/img/freaks.jpg'
 
 class Feed extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Feed extends Component {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <Post
+        <TextPost
           podcaster="The Joe Rogan Experience"
           podcasterImageUri={joeImg}
           postContent="The weather is amazing, walk with me through the pathway of more success. Take this
@@ -23,7 +25,16 @@ class Feed extends Component {
           nbrOfLikes={53}
           timePosted="42 minutes ago"
         />
-        <Post
+        <PodPost
+          podcaster="Freakonomics Radio"
+          podcasterImageUri={freaksImg}
+          episodeName="373. Why Rent Control Doesn’t Work"
+          episodeDescription="I’m giving you cloth talk, cloth. Special clo..."
+          nbrOfComments={154}
+          nbrOfLikes={82}
+          timePosted="1 hours ago"
+        />
+        <TextPost
           podcaster="Ted Radio Hour"
           podcasterImageUri={tedImg}
           postContent="A major key, never panic. Don’t panic, when it gets crazy and rough, don’t panic, stay calm. Look at the sunset, life is amazing, life is beautiful, life is what you make it."

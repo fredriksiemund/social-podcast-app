@@ -28,7 +28,7 @@ const MainStack = createBottomTabNavigator(
           screen: Feed,
           navigationOptions: {
             ...headerStyle,
-            title: 'Feed'
+            title: 'News'
           }
         }
       }),
@@ -71,8 +71,7 @@ const MainStack = createBottomTabNavigator(
       activeTintColor: NAV_ACTIVE,
       inactiveTintColor: NAV_INACTIVE,
       style: {
-        backgroundColor: NAV_BACKGROUND,
-        paddingTop: 5
+        backgroundColor: NAV_BACKGROUND
       }
     }
   }
@@ -91,7 +90,7 @@ const renderIcon = (screen, tintColor) => {
   let name = ''
   switch (screen) {
     case 'Feed':
-      name = 'md-home'
+      name = 'md-list'
       break
     case 'Search':
       name = 'ios-search'

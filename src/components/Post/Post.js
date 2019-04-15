@@ -4,27 +4,30 @@ import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { PRIMARY_COLOR } from '../../styles/common'
 import PostRow from './PostRow'
+import Tag from './Tag'
 import Text from '../common/Text'
 
 const Post = ({
   podcaster,
   timePosted,
   podcasterImageUri,
-  postContent,
+  children,
   nbrOfLikes,
-  nbrOfComments
+  nbrOfComments,
+  tag
 }) => (
   <View style={styles.postContainer}>
     <PostRow>
       <Image source={podcasterImageUri} style={styles.postImage} />
       <View style={styles.postHeader}>
         <Text style={styles.headerPodcaster}>{podcaster}</Text>
-        <Text style={styles.headerTime}>{timePosted}</Text>
+        <View style={styles.headerSubheader}>
+          <Text style={styles.headerTime}>{timePosted}</Text>
+          {tag ? <Tag content={tag} /> : null}
+        </View>
       </View>
     </PostRow>
-    <PostRow>
-      <Text style={styles.textSection}>{postContent}</Text>
-    </PostRow>
+    <PostRow>{children}</PostRow>
     <PostRow style={styles.buttons}>
       <View style={styles.postButton}>
         <Icon name="ios-heart-empty" color={PRIMARY_COLOR} size={25} />
@@ -44,10 +47,15 @@ const Post = ({
 Post.propTypes = {
   podcaster: PropTypes.string.isRequired,
   podcasterImageUri: PropTypes.number.isRequired,
-  postContent: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
-  timePosted: PropTypes.string.isRequired
+  timePosted: PropTypes.string.isRequired,
+  tag: PropTypes.string
+}
+
+Post.defaultProps = {
+  tag: undefined
 }
 
 const styles = StyleSheet.create({
@@ -66,6 +74,10 @@ const styles = StyleSheet.create({
   headerPodcaster: {
     fontSize: 18,
     fontWeight: '700'
+  },
+  headerSubheader: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   headerTime: {
     fontSize: 12,
