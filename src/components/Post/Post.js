@@ -22,24 +22,22 @@ const Post = ({
         <Text style={styles.headerTime}>{timePosted}</Text>
       </View>
     </PostRow>
-    <View style={styles.postContent}>
-      <PostRow>
-        <Text style={styles.textSection}>{postContent}</Text>
-      </PostRow>
-      <PostRow>
-        <View style={styles.postButton}>
-          <Icon name="ios-heart-empty" color={PRIMARY_COLOR} size={25} />
-          <Text style={styles.postButtonNumber}>{nbrOfLikes}</Text>
-        </View>
-        <View style={styles.postButton}>
-          <Icon name="ios-chatboxes" color={PRIMARY_COLOR} size={25} />
-          <Text style={styles.postButtonNumber}>{nbrOfComments}</Text>
-        </View>
-        <View style={styles.postButton}>
-          <Icon name="ios-share-alt" color={PRIMARY_COLOR} size={25} />
-        </View>
-      </PostRow>
-    </View>
+    <PostRow>
+      <Text style={styles.textSection}>{postContent}</Text>
+    </PostRow>
+    <PostRow style={styles.buttons}>
+      <View style={styles.postButton}>
+        <Icon name="ios-heart-empty" color={PRIMARY_COLOR} size={25} />
+        <Text style={styles.postButtonNumber}>{nbrOfLikes}</Text>
+      </View>
+      <View style={styles.postButton}>
+        <Icon name="ios-chatboxes" color={PRIMARY_COLOR} size={25} />
+        <Text style={styles.postButtonNumber}>{nbrOfComments}</Text>
+      </View>
+      <View style={styles.postButton}>
+        <Icon name="ios-share-alt" color={PRIMARY_COLOR} size={25} />
+      </View>
+    </PostRow>
   </View>
 )
 
@@ -77,16 +75,17 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   postButton: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   postButtonNumber: {
     fontSize: 15,
     paddingLeft: 5
   },
-  postContent: {
-    paddingLeft: 10
+  buttons: {
+    paddingHorizontal: 15
   }
 })
 
