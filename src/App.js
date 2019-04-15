@@ -1,4 +1,5 @@
 import React from 'react'
+import { StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
@@ -10,6 +11,7 @@ const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
 const App = () => (
   <Provider store={store}>
+    <StatusBar barStyle="light-content" />
     <Router />
   </Provider>
 )

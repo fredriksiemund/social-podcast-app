@@ -5,9 +5,9 @@ import {
   createStackNavigator
 } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
-import Feed from '../screens/Feed'
-import Search from '../screens/Search'
-import Profile from '../screens/Profile'
+import Feed from '../screens/Feed/Feed'
+import Search from '../screens/Search/Search'
+import Profile from '../screens/Profile/Profile'
 import {
   NAV_ACTIVE, NAV_INACTIVE, NAV_BACKGROUND, PRIMARY_COLOR
 } from '../styles/common'
@@ -37,15 +37,31 @@ const MainStack = createBottomTabNavigator(
       }
     },
     Search: {
-      screen: Search,
+      screen: createStackNavigator({
+        FeedView: {
+          screen: Search,
+          navigationOptions: {
+            ...headerStyle,
+            title: 'Search'
+          }
+        }
+      }),
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Icon name="md-search" color={tintColor} size={40} />
+        tabBarIcon: ({ tintColor }) => renderIcon('Search', tintColor)
       }
     },
     Profile: {
-      screen: Profile,
+      screen: createStackNavigator({
+        FeedView: {
+          screen: Profile,
+          navigationOptions: {
+            ...headerStyle,
+            title: 'Profile'
+          }
+        }
+      }),
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Icon name="md-person" color={tintColor} size={40} />
+        tabBarIcon: ({ tintColor }) => renderIcon('Profile', tintColor)
       }
     }
   },
@@ -76,6 +92,12 @@ const renderIcon = (screen, tintColor) => {
   switch (screen) {
     case 'Feed':
       name = 'md-home'
+      break
+    case 'Search':
+      name = 'ios-search'
+      break
+    case 'Profile':
+      name = 'ios-person'
       break
     default:
       return null

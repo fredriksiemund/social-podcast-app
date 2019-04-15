@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
-import { BACKGROUND, PRIMARY_COLOR } from '../styles/common'
+import { StyleSheet, View } from 'react-native'
+import { BACKGROUND } from '../../styles/common'
+import Text from '../../components/common/Text'
 
-class Feed extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -11,7 +12,7 @@ class Feed extends Component {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <Text style={styles.textStyle}>Feed </Text>
+        <Text>Test</Text>
       </View>
     )
   }
@@ -21,11 +22,8 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     backgroundColor: BACKGROUND,
-    padding: 5
-  },
-  textStyle: {
-    color: PRIMARY_COLOR
+    paddingHorizontal: 10
   }
 })
 
-export default Feed
+export default Profile

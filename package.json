@@ -10,6 +10,7 @@
     "prepush": "npm run lint && npm run test"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.4",
     "react-native-gesture-handler": "^1.1.0",
