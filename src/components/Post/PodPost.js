@@ -2,15 +2,16 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
+import Post from './Post'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
+import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 
 const PodPost = (props) => {
   const { episodeName, episodeDescription, ...otherProps } = props
   return (
-    <View>
+    <Post>
       <PostHeader {...otherProps} tag="New episode" />
       <PostRow>
         <View style={styles.podContainer}>
@@ -29,13 +30,13 @@ const PodPost = (props) => {
           </View>
         </View>
       </PostRow>
-    </View>
+    </Post>
   )
 }
 
 PodPost.propTypes = {
   podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.number.isRequired,
+  podcasterImageUri: PropTypes.string.isRequired,
   episodeName: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired
 }
@@ -43,7 +44,8 @@ PodPost.propTypes = {
 const styles = StyleSheet.create({
   podContainer: {
     flex: 1,
-    padding: 8,
+    paddingHorizontal: 8,
+    paddingTop: 8,
     borderWidth: 1,
     borderColor: TERTIARY_COLOR,
     borderRadius: 5

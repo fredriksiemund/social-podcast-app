@@ -8,9 +8,9 @@ import Text from '../common/Text'
 const PostHeader = ({
   podcaster, timePosted, podcasterImageUri, tag
 }) => (
-  <View style={styles.postContainer}>
+  <View>
     <PostRow>
-      <Image source={podcasterImageUri} style={styles.postImage} />
+      <Image source={{ uri: podcasterImageUri }} style={styles.postImage} />
       <View style={styles.postHeader}>
         <Text style={styles.headerPodcaster}>{podcaster}</Text>
         <View style={styles.headerSubheader}>
@@ -24,7 +24,7 @@ const PostHeader = ({
 
 PostHeader.propTypes = {
   podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.number.isRequired,
+  podcasterImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired,
   tag: PropTypes.string
 }
@@ -34,9 +34,6 @@ PostHeader.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  postContainer: {
-    paddingBottom: 10
-  },
   postImage: {
     height: 50,
     width: 50,

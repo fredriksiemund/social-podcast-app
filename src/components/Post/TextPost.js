@@ -2,17 +2,18 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/Ionicons'
+import Post from './Post'
 import PostHeader from './PostHeader'
+import PostRow from './PostRow'
 import Text from '../common/Text'
 import { PRIMARY_COLOR } from '../../styles/common'
-import PostRow from './PostRow'
 
 const TextPost = (props) => {
   const {
     postContent, nbrOfLikes, nbrOfComments, ...otherProps
   } = props
   return (
-    <View>
+    <Post>
       <PostHeader {...otherProps} />
       <PostRow>
         <Text style={styles.textSection}>{postContent}</Text>
@@ -30,13 +31,13 @@ const TextPost = (props) => {
           <Icon name="ios-share-alt" color={PRIMARY_COLOR} size={25} />
         </View>
       </PostRow>
-    </View>
+    </Post>
   )
 }
 
 TextPost.propTypes = {
   podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.number.isRequired,
+  podcasterImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,

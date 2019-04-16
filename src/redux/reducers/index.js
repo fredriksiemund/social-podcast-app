@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import TestReducer from './TestReducer'
+import FeedReducer from './FeedReducer'
 
 export default combineReducers({
-  testState: TestReducer
+  feed: FeedReducer
 })

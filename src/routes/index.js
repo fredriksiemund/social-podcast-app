@@ -5,9 +5,9 @@ import {
   createStackNavigator
 } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
-import Feed from '../screens/Feed/Feed'
-import Search from '../screens/Search/Search'
-import Profile from '../screens/Profile/Profile'
+import Feed from '../screens/Feed/FeedScreen'
+import Search from '../screens/Search/SearchScreen'
+import Profile from '../screens/Profile/ProfileScreen'
 import {
   NAV_ACTIVE, NAV_INACTIVE, NAV_BACKGROUND, PRIMARY_COLOR
 } from '../styles/common'
