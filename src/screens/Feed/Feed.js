@@ -30,9 +30,7 @@ class Feed extends Component {
           podcasterImageUri={freaksImg}
           episodeName="373. Why Rent Control Doesn’t Work"
           episodeDescription="I’m giving you cloth talk, cloth. Special clo..."
-          nbrOfComments={154}
-          nbrOfLikes={82}
-          timePosted="1 hours ago"
+          timePosted="1 hour ago"
         />
         <TextPost
           podcaster="Ted Radio Hour"
