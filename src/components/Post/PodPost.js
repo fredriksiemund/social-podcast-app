@@ -1,32 +1,44 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/Ionicons'
+import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Post from './Post'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
+import IconButton from '../common/IconButton'
 
 const PodPost = (props) => {
-  const { episodeName, episodeDescription, ...otherProps } = props
+  const { episodeName, episodeDescription, ...headerProps } = props
   return (
     <Post>
-      <PostHeader {...otherProps} tag="New episode" />
+      <PostHeader {...headerProps} tag="New episode" />
       <PostRow>
         <View style={styles.podContainer}>
           <Text style={styles.podTitle}>{episodeName}</Text>
           <Text style={styles.podDescription}>{episodeDescription}</Text>
           <View style={styles.podButtons}>
-            <View style={styles.leftButton}>
-              <Icon name="ios-add-circle" color={PRIMARY_COLOR} size={40} />
-            </View>
-            <View style={styles.centerButton}>
-              <Icon name="ios-play-circle" color={PRIMARY_COLOR} size={65} />
-            </View>
-            <View style={styles.rightButton}>
-              <Icon name="ios-chatboxes" color={PRIMARY_COLOR} size={35} />
-            </View>
+            <IconButton
+              style={styles.leftButton}
+              iconName="ios-add-circle"
+              iconSize={40}
+              iconColor={PRIMARY_COLOR}
+              onPress={() => {}}
+            />
+            <IconButton
+              style={styles.centerButton}
+              iconName="ios-play-circle"
+              iconColor={PRIMARY_COLOR}
+              iconSize={65}
+              onPress={() => {}}
+            />
+            <IconButton
+              style={styles.rightButton}
+              iconName="ios-chatboxes"
+              iconColor={PRIMARY_COLOR}
+              iconSize={35}
+              onPress={() => {}}
+            />
           </View>
         </View>
       </PostRow>

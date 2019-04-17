@@ -1,41 +1,56 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/Ionicons'
 import Post from './Post'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
-import { PRIMARY_COLOR } from '../../styles/common'
+import IconButton from '../common/IconButton'
 
 const TextPost = (props) => {
   const {
-    postContent, nbrOfLikes, nbrOfComments, ...otherProps
+    id, postContent, nbrOfLikes, nbrOfComments, liked, postLiked, ...headerProps
   } = props
   return (
     <Post>
-      <PostHeader {...otherProps} />
+      <PostHeader {...headerProps} />
       <PostRow>
         <Text style={styles.textSection}>{postContent}</Text>
       </PostRow>
       <PostRow style={styles.buttons}>
-        <View style={styles.postButton}>
-          <Icon name="ios-heart-empty" color={PRIMARY_COLOR} size={25} />
+        <IconButton
+          style={styles.postButton}
+          iconName={liked ? 'ios-heart' : 'ios-heart-empty'}
+          iconSize={25}
+          iconColor={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
+          onPress={() => postLiked(id)}
+        >
           <Text style={styles.postButtonNumber}>{nbrOfLikes}</Text>
-        </View>
-        <View style={styles.postButton}>
-          <Icon name="ios-chatboxes" color={PRIMARY_COLOR} size={25} />
+        </IconButton>
+        <IconButton
+          style={styles.postButton}
+          iconName="ios-chatboxes"
+          iconSize={25}
+          iconColor={PRIMARY_COLOR}
+          onPress={() => {}}
+        >
           <Text style={styles.postButtonNumber}>{nbrOfComments}</Text>
-        </View>
-        <View style={styles.postButton}>
-          <Icon name="ios-share-alt" color={PRIMARY_COLOR} size={25} />
-        </View>
+        </IconButton>
+        <IconButton
+          style={styles.postButton}
+          iconName="ios-share-alt"
+          iconSize={25}
+          iconColor={PRIMARY_COLOR}
+          onPress={() => {}}
+        />
       </PostRow>
     </Post>
   )
 }
 
 TextPost.propTypes = {
+  id: PropTypes.number.isRequired,
   podcaster: PropTypes.string.isRequired,
   podcasterImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
