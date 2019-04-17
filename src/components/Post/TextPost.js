@@ -10,7 +10,13 @@ import IconButton from '../common/IconButton'
 
 const TextPost = (props) => {
   const {
-    id, postContent, nbrOfLikes, nbrOfComments, liked, postLiked, ...headerProps
+    id,
+    postContent,
+    nbrOfLikes,
+    nbrOfComments,
+    liked,
+    likeButtonPress,
+    ...headerProps
   } = props
   return (
     <Post>
@@ -24,7 +30,7 @@ const TextPost = (props) => {
           iconName={liked ? 'ios-heart' : 'ios-heart-empty'}
           iconSize={25}
           iconColor={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
-          onPress={() => postLiked(id)}
+          onPress={() => likeButtonPress(id)}
         >
           <Text style={styles.postButtonNumber}>{nbrOfLikes}</Text>
         </IconButton>
@@ -56,7 +62,8 @@ TextPost.propTypes = {
   postContent: PropTypes.string.isRequired,
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
-  timePosted: PropTypes.string.isRequired
+  timePosted: PropTypes.string.isRequired,
+  likeButtonPress: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

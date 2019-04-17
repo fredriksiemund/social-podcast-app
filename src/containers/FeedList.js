@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import FeedList from '../components/FeedList'
-import { postLiked } from '../redux/actions'
+import { likeButtonPress } from '../redux/actions'
 
 const mapStateToProps = state => ({
   feed: state.feed
@@ -8,5 +8,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { postLiked }
+  { likeButtonPress }
 )(FeedList)

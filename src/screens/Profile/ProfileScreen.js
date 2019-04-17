@@ -1,29 +1,11 @@
-import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { BACKGROUND } from '../../styles/common'
+import React from 'react'
 import Text from '../../components/common/Text'
+import ScreenContainer from '../../components/common/ScreenContainer'
 
-class Profile extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+const ProfileScreen = () => (
+  <ScreenContainer>
+    <Text>Test</Text>
+  </ScreenContainer>
+)
 
-  render() {
-    return (
-      <View style={styles.screenContainer}>
-        <Text>Test</Text>
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1,
-    backgroundColor: BACKGROUND,
-    paddingHorizontal: 10
-  }
-})
-
-export default Profile
+export default ProfileScreen

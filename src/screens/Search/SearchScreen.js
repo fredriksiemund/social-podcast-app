@@ -1,19 +1,11 @@
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import React from 'react'
+import Text from '../../components/common/Text'
+import ScreenContainer from '../../components/common/ScreenContainer'
 
-class Search extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+const SearchScreen = () => (
+  <ScreenContainer>
+    <Text>Search</Text>
+  </ScreenContainer>
+)
 
-  render() {
-    return (
-      <View>
-        <Text> Search </Text>
-      </View>
-    )
-  }
-}
-
-export default Search
+export default SearchScreen

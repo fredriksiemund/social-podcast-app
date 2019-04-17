@@ -5,12 +5,12 @@ import PodPost from './Post/PodPost'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {
-    const { postLiked } = this.props
+    const { likeButtonPress } = this.props
     const { type, ...postProps } = item
     let jsx
     switch (type) {
       case 'text-post':
-        jsx = <TextPost {...postProps} postLiked={postLiked} />
+        jsx = <TextPost {...postProps} likeButtonPress={likeButtonPress} />
         break
       case 'pod-post':
         jsx = <PodPost {...postProps} />
