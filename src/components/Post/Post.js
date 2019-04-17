@@ -1,8 +1,12 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import PropTypes from 'prop-types'
 
-const Post = ({ children }) => <View style={styles.postContainer}>{children}</View>
+const Post = ({ children }) => (
+  <TouchableWithoutFeedback style={styles.postContainer}>
+    <View>{children}</View>
+  </TouchableWithoutFeedback>
+)
 
 Post.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired

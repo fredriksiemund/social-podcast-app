@@ -17,28 +17,30 @@ const PodPost = (props) => {
         <View style={styles.podContainer}>
           <Text style={styles.podTitle}>{episodeName}</Text>
           <Text style={styles.podDescription}>{episodeDescription}</Text>
-          <View style={styles.podButtons}>
+          <View style={styles.buttonRow}>
+            <View style={styles.podButton} />
             <IconButton
-              style={styles.leftButton}
+              style={styles.podButton}
               iconName="ios-add-circle"
               iconSize={40}
               iconColor={PRIMARY_COLOR}
               onPress={() => {}}
             />
             <IconButton
-              style={styles.centerButton}
+              style={styles.podButton}
               iconName="ios-play-circle"
               iconColor={PRIMARY_COLOR}
               iconSize={65}
               onPress={() => {}}
             />
             <IconButton
-              style={styles.rightButton}
+              style={styles.podButton}
               iconName="ios-chatboxes"
               iconColor={PRIMARY_COLOR}
               iconSize={35}
               onPress={() => {}}
             />
+            <View style={styles.podButton} />
           </View>
         </View>
       </PostRow>
@@ -73,21 +75,13 @@ const styles = StyleSheet.create({
   podDescription: {
     fontSize: 15
   },
-  podButtons: {
+  buttonRow: {
     flexDirection: 'row',
     alignItems: 'center'
   },
-  leftButton: {
-    flex: 1,
-    alignItems: 'flex-end'
-  },
-  centerButton: {
+  podButton: {
     flex: 1,
     alignItems: 'center'
-  },
-  rightButton: {
-    flex: 1,
-    alignItems: 'flex-start'
   }
 })
 
