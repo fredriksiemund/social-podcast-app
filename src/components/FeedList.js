@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { FlatList } from 'react-native'
 import TextPost from './Post/TextPost'
 import PodPost from './Post/PodPost'
+import PollPost from './Post/PollPost'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {
-    const { likeButtonPress } = this.props
+    const { likeButtonPress, pollOptionPressed } = this.props
     const { type, ...postProps } = item
     let jsx
     switch (type) {
@@ -14,6 +15,15 @@ class FeedList extends Component {
         break
       case 'pod-post':
         jsx = <PodPost {...postProps} />
+        break
+      case 'poll-post':
+        jsx = (
+          <PollPost
+            {...postProps}
+            likeButtonPress={likeButtonPress}
+            pollOptionPressed={pollOptionPressed}
+          />
+        )
         break
       default:
         break

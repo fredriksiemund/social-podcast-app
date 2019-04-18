@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   podTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700'
   },
   podDescription: {

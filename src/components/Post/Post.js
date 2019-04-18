@@ -3,8 +3,8 @@ import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import PropTypes from 'prop-types'
 
 const Post = ({ children }) => (
-  <TouchableWithoutFeedback style={styles.postContainer}>
-    <View>{children}</View>
+  <TouchableWithoutFeedback>
+    <View style={styles.postContainer}>{children}</View>
   </TouchableWithoutFeedback>
 )
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import Post from './Post'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
-import IconButton from '../common/IconButton'
+import ButtonRow from './ButtonRow'
 
 const TextPost = (props) => {
   const {
@@ -16,41 +16,35 @@ const TextPost = (props) => {
     nbrOfComments,
     liked,
     likeButtonPress,
+    pollPostContent,
     ...headerProps
   } = props
+  const buttonRow = [
+    {
+      name: liked ? 'ios-heart' : 'ios-heart-empty',
+      color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
+      text: nbrOfLikes,
+      onPress: () => likeButtonPress(id)
+    },
+    {
+      name: 'ios-chatboxes',
+      color: PRIMARY_COLOR,
+      text: nbrOfComments
+    },
+    {
+      name: 'ios-share-alt',
+      color: PRIMARY_COLOR
+    }
+  ]
   return (
     <Post>
       <PostHeader {...headerProps} />
       <PostRow>
-        <Text style={styles.textSection}>{postContent}</Text>
+        <Text style={styles.textSection} numberOfLines={8}>
+          {postContent}
+        </Text>
       </PostRow>
-      <PostRow style={styles.buttons}>
-        <IconButton
-          style={styles.postButton}
-          iconName={liked ? 'ios-heart' : 'ios-heart-empty'}
-          iconSize={25}
-          iconColor={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
-          onPress={() => likeButtonPress(id)}
-        >
-          <Text style={styles.postButtonNumber}>{nbrOfLikes}</Text>
-        </IconButton>
-        <IconButton
-          style={styles.postButton}
-          iconName="ios-chatboxes"
-          iconSize={25}
-          iconColor={PRIMARY_COLOR}
-          onPress={() => {}}
-        >
-          <Text style={styles.postButtonNumber}>{nbrOfComments}</Text>
-        </IconButton>
-        <IconButton
-          style={styles.postButton}
-          iconName="ios-share-alt"
-          iconSize={25}
-          iconColor={PRIMARY_COLOR}
-          onPress={() => {}}
-        />
-      </PostRow>
+      <ButtonRow buttons={buttonRow} />
     </Post>
   )
 }
@@ -63,26 +57,17 @@ TextPost.propTypes = {
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
-  likeButtonPress: PropTypes.func.isRequired
+  likeButtonPress: PropTypes.func.isRequired,
+  pollPostContent: PropTypes.element
+}
+
+TextPost.defaultProps = {
+  pollPostContent: undefined
 }
 
 const styles = StyleSheet.create({
   textSection: {
     fontSize: 15
-  },
-  postButton: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  postButtonNumber: {
-    fontSize: 15,
-    paddingLeft: 5,
-    fontWeight: '700'
-  },
-  buttons: {
-    paddingHorizontal: 15
   }
 })
 

@@ -1,6 +1,40 @@
 export default [
   {
     id: 0,
+    type: 'poll-post',
+    podcaster: 'Oprah’s SuperSoul Conversations',
+    podcasterImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
+    postContent: 'What do you want me to talk about on the next episode?',
+    nbrOfComments: 511,
+    nbrOfLikes: 902,
+    timePosted: '12 min ago',
+    liked: false,
+    poll: {
+      totalVotes: 600,
+      options: [
+        {
+          id: 0,
+          option: 'Meditation',
+          votes: 450,
+          selected: false
+        },
+        {
+          id: 1,
+          option: 'Spirituality',
+          votes: 100,
+          selected: false
+        },
+        {
+          id: 2,
+          option: 'Porn',
+          votes: 50,
+          selected: false
+        }
+      ]
+    }
+  },
+  {
+    id: 1,
     type: 'text-post',
     podcaster: 'The Joe Rogan Experience',
     podcasterImageUri:
@@ -13,7 +47,7 @@ export default [
     liked: false
   },
   {
-    id: 1,
+    id: 2,
     type: 'pod-post',
     podcaster: 'Freakonomics Radio',
     podcasterImageUri:
@@ -24,7 +58,7 @@ export default [
     liked: false
   },
   {
-    id: 2,
+    id: 3,
     type: 'text-post',
     podcaster: 'Ted Radio Hour',
     podcasterImageUri:

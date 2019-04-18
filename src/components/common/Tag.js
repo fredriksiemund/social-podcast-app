@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Text from '../common/Text'
+import Text from './Text'
 import { SECONDARY_COLOR, BACKGROUND } from '../../styles/common'
 
 const Tag = ({ content }) => (

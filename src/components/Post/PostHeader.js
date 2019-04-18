@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import PostRow from './PostRow'
-import Tag from './Tag'
+import Tag from '../common/Tag'
 import Text from '../common/Text'
 
 const PostHeader = ({
