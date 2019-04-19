@@ -10,24 +10,24 @@ export default [
     timePosted: '12 min ago',
     liked: false,
     poll: {
-      totalVotes: 600,
+      totalVotes: 645,
       options: [
         {
           id: 0,
           option: 'Meditation',
-          votes: 450,
+          votes: 487,
           selected: false
         },
         {
           id: 1,
           option: 'Spirituality',
-          votes: 100,
+          votes: 103,
           selected: false
         },
         {
           id: 2,
           option: 'Porn',
-          votes: 50,
+          votes: 55,
           selected: false
         }
       ]

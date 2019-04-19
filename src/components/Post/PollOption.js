@@ -1,32 +1,37 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 
 const PollOption = ({
   selected, progress, optionText, onPress
-}) => (
-  <View>
-    <TouchableOpacity style={styles.pollOption} onPress={onPress}>
-      <Icon
-        name={selected ? 'ios-checkbox' : 'ios-square'}
-        size={25}
-        color={selected ? SECONDARY_COLOR : PRIMARY_COLOR}
-      />
-      <View style={styles.progressBar}>
-        <View style={{ flex: progress, ...styles.progress }} />
-      </View>
-    </TouchableOpacity>
-    <Text style={styles.optionText}>{optionText}</Text>
-  </View>
-)
+}) => {
+  const color = selected ? SECONDARY_COLOR : PRIMARY_COLOR
+  const progressStyle = { ...styles.progress, flex: progress, borderColor: color }
+  return (
+    <View>
+      <TouchableOpacity style={styles.pollOption} onPress={onPress}>
+        <Icon name={selected ? 'ios-checkbox' : 'ios-square'} size={25} color={color} />
+        <View style={styles.progressBar}>
+          <View style={progressStyle} />
+        </View>
+      </TouchableOpacity>
+      <Text style={styles.optionText}>{optionText}</Text>
+    </View>
+  )
+}
 
-// TODO: Add PropTypes
+PollOption.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  progress: PropTypes.number.isRequired,
+  optionText: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired
+}
 
 const styles = StyleSheet.create({
   pollOption: {
-    flex: 1,
     flexDirection: 'row',
     paddingTop: 5
   },

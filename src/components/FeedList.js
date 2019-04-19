@@ -1,34 +1,30 @@
 import React, { Component } from 'react'
-import { FlatList } from 'react-native'
-import TextPost from './Post/TextPost'
-import PodPost from './Post/PodPost'
-import PollPost from './Post/PollPost'
+import { FlatList, TouchableHighlight, View } from 'react-native'
+import PropTypes from 'prop-types'
+import Post from './Post/Post'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {
-    const { likeButtonPress, pollOptionPressed } = this.props
-    const { type, ...postProps } = item
-    let jsx
-    switch (type) {
-      case 'text-post':
-        jsx = <TextPost {...postProps} likeButtonPress={likeButtonPress} />
-        break
-      case 'pod-post':
-        jsx = <PodPost {...postProps} />
-        break
-      case 'poll-post':
-        jsx = (
-          <PollPost
-            {...postProps}
-            likeButtonPress={likeButtonPress}
-            pollOptionPressed={pollOptionPressed}
-          />
-        )
-        break
-      default:
-        break
+    const {
+      likeButtonPressed, pollOptionPressed, postPressed, navigation
+    } = this.props
+    const postProps = {
+      ...item,
+      likeButtonPressed,
+      pollOptionPressed
     }
-    return jsx
+    return (
+      <View>
+        <TouchableHighlight
+          onPress={() => {
+            postPressed(item.id)
+            navigation.navigate('PostView')
+          }}
+        >
+          <Post {...postProps} />
+        </TouchableHighlight>
+      </View>
+    )
   }
 
   render() {
@@ -41,6 +37,11 @@ class FeedList extends Component {
       />
     )
   }
+}
+
+FeedList.propTypes = {
+  feed: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  navigation: PropTypes.shape({ navigate: PropTypes.func.isRequired }).isRequired
 }
 
 export default FeedList

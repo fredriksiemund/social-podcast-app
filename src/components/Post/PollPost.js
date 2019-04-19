@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
-import Post from './Post'
+import PostContainer from './PostContainer'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
 import ButtonRow from './ButtonRow'
@@ -36,7 +36,7 @@ class PollPost extends Component {
       nbrOfLikes,
       nbrOfComments,
       liked,
-      likeButtonPress,
+      likeButtonPressed,
       ...headerProps
     } = this.props
     const buttonRow = [
@@ -44,7 +44,7 @@ class PollPost extends Component {
         name: liked ? 'ios-heart' : 'ios-heart-empty',
         color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
         text: nbrOfLikes,
-        onPress: () => likeButtonPress(id)
+        onPress: () => likeButtonPressed(id)
       },
       {
         name: 'ios-chatboxes',
@@ -57,7 +57,7 @@ class PollPost extends Component {
       }
     ]
     return (
-      <Post>
+      <PostContainer>
         <PostHeader {...headerProps} />
         <PostRow>
           <Text style={styles.textSection} numberOfLines={1}>
@@ -67,11 +67,11 @@ class PollPost extends Component {
         <PostRow>
           <View style={styles.pollContainer}>
             <Text style={styles.pollQuestion}>What should i talk about on the next episode?</Text>
-            <View style={styles.pollOptions}>{this.renderPoll()}</View>
+            {this.renderPoll()}
           </View>
         </PostRow>
         <ButtonRow buttons={buttonRow} />
-      </Post>
+      </PostContainer>
     )
   }
 }
@@ -84,7 +84,7 @@ PollPost.propTypes = {
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
-  likeButtonPress: PropTypes.func.isRequired
+  likeButtonPressed: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

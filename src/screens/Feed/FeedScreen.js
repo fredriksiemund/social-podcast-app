@@ -2,9 +2,9 @@ import React from 'react'
 import ScreenContainer from '../../components/common/ScreenContainer'
 import FeedList from '../../containers/FeedList'
 
-const FeedScreen = () => (
+const FeedScreen = ({ navigation }) => (
   <ScreenContainer>
-    <FeedList />
+    <FeedList navigation={navigation} />
   </ScreenContainer>
 )
 
