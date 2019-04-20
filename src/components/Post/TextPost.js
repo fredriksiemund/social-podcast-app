@@ -16,6 +16,7 @@ const TextPost = (props) => {
     nbrOfComments,
     liked,
     likeButtonPressed,
+    preview,
     ...headerProps
   } = props
   const buttonRow = [
@@ -35,11 +36,12 @@ const TextPost = (props) => {
       color: PRIMARY_COLOR
     }
   ]
+  const previewAttribute = preview ? { numberOfLines: 5 } : {}
   return (
     <PostContainer>
       <PostHeader {...headerProps} />
       <PostRow>
-        <Text style={styles.textSection} numberOfLines={8}>
+        <Text style={styles.textSection} {...previewAttribute}>
           {postContent}
         </Text>
       </PostRow>
@@ -56,7 +58,12 @@ TextPost.propTypes = {
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
-  likeButtonPressed: PropTypes.func.isRequired
+  likeButtonPressed: PropTypes.func.isRequired,
+  preview: PropTypes.bool
+}
+
+TextPost.defaultProps = {
+  preview: false
 }
 
 const styles = StyleSheet.create({

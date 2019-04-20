@@ -16,17 +16,33 @@ class PollPost extends Component {
   }
 
   renderPoll() {
-    const { id, poll, pollOptionPressed } = this.props
+    const {
+      id, poll, pollOptionPressed, preview
+    } = this.props
     const total = poll.totalVotes
-    return poll.options.map(option => (
-      <PollOption
-        key={option.id}
-        selected={option.selected}
-        progress={this.round(option.votes / total, 2)}
-        optionText={`${option.option} (${option.votes} votes)`}
-        onPress={() => pollOptionPressed({ postId: id, optionId: option.id })}
-      />
-    ))
+    const length = preview ? 2 : poll.options.length
+    const jsx = []
+    for (let i = 0; i < length; i += 1) {
+      const option = poll.options[i]
+      jsx.push(
+        <PollOption
+          key={option.id}
+          selected={option.selected}
+          progress={this.round(option.votes / total, 2)}
+          optionText={`${option.option} (${option.votes} votes)`}
+          onPress={() => pollOptionPressed({ postId: id, optionId: option.id })}
+          preview={preview}
+        />
+      )
+    }
+    if (preview) {
+      jsx.push(
+        <Text key="previewButton" style={styles.previewButton}>
+          {`${poll.options.length - 2} more...`}
+        </Text>
+      )
+    }
+    return jsx
   }
 
   render() {
@@ -37,6 +53,8 @@ class PollPost extends Component {
       nbrOfComments,
       liked,
       likeButtonPressed,
+      pollQuestion,
+      preview,
       ...headerProps
     } = this.props
     const buttonRow = [
@@ -56,17 +74,18 @@ class PollPost extends Component {
         color: PRIMARY_COLOR
       }
     ]
+    const previewAttribute = preview ? { numberOfLines: 1 } : {}
     return (
       <PostContainer>
         <PostHeader {...headerProps} />
         <PostRow>
-          <Text style={styles.textSection} numberOfLines={1}>
+          <Text style={styles.textSection} {...previewAttribute}>
             {postContent}
           </Text>
         </PostRow>
         <PostRow>
           <View style={styles.pollContainer}>
-            <Text style={styles.pollQuestion}>What should i talk about on the next episode?</Text>
+            <Text style={styles.pollQuestion}>{pollQuestion}</Text>
             {this.renderPoll()}
           </View>
         </PostRow>
@@ -84,7 +103,12 @@ PollPost.propTypes = {
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
-  likeButtonPressed: PropTypes.func.isRequired
+  likeButtonPressed: PropTypes.func.isRequired,
+  preview: PropTypes.bool
+}
+
+PollPost.defaultProps = {
+  preview: false
 }
 
 const styles = StyleSheet.create({
@@ -101,6 +125,12 @@ const styles = StyleSheet.create({
   pollQuestion: {
     fontSize: 15,
     fontWeight: '700'
+  },
+  previewButton: {
+    fontSize: 15,
+    fontWeight: '700',
+    alignSelf: 'center',
+    padding: 5
   }
 })
 

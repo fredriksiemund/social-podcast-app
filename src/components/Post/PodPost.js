@@ -9,14 +9,19 @@ import Text from '../common/Text'
 import IconButton from '../common/IconButton'
 
 const PodPost = (props) => {
-  const { episodeName, episodeDescription, ...headerProps } = props
+  const {
+    episodeName, episodeDescription, preview, ...headerProps
+  } = props
+  const previewAttribute = preview ? { numberOfLines: 2 } : {}
   return (
     <PostContainer>
       <PostHeader {...headerProps} tag="New episode" />
       <PostRow>
         <View style={styles.podContainer}>
           <Text style={styles.podTitle}>{episodeName}</Text>
-          <Text style={styles.podDescription}>{episodeDescription}</Text>
+          <Text style={styles.podDescription} {...previewAttribute}>
+            {episodeDescription}
+          </Text>
           <View style={styles.buttonRow}>
             <View style={styles.podButton} />
             <IconButton
@@ -52,7 +57,12 @@ PodPost.propTypes = {
   podcaster: PropTypes.string.isRequired,
   podcasterImageUri: PropTypes.string.isRequired,
   episodeName: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired
+  timePosted: PropTypes.string.isRequired,
+  preview: PropTypes.bool
+}
+
+PodPost.defaultProps = {
+  preview: false
 }
 
 const styles = StyleSheet.create({

@@ -32,8 +32,13 @@ class Post extends Component {
 
 Post.propTypes = {
   id: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
   // TODO
+  preview: PropTypes.bool
+}
+
+Post.defaultProps = {
+  preview: false
 }
 
 export default Post

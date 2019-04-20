@@ -11,7 +11,8 @@ class FeedList extends Component {
     const postProps = {
       ...item,
       likeButtonPressed,
-      pollOptionPressed
+      pollOptionPressed,
+      preview: true
     }
     return (
       <View>

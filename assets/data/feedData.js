@@ -5,12 +5,13 @@ export default [
     podcaster: 'Oprah’s SuperSoul Conversations',
     podcasterImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
     postContent: 'What do you want me to talk about on the next episode?',
+    pollQuestion: 'What should i talk about on the next episode?',
     nbrOfComments: 511,
     nbrOfLikes: 902,
     timePosted: '12 min ago',
     liked: false,
     poll: {
-      totalVotes: 645,
+      totalVotes: 665,
       options: [
         {
           id: 0,
@@ -26,8 +27,14 @@ export default [
         },
         {
           id: 2,
-          option: 'Porn',
+          option: 'Health',
           votes: 55,
+          selected: false
+        },
+        {
+          id: 3,
+          option: 'Food',
+          votes: 20,
           selected: false
         }
       ]
@@ -40,7 +47,7 @@ export default [
     podcasterImageUri:
       'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
     postContent:
-      'The weather is amazing, walk with me through the pathway of more success. Take this journey with me, Lion! I’m up to something. Lion! How’s business? Boomin.',
+      'The weather is amazing, walk with me through the pathway of more success. Take this journey with me, Lion! I’m up to something. Lion! How’s business? Boomin. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text.',
     nbrOfComments: 321,
     nbrOfLikes: 53,
     timePosted: '37 min ago',
@@ -53,7 +60,7 @@ export default [
     podcasterImageUri:
       'http://mediad.publicbroadcasting.net/p/wnij/files/styles/small/public/201307/freakonomics_1.jpg',
     episodeName: '373. Why Rent Control Doesn’t Work',
-    episodeDescription: 'I’m giving you cloth talk, cloth. Special clo...',
+    episodeDescription: 'I’m giving you cloth talk, cloth. Special talk about how to do this',
     timePosted: '1 h ago',
     liked: false
   },

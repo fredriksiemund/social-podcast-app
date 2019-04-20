@@ -6,18 +6,19 @@ import { PRIMARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from '../../styles/com
 import Text from '../common/Text'
 
 const PollOption = ({
-  selected, progress, optionText, onPress
+  selected, progress, optionText, onPress, preview
 }) => {
   const color = selected ? SECONDARY_COLOR : PRIMARY_COLOR
   const progressStyle = { ...styles.progress, flex: progress, borderColor: color }
+  const Tag = preview ? View : TouchableOpacity
   return (
     <View>
-      <TouchableOpacity style={styles.pollOption} onPress={onPress}>
+      <Tag style={styles.pollOption} onPress={onPress}>
         <Icon name={selected ? 'ios-checkbox' : 'ios-square'} size={25} color={color} />
         <View style={styles.progressBar}>
           <View style={progressStyle} />
         </View>
-      </TouchableOpacity>
+      </Tag>
       <Text style={styles.optionText}>{optionText}</Text>
     </View>
   )
@@ -27,7 +28,12 @@ PollOption.propTypes = {
   selected: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
   optionText: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired
+  onPress: PropTypes.func.isRequired,
+  preview: PropTypes.bool
+}
+
+PollOption.defaultProps = {
+  preview: false
 }
 
 const styles = StyleSheet.create({
