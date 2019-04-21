@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, TouchableHighlight, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import PropTypes from 'prop-types'
 import Post from './Post/Post'
 
@@ -12,18 +12,13 @@ class FeedList extends Component {
       ...item,
       likeButtonPressed,
       pollOptionPressed,
-      preview: true
+      postPressed,
+      navigation,
+      previewPost: true
     }
     return (
       <View>
-        <TouchableHighlight
-          onPress={() => {
-            postPressed(item.id)
-            navigation.navigate('PostView')
-          }}
-        >
-          <Post {...postProps} />
-        </TouchableHighlight>
+        <Post {...postProps} />
       </View>
     )
   }

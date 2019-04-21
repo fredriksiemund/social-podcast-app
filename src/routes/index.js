@@ -97,7 +97,7 @@ const renderIcon = (screen, tintColor) => {
   let name = ''
   switch (screen) {
     case 'Feed':
-      name = 'md-list'
+      name = 'ios-list'
       break
     case 'Search':
       name = 'ios-search'

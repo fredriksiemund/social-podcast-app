@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, LayoutAnimation } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
+import { TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
-import PostContainer from './PostContainer'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
 import ButtonRow from './ButtonRow'
 import PollOption from './PollOption'
 
 class PollPost extends Component {
+  componentWillUpdate = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.create(30, 'linear', 'opacity'))
+  }
+
   round = (value, precision) => {
     const multiplier = 10 ** (precision || 0)
     return Math.round(value * multiplier) / multiplier
@@ -17,10 +20,10 @@ class PollPost extends Component {
 
   renderPoll() {
     const {
-      id, poll, pollOptionPressed, preview
+      id, poll, pollOptionPressed, previewMode
     } = this.props
     const total = poll.totalVotes
-    const length = preview ? 2 : poll.options.length
+    const length = previewMode ? 2 : poll.options.length
     const jsx = []
     for (let i = 0; i < length; i += 1) {
       const option = poll.options[i]
@@ -31,11 +34,11 @@ class PollPost extends Component {
           progress={this.round(option.votes / total, 2)}
           optionText={`${option.option} (${option.votes} votes)`}
           onPress={() => pollOptionPressed({ postId: id, optionId: option.id })}
-          preview={preview}
+          preview={previewMode}
         />
       )
     }
-    if (preview) {
+    if (previewMode) {
       jsx.push(
         <Text key="previewButton" style={styles.previewButton}>
           {`${poll.options.length - 2} more...`}
@@ -47,39 +50,13 @@ class PollPost extends Component {
 
   render() {
     const {
-      id,
-      postContent,
-      nbrOfLikes,
-      nbrOfComments,
-      liked,
-      likeButtonPressed,
-      pollQuestion,
-      preview,
-      ...headerProps
+      postContent, pollQuestion, previewMode, buttonRow, ...headerProps
     } = this.props
-    const buttonRow = [
-      {
-        name: liked ? 'ios-heart' : 'ios-heart-empty',
-        color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
-        text: nbrOfLikes,
-        onPress: () => likeButtonPressed(id)
-      },
-      {
-        name: 'ios-chatboxes',
-        color: PRIMARY_COLOR,
-        text: nbrOfComments
-      },
-      {
-        name: 'ios-share-alt',
-        color: PRIMARY_COLOR
-      }
-    ]
-    const previewAttribute = preview ? { numberOfLines: 1 } : {}
     return (
-      <PostContainer>
+      <View>
         <PostHeader {...headerProps} />
         <PostRow>
-          <Text style={styles.textSection} {...previewAttribute}>
+          <Text style={styles.textSection} {...(previewMode ? { numberOfLines: 1 } : {})}>
             {postContent}
           </Text>
         </PostRow>
@@ -90,25 +67,45 @@ class PollPost extends Component {
           </View>
         </PostRow>
         <ButtonRow buttons={buttonRow} />
-      </PostContainer>
+      </View>
     )
   }
 }
 
 PollPost.propTypes = {
-  id: PropTypes.number.isRequired,
   podcaster: PropTypes.string.isRequired,
   podcasterImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
+  likeButtonPressed: PropTypes.func.isRequired,
+  liked: PropTypes.bool.isRequired,
   nbrOfComments: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
-  likeButtonPressed: PropTypes.func.isRequired,
-  preview: PropTypes.bool
+  poll: PropTypes.shape({
+    totalVotes: PropTypes.number.isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        option: PropTypes.string.isRequired,
+        votes: PropTypes.number.isRequired,
+        selected: PropTypes.bool.isRequired
+      })
+    ).isRequired
+  }).isRequired,
+  buttonRow: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      onPress: PropTypes.func
+    })
+  ).isRequired,
+  pollQuestion: PropTypes.string.isRequired,
+  previewMode: PropTypes.bool
 }
 
 PollPost.defaultProps = {
-  preview: false
+  previewMode: false
 }
 
 const styles = StyleSheet.create({

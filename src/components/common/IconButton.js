@@ -7,7 +7,7 @@ import Text from './Text'
 const IconButton = ({
   iconName, iconSize, iconColor, style, onPress, children
 }) => (
-  <TouchableOpacity style={style} onPress={onPress}>
+  <TouchableOpacity style={[styles.iconButton, style]} onPress={onPress}>
     <Icon name={iconName} color={iconColor} size={iconSize} />
     {children ? <Text style={styles.buttonContent}>{children}</Text> : null}
   </TouchableOpacity>
@@ -33,6 +33,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingLeft: 5,
     fontWeight: '700'
+  },
+  iconButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 
