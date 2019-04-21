@@ -6,13 +6,13 @@ import Tag from '../common/Tag'
 import Text from '../common/Text'
 
 const PostHeader = ({
-  podcaster, timePosted, podcasterImageUri, tag
+  author, timePosted, authorImageUri, tag
 }) => (
   <View>
     <PostRow>
-      <Image source={{ uri: podcasterImageUri }} style={styles.postImage} />
+      <Image source={{ uri: authorImageUri }} style={styles.postImage} />
       <View style={styles.postHeader}>
-        <Text style={styles.headerPodcaster}>{podcaster}</Text>
+        <Text style={styles.headerAuthor}>{author}</Text>
         <View style={styles.headerSubheader}>
           <Text style={styles.headerTime}>{timePosted}</Text>
           {tag ? <Tag content={tag} /> : null}
@@ -23,8 +23,8 @@ const PostHeader = ({
 )
 
 PostHeader.propTypes = {
-  podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired,
   tag: PropTypes.string
 }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 10
   },
-  headerPodcaster: {
+  headerAuthor: {
     fontSize: 18,
     fontWeight: '700'
   },

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, LayoutAnimation } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import PostHeader from './PostHeader'
@@ -8,10 +8,6 @@ import Text from '../common/Text'
 import IconButton from '../common/IconButton'
 
 class PodPost extends Component {
-  componentWillUpdate = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.create(30, 'linear', 'opacity'))
-  }
-
   onInfoPress = () => {
     const { id, navigation, postPressed } = this.props
     postPressed(id)
@@ -68,8 +64,8 @@ class PodPost extends Component {
 }
 
 PodPost.propTypes = {
-  podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  authorImageUri: PropTypes.string.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired,

@@ -1,6 +1,7 @@
 import React from 'react'
 import ScreenContainer from '../../components/common/ScreenContainer'
 import Post from '../../components/Post/Post'
+import CommentSection from '../../components/CommentSection'
 
 const PostScreen = (props) => {
   const {
@@ -12,9 +13,11 @@ const PostScreen = (props) => {
     likeButtonPressed,
     pollOptionPressed
   }
+  console.log(post)
   return (
     <ScreenContainer>
       <Post {...postProps} />
+      <CommentSection {...post.comments} />
     </ScreenContainer>
   )
 }

@@ -2,14 +2,51 @@ export default [
   {
     id: 0,
     type: 'poll-post',
-    podcaster: 'Oprah’s SuperSoul Conversations',
-    podcasterImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
+    author: 'Oprah’s SuperSoul Conversations',
+    authorImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
+    timePosted: '12 min ago',
     postContent: 'What do you want me to talk about on the next episode?',
     pollQuestion: 'What should i talk about on the next episode?',
-    nbrOfComments: 511,
     nbrOfLikes: 902,
-    timePosted: '12 min ago',
     liked: false,
+    comments: {
+      nbrOfComments: 511,
+      comments: [
+        {
+          id: 0,
+          type: 'text-post',
+          author: 'Per Persson',
+          authorImageUri:
+            'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
+          timePosted: '1 h ago',
+          postContent: 'Bla bla bla',
+          nbrOfLikes: 3,
+          liked: false
+        },
+        {
+          id: 1,
+          type: 'text-post',
+          author: 'Per Persson',
+          authorImageUri:
+            'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
+          timePosted: '1 h ago',
+          postContent: 'Bla bla bla',
+          nbrOfLikes: 3,
+          liked: false
+        },
+        {
+          id: 2,
+          type: 'text-post',
+          author: 'Per Persson',
+          authorImageUri:
+            'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
+          timePosted: '1 h ago',
+          postContent: 'Bla bla bla',
+          nbrOfLikes: 3,
+          liked: false
+        }
+      ]
+    },
     poll: {
       totalVotes: 665,
       options: [
@@ -43,37 +80,47 @@ export default [
   {
     id: 1,
     type: 'text-post',
-    podcaster: 'The Joe Rogan Experience',
-    podcasterImageUri:
+    author: 'The Joe Rogan Experience',
+    authorImageUri:
       'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
+    timePosted: '37 min ago',
     postContent:
       'The weather is amazing, walk with me through the pathway of more success. Take this journey with me, Lion! I’m up to something. Lion! How’s business? Boomin. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text.',
-    nbrOfComments: 321,
     nbrOfLikes: 53,
-    timePosted: '37 min ago',
-    liked: false
+    liked: false,
+    comments: {
+      nbrOfComments: 102,
+      comments: []
+    }
   },
   {
     id: 2,
     type: 'pod-post',
-    podcaster: 'Freakonomics Radio',
-    podcasterImageUri:
+    author: 'Freakonomics Radio',
+    authorImageUri:
       'http://mediad.publicbroadcasting.net/p/wnij/files/styles/small/public/201307/freakonomics_1.jpg',
+    timePosted: '1 h ago',
     episodeName: '373. Why Rent Control Doesn’t Work',
     episodeDescription: 'I’m giving you cloth talk, cloth. Special talk about how to do this',
-    timePosted: '1 h ago'
+    comments: {
+      nbrOfComments: 204,
+      comments: []
+    }
   },
   {
     id: 3,
     type: 'text-post',
-    podcaster: 'Ted Radio Hour',
-    podcasterImageUri:
+    author: 'Ted Radio Hour',
+    authorImageUri:
       'https://tedconfblog.files.wordpress.com/2013/02/ted-radio-hour.jpg?resize=283%2C212',
+    timePosted: '4 h ago',
     postContent:
       'A major key, never panic. Don’t panic, when it gets crazy and rough, don’t panic, stay calm. Look at the sunset, life is amazing, life is beautiful, life is what you make it.',
-    nbrOfComments: 104,
     nbrOfLikes: 21,
-    timePosted: '4 h ago',
-    liked: false
+    liked: false,
+    comments: {
+      nbrOfComments: 55,
+      comments: []
+    }
   }
 ]

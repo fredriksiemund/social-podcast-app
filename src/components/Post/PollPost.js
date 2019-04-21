@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, LayoutAnimation } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
@@ -9,10 +9,6 @@ import ButtonRow from './ButtonRow'
 import PollOption from './PollOption'
 
 class PollPost extends Component {
-  componentWillUpdate = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.create(30, 'linear', 'opacity'))
-  }
-
   round = (value, precision) => {
     const multiplier = 10 ** (precision || 0)
     return Math.round(value * multiplier) / multiplier
@@ -73,13 +69,11 @@ class PollPost extends Component {
 }
 
 PollPost.propTypes = {
-  podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
   likeButtonPressed: PropTypes.func.isRequired,
   liked: PropTypes.bool.isRequired,
-  nbrOfComments: PropTypes.number.isRequired,
-  nbrOfLikes: PropTypes.number.isRequired,
   timePosted: PropTypes.string.isRequired,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,

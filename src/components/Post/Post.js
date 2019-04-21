@@ -24,37 +24,53 @@ class Post extends Component {
   }
 
   onCommentPress = (id) => {
-    const { navigation, postPressed, previewPost } = this.props
-    if (!previewPost) return
+    const { navigation, postPressed } = this.props
     postPressed(id)
     navigation.navigate('PostView')
   }
 
-  textAndPollPostButtonRow = ({
-    liked, nbrOfComments, nbrOfLikes, id, likeButtonPressed
-  }) => [
-    {
-      name: liked ? 'ios-heart' : 'ios-heart-empty',
-      color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
-      text: nbrOfLikes,
-      onPress: () => likeButtonPressed(id)
-    },
-    {
-      name: 'ios-chatboxes',
-      color: PRIMARY_COLOR,
-      text: nbrOfComments,
-      onPress: () => this.onCommentPress(id)
-    },
-    {
-      name: 'ios-share-alt',
-      color: PRIMARY_COLOR
+  getButtonRow = () => {
+    const {
+      liked, comments, nbrOfLikes, id, likeButtonPressed, previewPost
+    } = this.props
+    if (previewPost) {
+      return [
+        {
+          name: liked ? 'ios-heart' : 'ios-heart-empty',
+          color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
+          text: nbrOfLikes,
+          onPress: () => likeButtonPressed(id)
+        },
+        {
+          name: 'ios-chatboxes',
+          color: PRIMARY_COLOR,
+          text: comments.nbrOfComments,
+          onPress: () => this.onCommentPress(id)
+        },
+        {
+          name: 'ios-share-alt',
+          color: PRIMARY_COLOR
+        }
+      ]
     }
-  ]
+    return [
+      {
+        name: liked ? 'ios-heart' : 'ios-heart-empty',
+        color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
+        text: nbrOfLikes,
+        onPress: () => likeButtonPressed(id)
+      },
+      {
+        name: 'ios-share-alt',
+        color: PRIMARY_COLOR
+      }
+    ]
+  }
 
   renderPost = (postProps) => {
     const { previewMode } = this.state
     const { type, previewPost } = postProps
-    const buttonRow = this.textAndPollPostButtonRow(postProps)
+    const buttonRow = this.getButtonRow()
     let post
     switch (type) {
       case 'text-post':
@@ -84,15 +100,28 @@ class Post extends Component {
 Post.propTypes = {
   id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
-  podcaster: PropTypes.string.isRequired,
-  podcasterImageUri: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired,
   postContent: PropTypes.string,
-  nbrOfComments: PropTypes.number,
+  comments: PropTypes.shape({
+    nbrOfComments: PropTypes.number.isRequired,
+    comments: PropTypes.arrayOf(PropTypes.shape({}))
+  }),
   nbrOfLikes: PropTypes.number,
   likeButtonPressed: PropTypes.func,
   liked: PropTypes.bool,
-  poll: PropTypes.shape({}),
+  poll: PropTypes.shape({
+    totalVotes: PropTypes.number.isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        option: PropTypes.string.isRequired,
+        votes: PropTypes.number.isRequired,
+        selected: PropTypes.bool.isRequired
+      })
+    ).isRequired
+  }),
   pollQuestion: PropTypes.string,
   episodeDescription: PropTypes.string,
   episodeName: PropTypes.string,
@@ -106,7 +135,7 @@ Post.defaultProps = {
   postPressed: null,
   navigation: null,
   postContent: null,
-  nbrOfComments: null,
+  comments: null,
   nbrOfLikes: null,
   likeButtonPressed: null,
   liked: null,

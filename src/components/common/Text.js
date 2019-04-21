@@ -11,7 +11,8 @@ const AppText = ({ style, children, numberOfLines }) => (
 
 const styles = StyleSheet.create({
   textStyle: {
-    color: PRIMARY_COLOR
+    color: PRIMARY_COLOR,
+    fontSize: 15
   }
 })
 
