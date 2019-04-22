@@ -1,74 +1,45 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
+import { TERTIARY_COLOR } from '../../styles/common'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
 import Text from '../common/Text'
-import IconButton from '../common/IconButton'
+import ButtonRow from './ButtonRow'
 
-class PodPost extends Component {
-  onInfoPress = () => {
-    const { id, navigation, postPressed } = this.props
-    postPressed(id)
-    navigation.navigate('PostView')
-  }
-
-  render() {
-    const {
-      episodeName, episodeDescription, previewMode, ...headerProps
-    } = this.props
-    return (
-      <View>
-        <PostHeader {...headerProps} tag="New episode" />
-        <PostRow>
-          <View style={styles.podContainer}>
-            <Text style={styles.podTitle}>{episodeName}</Text>
-            <Text style={styles.podDescription} {...(previewMode ? { numberOfLines: 1 } : {})}>
-              {episodeDescription}
-            </Text>
-            <View style={styles.buttonRow}>
-              <IconButton
-                style={styles.podButton}
-                iconName="ios-play-circle"
-                iconColor={PRIMARY_COLOR}
-                iconSize={40}
-                onPress={() => {}}
-              >
-                Play
-              </IconButton>
-              <IconButton
-                style={styles.podButton}
-                iconName="ios-add-circle"
-                iconSize={40}
-                iconColor={PRIMARY_COLOR}
-                onPress={() => {}}
-              >
-                Queue
-              </IconButton>
-              <IconButton
-                style={styles.podButton}
-                iconName="ios-information-circle"
-                iconColor={PRIMARY_COLOR}
-                iconSize={40}
-                onPress={this.onInfoPress}
-              >
-                More
-              </IconButton>
-            </View>
-          </View>
-        </PostRow>
+const PodPost = ({
+  episodeName, episodeDescription, previewMode, buttonRow, ...headerProps
+}) => (
+  <View>
+    <PostHeader {...headerProps} tag="New episode" />
+    <PostRow>
+      <View style={styles.podContainer}>
+        <Text style={styles.podTitle}>{episodeName}</Text>
+        <Text style={styles.podDescription} {...(previewMode ? { numberOfLines: 1 } : {})}>
+          {episodeDescription}
+        </Text>
+        <View style={styles.buttonRow}>
+          <ButtonRow buttons={buttonRow} />
+        </View>
       </View>
-    )
-  }
-}
+    </PostRow>
+  </View>
+)
 
 PodPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
+  timePosted: PropTypes.string.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  buttonRow: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      onPress: PropTypes.func
+    })
+  ).isRequired,
   previewMode: PropTypes.bool
 }
 
@@ -97,11 +68,8 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   buttonRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 5
-  },
-  podButton: {}
+    paddingBottom: 5
+  }
 })
 
 export default PodPost

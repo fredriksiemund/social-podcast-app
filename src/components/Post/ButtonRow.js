@@ -10,7 +10,7 @@ class ButtonRow extends Component {
       <IconButton
         key={button.name}
         iconName={button.name}
-        iconSize={25}
+        iconSize={button.size || 25}
         iconColor={button.color}
         onPress={button.onPress}
       >
@@ -30,6 +30,7 @@ ButtonRow.propTypes = {
       name: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      size: PropTypes.number,
       onPress: PropTypes.func
     })
   ).isRequired

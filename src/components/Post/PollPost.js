@@ -20,10 +20,10 @@ class PollPost extends Component {
     } = this.props
     const total = poll.totalVotes
     const length = previewMode ? 2 : poll.options.length
-    const jsx = []
+    const pollList = []
     for (let i = 0; i < length; i += 1) {
       const option = poll.options[i]
-      jsx.push(
+      pollList.push(
         <PollOption
           key={option.id}
           selected={option.selected}
@@ -35,13 +35,13 @@ class PollPost extends Component {
       )
     }
     if (previewMode) {
-      jsx.push(
+      pollList.push(
         <Text key="previewButton" style={styles.previewButton}>
           {`${poll.options.length - 2} more...`}
         </Text>
       )
     }
-    return jsx
+    return pollList
   }
 
   render() {
@@ -69,6 +69,7 @@ class PollPost extends Component {
 }
 
 PollPost.propTypes = {
+  id: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
@@ -95,6 +96,7 @@ PollPost.propTypes = {
     })
   ).isRequired,
   pollQuestion: PropTypes.string.isRequired,
+  pollOptionPressed: PropTypes.func.isRequired,
   previewMode: PropTypes.bool
 }
 

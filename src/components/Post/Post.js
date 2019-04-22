@@ -29,58 +29,139 @@ class Post extends Component {
     navigation.navigate('PostView')
   }
 
-  getButtonRow = () => {
+  onInfoPress = (id) => {
+    const { navigation, postPressed } = this.props
+    postPressed(id)
+    navigation.navigate('PostView')
+  }
+
+  textAndPollPostButtonRow = () => {
     const {
       liked, comments, nbrOfLikes, id, likeButtonPressed, previewPost
     } = this.props
-    if (previewPost) {
-      return [
-        {
-          name: liked ? 'ios-heart' : 'ios-heart-empty',
-          color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
-          text: nbrOfLikes,
-          onPress: () => likeButtonPressed(id)
-        },
-        {
-          name: 'ios-chatboxes',
-          color: PRIMARY_COLOR,
-          text: comments.nbrOfComments,
-          onPress: () => this.onCommentPress(id)
-        },
-        {
-          name: 'ios-share-alt',
-          color: PRIMARY_COLOR
-        }
-      ]
-    }
-    return [
+    const buttonRow = [
       {
         name: liked ? 'ios-heart' : 'ios-heart-empty',
         color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
         text: nbrOfLikes,
         onPress: () => likeButtonPressed(id)
+      }
+    ]
+    if (previewPost) {
+      buttonRow.push({
+        name: 'ios-chatboxes',
+        color: PRIMARY_COLOR,
+        text: comments.nbrOfComments,
+        onPress: () => this.onCommentPress(id)
+      })
+    }
+    buttonRow.push({
+      name: 'ios-share-alt',
+      color: PRIMARY_COLOR
+    })
+    return buttonRow
+  }
+
+  podPostButtonRow = () => {
+    const { id } = this.props
+    return [
+      {
+        name: 'ios-play-circle',
+        color: PRIMARY_COLOR,
+        text: 'Play',
+        size: 40
       },
       {
-        name: 'ios-share-alt',
-        color: PRIMARY_COLOR
+        name: 'ios-add-circle',
+        color: PRIMARY_COLOR,
+        text: 'Queue',
+        size: 40
+      },
+      {
+        name: 'ios-information-circle',
+        color: PRIMARY_COLOR,
+        text: 'More',
+        size: 40,
+        onPress: () => this.onInfoPress(id)
       }
     ]
   }
 
-  renderPost = (postProps) => {
+  renderPost = () => {
     const { previewMode } = this.state
-    const { type, previewPost } = postProps
-    const buttonRow = this.getButtonRow()
+    const {
+      id,
+      type,
+      author,
+      authorImageUri,
+      timePosted,
+      postContent,
+      likeButtonPressed,
+      liked,
+      previewPost,
+      episodeName,
+      episodeDescription,
+      poll,
+      pollQuestion,
+      pollOptionPressed
+    } = this.props
+    let buttonRow
     let post
     switch (type) {
       case 'text-post':
-        post = <TextPost {...postProps} previewMode={previewMode} buttonRow={buttonRow} />
+        buttonRow = this.textAndPollPostButtonRow()
+        post = (
+          <TextPost
+            {...{
+              author,
+              authorImageUri,
+              timePosted,
+              postContent,
+              liked,
+              likeButtonPressed,
+              previewMode,
+              buttonRow
+            }}
+          />
+        )
         break
       case 'pod-post':
-        post = <PodPost {...postProps} previewMode={previewMode} />
+        buttonRow = this.podPostButtonRow()
+        post = (
+          <PodPost
+            {...{
+              author,
+              authorImageUri,
+              timePosted,
+              episodeName,
+              episodeDescription,
+              previewMode,
+              buttonRow,
+              onInfoPress: () => this.onInfoPress(id)
+            }}
+          />
+        )
         break
       case 'poll-post':
-        post = <PollPost {...postProps} previewMode={previewMode} buttonRow={buttonRow} />
+        buttonRow = this.textAndPollPostButtonRow()
+        post = (
+          <PollPost
+            {...{
+              id,
+              author,
+              authorImageUri,
+              timePosted,
+              postContent,
+              liked,
+              likeButtonPressed,
+              previewMode,
+              buttonRow,
+              poll,
+              pollQuestion,
+              pollOptionPressed
+            }}
+          />
+        )
         break
       default:
         break
@@ -123,6 +204,7 @@ Post.propTypes = {
     ).isRequired
   }),
   pollQuestion: PropTypes.string,
+  pollOptionPressed: PropTypes.func.isRequired,
   episodeDescription: PropTypes.string,
   episodeName: PropTypes.string,
   previewPost: PropTypes.bool,
