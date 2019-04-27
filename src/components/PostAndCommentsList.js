@@ -51,7 +51,7 @@ PostAndCommentsList.propTypes = {
   type: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   postContent: PropTypes.string,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,

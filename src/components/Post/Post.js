@@ -47,7 +47,7 @@ class Post extends Component {
     } = this.props
     const buttonRow = [
       {
-        name: liked ? 'ios-heart' : 'ios-heart-empty',
+        name: liked ? 'heart' : 'heart-empty',
         color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
         text: nbrOfLikes,
         onPress: () => likeButtonPressed(id)
@@ -55,14 +55,14 @@ class Post extends Component {
     ]
     if (previewPost) {
       buttonRow.push({
-        name: 'ios-chatboxes',
+        name: 'chatboxes',
         color: PRIMARY_COLOR,
         text: comments.nbrOfComments,
         onPress: () => this.onCommentPress(id)
       })
     }
     buttonRow.push({
-      name: 'ios-share-alt',
+      name: 'share-alt',
       color: PRIMARY_COLOR
     })
     return buttonRow
@@ -72,19 +72,19 @@ class Post extends Component {
     const { id } = this.props
     return [
       {
-        name: 'ios-play-circle',
+        name: 'play-circle',
         color: PRIMARY_COLOR,
         text: 'Play',
         size: 40
       },
       {
-        name: 'ios-add-circle',
+        name: 'add-circle',
         color: PRIMARY_COLOR,
         text: 'Queue',
         size: 40
       },
       {
-        name: 'ios-information-circle',
+        name: 'information-circle',
         color: PRIMARY_COLOR,
         text: 'More',
         size: 40,
@@ -201,7 +201,7 @@ Post.propTypes = {
   type: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   postContent: PropTypes.string,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,

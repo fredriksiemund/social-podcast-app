@@ -29,7 +29,7 @@ const PodPost = ({
 PodPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
   buttonRow: PropTypes.arrayOf(
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   buttonRow: {
-    paddingBottom: 5
+    marginVertical: 5
   }
 })
 

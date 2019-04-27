@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from './Icon'
 import Text from './Text'
 import { PRIMARY_COLOR } from '../../styles/common'
 

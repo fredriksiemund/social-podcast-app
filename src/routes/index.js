@@ -4,7 +4,7 @@ import {
   createAppContainer,
   createStackNavigator
 } from 'react-navigation'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from '../components/common/Icon'
 import Feed from '../screens/Feed/FeedScreen'
 import Search from '../screens/Search/SearchScreen'
 import Profile from '../screens/Profile/ProfileScreen'
@@ -97,13 +97,13 @@ const renderIcon = (screen, tintColor) => {
   let name = ''
   switch (screen) {
     case 'Feed':
-      name = 'ios-list'
+      name = 'list'
       break
     case 'Search':
-      name = 'ios-search'
+      name = 'search'
       break
     case 'Profile':
-      name = 'ios-person'
+      name = 'person'
       break
     default:
       return null

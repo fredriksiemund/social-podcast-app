@@ -4,7 +4,7 @@ export default [
     type: 'poll-post',
     author: 'Oprah’s SuperSoul Conversations',
     authorImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
-    timePosted: '12 min ago',
+    timePosted: 1556404092376,
     postContent: 'What do you want me to talk about on the next episode?',
     pollQuestion: 'What should i talk about on the next episode?',
     nbrOfLikes: 902,
@@ -17,8 +17,8 @@ export default [
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-          timePosted: '1 h ago',
-          postContent: 'Bla bla bla',
+          timePosted: 1556404180000,
+          postContent: 'I would love to hear more about your personal experience with meditation!',
           nbrOfLikes: 3,
           liked: false
         },
@@ -27,9 +27,9 @@ export default [
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-          timePosted: '1 h ago',
-          postContent: 'Bla bla bla',
-          nbrOfLikes: 3,
+          timePosted: 1556404360000,
+          postContent: 'Make one episode of each!',
+          nbrOfLikes: 1,
           liked: false
         },
         {
@@ -37,10 +37,9 @@ export default [
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-          timePosted: '1 h ago',
-          postContent:
-            'Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla',
-          nbrOfLikes: 3,
+          timePosted: 1556404840000,
+          postContent: 'Oh yes!',
+          nbrOfLikes: 0,
           liked: false
         }
       ]
@@ -81,7 +80,7 @@ export default [
     author: 'The Joe Rogan Experience',
     authorImageUri:
       'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
-    timePosted: '37 min ago',
+    timePosted: 1556313840000,
     postContent:
       'The weather is amazing, walk with me through the pathway of more success. Take this journey with me, Lion! I’m up to something. Lion! How’s business? Boomin. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text. This is a really long text.',
     nbrOfLikes: 53,
@@ -97,7 +96,7 @@ export default [
     author: 'Freakonomics Radio',
     authorImageUri:
       'http://mediad.publicbroadcasting.net/p/wnij/files/styles/small/public/201307/freakonomics_1.jpg',
-    timePosted: '1 h ago',
+    timePosted: 1556123040000,
     episodeName: '373. Why Rent Control Doesn’t Work',
     episodeDescription: 'I’m giving you cloth talk, cloth. Special talk about how to do this',
     comments: {
@@ -111,7 +110,7 @@ export default [
     author: 'Ted Radio Hour',
     authorImageUri:
       'https://tedconfblog.files.wordpress.com/2013/02/ted-radio-hour.jpg?resize=283%2C212',
-    timePosted: '4 h ago',
+    timePosted: 1555356240000,
     postContent:
       'A major key, never panic. Don’t panic, when it gets crazy and rough, don’t panic, stay calm. Look at the sunset, life is amazing, life is beautiful, life is what you make it.',
     nbrOfLikes: 21,

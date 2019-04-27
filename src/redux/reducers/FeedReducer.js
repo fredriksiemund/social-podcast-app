@@ -57,7 +57,7 @@ export default (state = feedData, action) => {
             author,
             authorImageUri,
             postContent,
-            timePosted: 'Right now',
+            timePosted: new Date().getTime(),
             nbrOfLikes: 0,
             liked: false
           })

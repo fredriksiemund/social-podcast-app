@@ -40,7 +40,7 @@ class CommentBar extends Component {
         <TouchableOpacity
           style={styles.postButton}
           onPress={() => {
-            this.setState({ text: '', height: 0 })
+            this.setState({ text: '', height: 28 })
             commentSubmitted({
               postId,
               author: name,

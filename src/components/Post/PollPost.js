@@ -75,7 +75,7 @@ PollPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(

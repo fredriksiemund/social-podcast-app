@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native'
+import utcToTime from '../../../assets/utcToTime'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 import IconButton from '../common/IconButton'
@@ -22,7 +23,7 @@ const Comment = ({
         <View style={styles.post}>
           <View style={styles.commentHeader}>
             <Text style={styles.author}>{`${author}  `}</Text>
-            <Text style={styles.timePosted}>{timePosted}</Text>
+            <Text style={styles.timePosted}>{utcToTime(timePosted)}</Text>
           </View>
           <Text style={styles.content}>{postContent}</Text>
         </View>
@@ -31,7 +32,7 @@ const Comment = ({
         </View>
       </View>
       <IconButton
-        iconName={liked ? 'ios-heart' : 'ios-heart-empty'}
+        iconName={liked ? 'heart' : 'heart-empty'}
         iconColor={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
         style={styles.likeButton}
         onPress={onLikeButtonPress}

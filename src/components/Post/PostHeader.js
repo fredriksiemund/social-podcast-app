@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Image, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
+import utcToTime from '../../../assets/utcToTime'
 import PostRow from './PostRow'
 import Tag from '../common/Tag'
 import Text from '../common/Text'
@@ -14,7 +15,7 @@ const PostHeader = ({
       <View style={styles.postHeader}>
         <Text style={styles.headerAuthor}>{author}</Text>
         <View style={styles.headerSubheader}>
-          <Text style={styles.headerTime}>{timePosted}</Text>
+          <Text style={styles.headerTime}>{utcToTime(timePosted)}</Text>
           {tag ? <Tag content={tag} /> : null}
         </View>
       </View>
@@ -25,7 +26,7 @@ const PostHeader = ({
 PostHeader.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   tag: PropTypes.string
 }
 

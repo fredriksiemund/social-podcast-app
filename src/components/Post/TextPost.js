@@ -26,7 +26,7 @@ TextPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
-  timePosted: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
   buttonRow: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
