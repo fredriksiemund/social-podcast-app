@@ -27,9 +27,7 @@ const Comment = ({
           </View>
           <Text style={styles.content}>{postContent}</Text>
         </View>
-        <View style={styles.information}>
-          <Text style={styles.likes}>{nbrOfLikesText}</Text>
-        </View>
+        <Text style={styles.likes}>{nbrOfLikesText}</Text>
       </View>
       <IconButton
         iconName={liked ? 'heart' : 'heart-empty'}

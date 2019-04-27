@@ -14,7 +14,7 @@ export default [
       comments: [
         {
           id: 0,
-          author: 'Per Persson',
+          author: 'John Johnsson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
           timePosted: 1556404180000,
@@ -24,7 +24,7 @@ export default [
         },
         {
           id: 1,
-          author: 'Per Persson',
+          author: 'Lisa McDonalds',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
           timePosted: 1556404360000,
@@ -34,7 +34,7 @@ export default [
         },
         {
           id: 2,
-          author: 'Per Persson',
+          author: 'McKenzie Smith',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
           timePosted: 1556404840000,

@@ -4,7 +4,7 @@ import {
   COMMENT_SUBMITTED,
   COMMENT_LIKE_BUTTON_PRESSED
 } from '../actions/types'
-import feedData from '../../../assets/data/feedData'
+import feedData from '../../../assets/data/feedData2'
 
 export default (state = feedData, action) => {
   switch (action.type) {
