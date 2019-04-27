@@ -6,6 +6,7 @@ import PostContainer from './PostContainer'
 import TextPost from './TextPost'
 import PodPost from './PodPost'
 import PollPost from './PollPost'
+import Comment from '../Comment/Comment'
 
 class Post extends Component {
   constructor(props) {
@@ -24,15 +25,20 @@ class Post extends Component {
   }
 
   onCommentPress = (id) => {
-    const { navigation, postPressed } = this.props
-    postPressed(id)
+    const { navigation, goToPost } = this.props
+    goToPost(id)
     navigation.navigate('PostView')
   }
 
   onInfoPress = (id) => {
-    const { navigation, postPressed } = this.props
-    postPressed(id)
+    const { navigation, goToPost } = this.props
+    goToPost(id)
     navigation.navigate('PostView')
+  }
+
+  onCommentLikeButtonPress = (id, parentPostId) => {
+    const { likeButtonPressed } = this.props
+    likeButtonPressed(id, parentPostId)
   }
 
   textAndPollPostButtonRow = () => {
@@ -96,14 +102,15 @@ class Post extends Component {
       authorImageUri,
       timePosted,
       postContent,
-      likeButtonPressed,
       liked,
+      nbrOfLikes,
       previewPost,
       episodeName,
       episodeDescription,
       poll,
       pollQuestion,
-      pollOptionPressed
+      pollOptionPressed,
+      parentPostId
     } = this.props
     let buttonRow
     let post
@@ -117,8 +124,6 @@ class Post extends Component {
               authorImageUri,
               timePosted,
               postContent,
-              liked,
-              likeButtonPressed,
               previewMode,
               buttonRow
             }}
@@ -152,13 +157,26 @@ class Post extends Component {
               authorImageUri,
               timePosted,
               postContent,
-              liked,
-              likeButtonPressed,
               previewMode,
               buttonRow,
               poll,
               pollQuestion,
               pollOptionPressed
+            }}
+          />
+        )
+        break
+      case 'comment':
+        post = (
+          <Comment
+            {...{
+              author,
+              authorImageUri,
+              timePosted,
+              postContent,
+              liked,
+              nbrOfLikes,
+              onLikeButtonPress: () => this.onCommentLikeButtonPress(id, parentPostId)
             }}
           />
         )
@@ -204,17 +222,18 @@ Post.propTypes = {
     ).isRequired
   }),
   pollQuestion: PropTypes.string,
-  pollOptionPressed: PropTypes.func.isRequired,
+  pollOptionPressed: PropTypes.func,
   episodeDescription: PropTypes.string,
   episodeName: PropTypes.string,
   previewPost: PropTypes.bool,
-  postPressed: PropTypes.func,
-  navigation: PropTypes.shape({})
+  goToPost: PropTypes.func,
+  navigation: PropTypes.shape({}),
+  parentPostId: PropTypes.number
 }
 
 Post.defaultProps = {
   previewPost: false,
-  postPressed: null,
+  goToPost: null,
   navigation: null,
   postContent: null,
   comments: null,
@@ -224,7 +243,9 @@ Post.defaultProps = {
   poll: null,
   pollQuestion: null,
   episodeDescription: null,
-  episodeName: null
+  episodeName: null,
+  pollOptionPressed: null,
+  parentPostId: null
 }
 
 export default Post

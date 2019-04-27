@@ -17,15 +17,20 @@ const styles = StyleSheet.create({
 })
 
 AppText.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]))
+  ]),
   style: PropTypes.shape({}),
   numberOfLines: PropTypes.number
 }
 
 AppText.defaultProps = {
-  style: {},
-  numberOfLines: undefined,
-  children: undefined
+  style: null,
+  numberOfLines: null,
+  children: null
 }
 
 export default AppText

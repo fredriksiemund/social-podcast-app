@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import Post from './Post/Post'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {
     const {
-      likeButtonPressed, pollOptionPressed, postPressed, navigation
+      likeButtonPressed, pollOptionPressed, goToPost, navigation
     } = this.props
     const postProps = {
       ...item,
       likeButtonPressed,
       pollOptionPressed,
-      postPressed,
+      goToPost,
       navigation,
       previewPost: true
     }
     return (
-      <View>
+      <View style={styles.post}>
         <Post {...postProps} />
       </View>
     )
@@ -39,5 +39,11 @@ FeedList.propTypes = {
   feed: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   navigation: PropTypes.shape({ navigate: PropTypes.func.isRequired }).isRequired
 }
+
+const styles = StyleSheet.create({
+  post: {
+    marginVertical: 7
+  }
+})
 
 export default FeedList

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import {
-  View, TextInput, StyleSheet, Image
+  View, TextInput, StyleSheet, Image, TouchableOpacity
 } from 'react-native'
+import PropTypes from 'prop-types'
 import Text from '../common/Text'
 import {
   PRIMARY_COLOR, TERTIARY_COLOR, SECONDARY_COLOR, BACKGROUND
 } from '../../styles/common'
-import pic from '../../../assets/img/profile.png'
 
 class CommentBar extends Component {
   constructor(props) {
@@ -16,13 +16,15 @@ class CommentBar extends Component {
 
   render() {
     const { text, height } = this.state
+    const { currentUser, commentSubmitted, postId } = this.props
+    const { name, userImageUri } = currentUser
     return (
       <View style={styles.commentContainer}>
         <View style={styles.imageContainer}>
-          <Image source={pic} style={styles.authorImage} />
+          <Image source={{ uri: userImageUri }} style={styles.authorImage} />
         </View>
         <TextInput
-          style={[styles.input, { height: Math.max(30, height + 5) }]}
+          style={[styles.input, { height: Math.max(28, height) }]}
           placeholder="Comment..."
           placeholderTextColor={TERTIARY_COLOR}
           selectionColor={SECONDARY_COLOR}
@@ -35,45 +37,65 @@ class CommentBar extends Component {
           }}
           value={text}
         />
-        <View style={styles.postButton}>
+        <TouchableOpacity
+          style={styles.postButton}
+          onPress={() => {
+            this.setState({ text: '', height: 0 })
+            commentSubmitted({
+              postId,
+              author: name,
+              authorImageUri: userImageUri,
+              postContent: text
+            })
+          }}
+        >
           <Text style={styles.buttonText}>Post</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     )
   }
 }
 
+CommentBar.propTypes = {
+  currentUser: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    userImageUri: PropTypes.string.isRequired
+  }).isRequired,
+  commentSubmitted: PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   commentContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     color: PRIMARY_COLOR,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: PRIMARY_COLOR
   },
   input: {
     flex: 1,
-    marginBottom: 5,
-    fontSize: 15
+    fontSize: 15,
+    marginVertical: 5
   },
   postButton: {
     alignItems: 'center',
     justifyContent: 'center',
     margin: 7,
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: SECONDARY_COLOR,
     paddingHorizontal: 15,
     paddingVertical: 5
   },
   imageContainer: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: 7
   },
   authorImage: {
     height: 24,
     width: 24,
-    borderRadius: 12,
-    margin: 8
+    borderRadius: 12
   },
   buttonText: {
     color: BACKGROUND,

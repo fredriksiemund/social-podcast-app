@@ -62,7 +62,9 @@ class PollPost extends Component {
             {this.renderPoll()}
           </View>
         </PostRow>
-        <ButtonRow buttons={buttonRow} />
+        <View style={styles.buttonRow}>
+          <ButtonRow buttons={buttonRow} />
+        </View>
       </View>
     )
   }
@@ -73,8 +75,6 @@ PollPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
-  likeButtonPressed: PropTypes.func.isRequired,
-  liked: PropTypes.bool.isRequired,
   timePosted: PropTypes.string.isRequired,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
@@ -92,6 +92,7 @@ PollPost.propTypes = {
       name: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      size: PropTypes.number,
       onPress: PropTypes.func
     })
   ).isRequired,
@@ -124,6 +125,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     alignSelf: 'center',
     padding: 5
+  },
+  buttonRow: {
+    marginTop: 10
   }
 })
 

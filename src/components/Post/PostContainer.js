@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { View, TouchableWithoutFeedback } from 'react-native'
 import PropTypes from 'prop-types'
 
 const PostContainer = ({ children, previewPost, onPress }) => {
@@ -10,7 +10,7 @@ const PostContainer = ({ children, previewPost, onPress }) => {
       </TouchableWithoutFeedback>
     )
   }
-  return <View style={styles.postContainer}>{children}</View>
+  return <View>{children}</View>
 }
 
 PostContainer.propTypes = {
@@ -23,11 +23,5 @@ PostContainer.defaultProps = {
   previewPost: false,
   onPress: null
 }
-
-const styles = StyleSheet.create({
-  postContainer: {
-    paddingBottom: 10
-  }
-})
 
 export default PostContainer

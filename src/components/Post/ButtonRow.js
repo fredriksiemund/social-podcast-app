@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import { StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
-import PostRow from './PostRow'
 import IconButton from '../common/IconButton'
 
 class ButtonRow extends Component {
@@ -13,6 +13,7 @@ class ButtonRow extends Component {
         iconSize={button.size || 25}
         iconColor={button.color}
         onPress={button.onPress}
+        style={styles.iconButton}
       >
         {button.text}
       </IconButton>
@@ -20,7 +21,7 @@ class ButtonRow extends Component {
   }
 
   render() {
-    return <PostRow>{this.renderButtons()}</PostRow>
+    return <View style={styles.buttonRow}>{this.renderButtons()}</View>
   }
 }
 
@@ -35,5 +36,17 @@ ButtonRow.propTypes = {
     })
   ).isRequired
 }
+
+const styles = StyleSheet.create({
+  buttonRow: {
+    flexDirection: 'row'
+  },
+  iconButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 export default ButtonRow

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import FeedReducer from './FeedReducer'
 import SelectedPostReducer from './SelectedPostReducer'
+import CurrentUserReducer from './CurrentUserReducer'
 
 export default combineReducers({
   feed: FeedReducer,
-  selectedPost: SelectedPostReducer
+  selectedPost: SelectedPostReducer,
+  currentUser: CurrentUserReducer
 })

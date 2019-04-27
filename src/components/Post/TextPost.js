@@ -16,15 +16,15 @@ const TextPost = ({
         {postContent}
       </Text>
     </PostRow>
-    <ButtonRow buttons={buttonRow} />
+    <View style={styles.buttonRow}>
+      <ButtonRow buttons={buttonRow} />
+    </View>
   </View>
 )
 
 TextPost.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  likeButtonPressed: PropTypes.func.isRequired,
-  liked: PropTypes.bool.isRequired,
   postContent: PropTypes.string.isRequired,
   timePosted: PropTypes.string.isRequired,
   buttonRow: PropTypes.arrayOf(
@@ -32,6 +32,7 @@ TextPost.propTypes = {
       name: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      size: PropTypes.number,
       onPress: PropTypes.func
     })
   ).isRequired,
@@ -45,6 +46,9 @@ TextPost.defaultProps = {
 const styles = StyleSheet.create({
   textSection: {
     fontSize: 15
+  },
+  buttonRow: {
+    marginTop: 10
   }
 })
 

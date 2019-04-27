@@ -37,6 +37,7 @@ PodPost.propTypes = {
       name: PropTypes.string.isRequired,
       color: PropTypes.string.isRequired,
       text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      size: PropTypes.number,
       onPress: PropTypes.func
     })
   ).isRequired,

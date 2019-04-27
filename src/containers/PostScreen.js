@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 import PostScreen from '../screens/Feed/PostScreen'
-import { likeButtonPressed, pollOptionPressed } from '../redux/actions'
+import { likeButtonPressed, pollOptionPressed, commentSubmitted } from '../redux/actions'
 
 const mapStateToProps = state => ({
   feed: state.feed,
-  selectedPost: state.selectedPost
+  selectedPost: state.selectedPost,
+  currentUser: state.currentUser
 })
 
 export default connect(
   mapStateToProps,
-  { likeButtonPressed, pollOptionPressed }
+  { likeButtonPressed, pollOptionPressed, commentSubmitted }
 )(PostScreen)

@@ -14,7 +14,6 @@ export default [
       comments: [
         {
           id: 0,
-          type: 'text-post',
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
@@ -25,7 +24,6 @@ export default [
         },
         {
           id: 1,
-          type: 'text-post',
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
@@ -36,12 +34,12 @@ export default [
         },
         {
           id: 2,
-          type: 'text-post',
           author: 'Per Persson',
           authorImageUri:
             'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
           timePosted: '1 h ago',
-          postContent: 'Bla bla bla',
+          postContent:
+            'Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla',
           nbrOfLikes: 3,
           liked: false
         }

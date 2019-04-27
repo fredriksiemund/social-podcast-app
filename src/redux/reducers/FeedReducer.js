@@ -1,4 +1,9 @@
-import { LIKE_BUTTON_PRESSED, POLL_OPTION_PRESSED } from '../actions/types'
+import {
+  LIKE_BUTTON_PRESSED,
+  POLL_OPTION_PRESSED,
+  COMMENT_SUBMITTED,
+  COMMENT_LIKE_BUTTON_PRESSED
+} from '../actions/types'
 import feedData from '../../../assets/data/feedData'
 
 export default (state = feedData, action) => {
@@ -19,11 +24,15 @@ export default (state = feedData, action) => {
       })
     case POLL_OPTION_PRESSED:
       return state.map((entry) => {
+        let changeValue
         if (entry.id === action.payload.postId) {
           const newPoll = entry.poll.options.map((pollEntry) => {
             if (pollEntry.id === action.payload.optionId) {
+              if (pollEntry.selected) changeValue = -1
+              else changeValue = 1
               return {
                 ...pollEntry,
+                votes: pollEntry.votes + changeValue,
                 selected: !pollEntry.selected
               }
             }
@@ -31,7 +40,59 @@ export default (state = feedData, action) => {
           })
           return {
             ...entry,
-            poll: { ...entry.poll, options: newPoll }
+            poll: { totalVotes: entry.poll.totalVotes + changeValue, options: newPoll }
+          }
+        }
+        return entry
+      })
+    case COMMENT_SUBMITTED:
+      return state.map((entry) => {
+        const {
+          postId, author, authorImageUri, postContent
+        } = action.payload
+        if (entry.id === postId) {
+          const newComments = entry.comments.comments
+          newComments.push({
+            id: entry.comments.comments.length + 1,
+            author,
+            authorImageUri,
+            postContent,
+            timePosted: 'Right now',
+            nbrOfLikes: 0,
+            liked: false
+          })
+          return {
+            ...entry,
+            comments: {
+              nbrOfComments: entry.comments.nbrOfComments + 1,
+              comments: newComments
+            }
+          }
+        }
+        return entry
+      })
+    case COMMENT_LIKE_BUTTON_PRESSED:
+      return state.map((entry) => {
+        if (entry.id === action.payload.parentPostId) {
+          const newComments = entry.comments.comments.map((comment) => {
+            if (comment.id === action.payload.postId) {
+              let nbrOfNewLikes = comment.nbrOfLikes
+              if (!comment.liked) nbrOfNewLikes += 1
+              else nbrOfNewLikes -= 1
+              return {
+                ...comment,
+                liked: !comment.liked,
+                nbrOfLikes: nbrOfNewLikes
+              }
+            }
+            return comment
+          })
+          return {
+            ...entry,
+            comments: {
+              ...entry.comments,
+              comments: newComments
+            }
           }
         }
         return entry

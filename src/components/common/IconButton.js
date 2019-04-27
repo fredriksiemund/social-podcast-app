@@ -3,6 +3,7 @@ import { TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Text from './Text'
+import { PRIMARY_COLOR } from '../../styles/common'
 
 const IconButton = ({
   iconName, iconSize, iconColor, style, onPress, children
@@ -15,14 +16,16 @@ const IconButton = ({
 
 IconButton.propTypes = {
   iconName: PropTypes.string.isRequired,
-  iconSize: PropTypes.number.isRequired,
-  iconColor: PropTypes.string.isRequired,
+  iconSize: PropTypes.number,
+  iconColor: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPress: PropTypes.func,
   style: PropTypes.shape({})
 }
 
 IconButton.defaultProps = {
+  iconSize: 25,
+  iconColor: PRIMARY_COLOR,
   style: null,
   children: null,
   onPress: null
@@ -30,14 +33,11 @@ IconButton.defaultProps = {
 
 const styles = StyleSheet.create({
   buttonContent: {
-    fontSize: 15,
     paddingLeft: 5,
     fontWeight: '700'
   },
   iconButton: {
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center'
   }
 })
