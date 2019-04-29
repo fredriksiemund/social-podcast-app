@@ -5,10 +5,11 @@ import {
   createStackNavigator
 } from 'react-navigation'
 import Icon from '../components/common/Icon'
-import Feed from '../screens/Feed/FeedScreen'
-import Search from '../screens/Search/SearchScreen'
-import Profile from '../screens/Profile/ProfileScreen'
+import FeedScreen from '../screens/Feed/FeedScreen'
+import SearchScreen from '../screens/Search/SearchScreen'
+import ProfileScreen from '../screens/Profile/ProfileScreen'
 import PostScreen from '../containers/PostScreen'
+import PodDetailScreen from '../containers/PodDetailScreen'
 import {
   NAV_ACTIVE, NAV_INACTIVE, NAV_BACKGROUND, PRIMARY_COLOR
 } from '../styles/common'
@@ -26,7 +27,7 @@ const MainStack = createBottomTabNavigator(
     Feed: {
       screen: createStackNavigator({
         FeedView: {
-          screen: Feed,
+          screen: FeedScreen,
           navigationOptions: {
             ...headerStyle,
             title: 'News'
@@ -34,6 +35,12 @@ const MainStack = createBottomTabNavigator(
         },
         PostView: {
           screen: PostScreen,
+          navigationOptions: {
+            ...headerStyle
+          }
+        },
+        PodDetailView: {
+          screen: PodDetailScreen,
           navigationOptions: {
             ...headerStyle
           }
@@ -45,8 +52,8 @@ const MainStack = createBottomTabNavigator(
     },
     Search: {
       screen: createStackNavigator({
-        FeedView: {
-          screen: Search,
+        SearchView: {
+          screen: SearchScreen,
           navigationOptions: {
             ...headerStyle,
             title: 'Search'
@@ -59,8 +66,8 @@ const MainStack = createBottomTabNavigator(
     },
     Profile: {
       screen: createStackNavigator({
-        FeedView: {
-          screen: Profile,
+        ProfileView: {
+          screen: ProfileScreen,
           navigationOptions: {
             ...headerStyle,
             title: 'Profile'

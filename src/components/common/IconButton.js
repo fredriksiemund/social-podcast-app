@@ -10,7 +10,7 @@ const IconButton = ({
 }) => (
   <TouchableOpacity style={[styles.iconButton, style]} onPress={onPress}>
     <Icon name={iconName} color={iconColor} size={iconSize} />
-    {children ? <Text style={styles.buttonContent}>{children}</Text> : null}
+    {children ? <Text style={[styles.buttonContent, { color: iconColor }]}>{children}</Text> : null}
   </TouchableOpacity>
 )
 

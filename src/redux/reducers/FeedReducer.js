@@ -2,7 +2,8 @@ import {
   LIKE_BUTTON_PRESSED,
   POLL_OPTION_PRESSED,
   COMMENT_SUBMITTED,
-  COMMENT_LIKE_BUTTON_PRESSED
+  COMMENT_LIKE_BUTTON_PRESSED,
+  RATE_STAR_PRESSED
 } from '../actions/types'
 import feedData from '../../../assets/data/feedData2'
 
@@ -92,6 +93,32 @@ export default (state = feedData, action) => {
             comments: {
               ...entry.comments,
               comments: newComments
+            }
+          }
+        }
+        return entry
+      })
+    case RATE_STAR_PRESSED:
+      return state.map((entry) => {
+        if (entry.id === action.payload.postId) {
+          const { rating } = entry
+          const { nbrOfRatings, totalRating, userRating } = rating
+          let newNbrOfRating
+          let total
+          if (userRating) {
+            newNbrOfRating = nbrOfRatings
+            total = (totalRating * nbrOfRatings + action.payload.rating) / newNbrOfRating
+          } else {
+            newNbrOfRating = nbrOfRatings + 1
+            total = (totalRating * nbrOfRatings + action.payload.rating) / newNbrOfRating
+          }
+          const newTotalRating = Math.round(total * 10) / 10
+          return {
+            ...entry,
+            rating: {
+              totalRating: newTotalRating,
+              nbrOfRatings: newNbrOfRating,
+              userRating: action.payload.rating
             }
           }
         }

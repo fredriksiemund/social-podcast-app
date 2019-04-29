@@ -3,7 +3,8 @@ import {
   POLL_OPTION_PRESSED,
   GO_TO_POST,
   COMMENT_SUBMITTED,
-  COMMENT_LIKE_BUTTON_PRESSED
+  COMMENT_LIKE_BUTTON_PRESSED,
+  RATE_STAR_PRESSED
 } from './types'
 
 export const likeButtonPressed = (postId, parentPostId) => {
@@ -39,4 +40,9 @@ export const commentSubmitted = ({
     authorImageUri,
     postContent
   }
+})
+
+export const rateStarPressed = ({ postId, rating }) => ({
+  type: RATE_STAR_PRESSED,
+  payload: { postId, rating }
 })

@@ -33,7 +33,7 @@ class Post extends Component {
   onInfoPress = (id) => {
     const { navigation, goToPost } = this.props
     goToPost(id)
-    navigation.navigate('PostView')
+    navigation.navigate('PodDetailView')
   }
 
   onCommentLikeButtonPress = (id, parentPostId) => {
@@ -63,7 +63,8 @@ class Post extends Component {
     }
     buttonRow.push({
       name: 'share-alt',
-      color: PRIMARY_COLOR
+      color: PRIMARY_COLOR,
+      text: 'Share'
     })
     return buttonRow
   }

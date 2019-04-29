@@ -23,7 +23,7 @@ AppText.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]))
   ]),
-  style: PropTypes.shape({}),
+  style: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
   numberOfLines: PropTypes.number
 }
 

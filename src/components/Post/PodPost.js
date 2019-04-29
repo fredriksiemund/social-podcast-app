@@ -51,8 +51,7 @@ PodPost.defaultProps = {
 const styles = StyleSheet.create({
   podContainer: {
     flex: 1,
-    paddingHorizontal: 8,
-    paddingTop: 8,
+    padding: 8,
     borderWidth: 1,
     borderColor: TERTIARY_COLOR,
     borderRadius: 5

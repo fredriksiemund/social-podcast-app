@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native'
-import utcToTime from '../../../assets/utcToTime'
+import utcToString from '../../../assets/utcToString'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 import IconButton from '../common/IconButton'
@@ -23,7 +23,7 @@ const Comment = ({
         <View style={styles.post}>
           <View style={styles.commentHeader}>
             <Text style={styles.author}>{`${author}  `}</Text>
-            <Text style={styles.timePosted}>{utcToTime(timePosted)}</Text>
+            <Text style={styles.timePosted}>{utcToString(timePosted)}</Text>
           </View>
           <Text style={styles.content}>{postContent}</Text>
         </View>

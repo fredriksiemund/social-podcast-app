@@ -4,15 +4,16 @@ import PropTypes from 'prop-types'
 import Post from './Post/Post'
 import CommentBar from './Comment/CommentBar'
 import Text from './common/Text'
+import PodDetail from './Podcast/PodDetail'
 
-class PostAndCommentsList extends Component {
+class PodAndCommentsList extends Component {
   renderTop = () => {
     const {
       currentUser, comments, commentSubmitted, id
     } = this.props
     return (
       <View>
-        <Post {...this.props} />
+        <PodDetail {...this.props} />
         <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
         <View style={styles.commentBar}>
           <CommentBar {...{ currentUser, commentSubmitted }} postId={id} />
@@ -43,45 +44,22 @@ class PostAndCommentsList extends Component {
   }
 }
 
-PostAndCommentsList.propTypes = {
-  id: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
+PodAndCommentsList.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.number.isRequired,
-  postContent: PropTypes.string,
-  comments: PropTypes.shape({
-    nbrOfComments: PropTypes.number.isRequired,
-    comments: PropTypes.arrayOf(PropTypes.shape({}))
+  episodeName: PropTypes.string.isRequired,
+  episodeDescription: PropTypes.string.isRequired,
+  nbrOfListens: PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
+  rating: PropTypes.shape({
+    totalRating: PropTypes.number.isRequired,
+    nbrOfRatings: PropTypes.number.isRequired,
+    userRating: PropTypes.number
   }).isRequired,
-  nbrOfLikes: PropTypes.number,
-  likeButtonPressed: PropTypes.func,
-  liked: PropTypes.bool,
-  poll: PropTypes.shape({
-    totalVotes: PropTypes.number.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        option: PropTypes.string.isRequired,
-        votes: PropTypes.number.isRequired,
-        selected: PropTypes.bool.isRequired
-      })
-    ).isRequired
-  }),
-  pollQuestion: PropTypes.string,
-  pollOptionPressed: PropTypes.func,
+  rateStarPressed: PropTypes.func.isRequired,
   commentSubmitted: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({}).isRequired
-}
-
-PostAndCommentsList.defaultProps = {
-  postContent: null,
-  nbrOfLikes: null,
-  likeButtonPressed: null,
-  liked: null,
-  poll: null,
-  pollQuestion: null,
-  pollOptionPressed: null
 }
 
 const styles = StyleSheet.create({
@@ -94,8 +72,8 @@ const styles = StyleSheet.create({
     marginVertical: 15
   },
   commentBar: {
-    marginVertical: 15
+    marginTop: 15
   }
 })
 
-export default PostAndCommentsList
+export default PodAndCommentsList

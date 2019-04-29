@@ -103,6 +103,14 @@ export default [
     comments: {
       nbrOfComments: 44,
       comments: []
+    },
+    nbrOfListens: 33731,
+    length: 5160,
+    size: 43.43,
+    rating: {
+      totalRating: 4.3,
+      nbrOfRatings: 430,
+      userRating: null
     }
   },
   {
@@ -171,6 +179,14 @@ export default [
     comments: {
       nbrOfComments: 102,
       comments: []
+    },
+    nbrOfListens: 1200,
+    length: 2040,
+    size: 18.4,
+    rating: {
+      totalRating: 4.9,
+      nbrOfRatings: 98,
+      userRating: null
     }
   },
   {
@@ -216,6 +232,14 @@ export default [
     comments: {
       nbrOfComments: 102,
       comments: []
+    },
+    nbrOfListens: 644,
+    length: 2640,
+    size: 26.4,
+    rating: {
+      totalRating: 4.6,
+      nbrOfRatings: 44,
+      userRating: null
     }
   }
 ]
