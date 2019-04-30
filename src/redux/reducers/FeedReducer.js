@@ -107,10 +107,12 @@ export default (state = feedData, action) => {
           let total
           if (userRating) {
             newNbrOfRating = nbrOfRatings
-            total = (totalRating * nbrOfRatings + action.payload.rating) / newNbrOfRating
+            total = totalRating * nbrOfRatings - userRating + action.payload.rating
+            total /= newNbrOfRating
           } else {
             newNbrOfRating = nbrOfRatings + 1
-            total = (totalRating * nbrOfRatings + action.payload.rating) / newNbrOfRating
+            total = totalRating * nbrOfRatings + action.payload.rating
+            total /= newNbrOfRating
           }
           const newTotalRating = Math.round(total * 10) / 10
           return {

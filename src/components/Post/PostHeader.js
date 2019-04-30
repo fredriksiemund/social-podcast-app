@@ -13,7 +13,7 @@ const PostHeader = ({
     <PostRow>
       <Image source={{ uri: authorImageUri }} style={styles.postImage} />
       <View style={styles.postHeader}>
-        <Text style={styles.headerAuthor}>{author}</Text>
+        <Text numberOfLines={2} style={styles.headerAuthor}>{author}</Text>
         <View style={styles.headerSubheader}>
           <Text style={styles.headerTime}>{utcToString(timePosted)}</Text>
           {tag ? <Tag content={tag} /> : null}
