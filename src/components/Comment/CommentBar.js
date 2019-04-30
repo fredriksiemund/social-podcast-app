@@ -62,7 +62,8 @@ CommentBar.propTypes = {
     name: PropTypes.string.isRequired,
     userImageUri: PropTypes.string.isRequired
   }).isRequired,
-  commentSubmitted: PropTypes.func.isRequired
+  commentSubmitted: PropTypes.func.isRequired,
+  postId: PropTypes.number.isRequired
 }
 
 const styles = StyleSheet.create({

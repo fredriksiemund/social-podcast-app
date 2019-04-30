@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { TERTIARY_COLOR } from '../../styles/common'
+import { PRIMARY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
-import ButtonRow from './ButtonRow'
 import PollOption from './PollOption'
+import Icon from '../common/Icon'
 
 class PollPost extends Component {
   round = (value, precision) => {
@@ -46,8 +46,25 @@ class PollPost extends Component {
 
   render() {
     const {
-      postContent, pollQuestion, previewMode, buttonRow, ...headerProps
+      postContent,
+      pollQuestion,
+      previewMode,
+      buttonRow,
+      liked,
+      onLikePress,
+      onCommentPress,
+      onSharePress,
+      nbrOfLikes,
+      nbrOfComments,
+      previewPost,
+      ...headerProps
     } = this.props
+    const commentButton = previewPost ? (
+      <TouchableOpacity style={styles.button} onPress={onCommentPress}>
+        <Icon name="chatboxes" color={PRIMARY_COLOR} size={25} />
+        <Text style={styles.buttonText}>{nbrOfComments}</Text>
+      </TouchableOpacity>
+    ) : null
     return (
       <View>
         <PostHeader {...headerProps} />
@@ -63,7 +80,19 @@ class PollPost extends Component {
           </View>
         </PostRow>
         <View style={styles.buttonRow}>
-          <ButtonRow buttons={buttonRow} />
+          <TouchableOpacity style={styles.button} onPress={onLikePress}>
+            <Icon
+              name={liked ? 'heart' : 'heart-empty'}
+              color={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
+              size={25}
+            />
+            <Text style={styles.buttonText}>{nbrOfLikes}</Text>
+          </TouchableOpacity>
+          {commentButton}
+          <TouchableOpacity style={styles.button} onPress={onSharePress}>
+            <Icon name="share-alt" color={PRIMARY_COLOR} size={25} />
+            <Text style={styles.buttonText}>Share</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -87,15 +116,13 @@ PollPost.propTypes = {
       })
     ).isRequired
   }).isRequired,
-  buttonRow: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-      text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      size: PropTypes.number,
-      onPress: PropTypes.func
-    })
-  ).isRequired,
+  nbrOfLikes: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
+  previewPost: PropTypes.bool.isRequired,
+  onLikePress: PropTypes.func.isRequired,
+  onCommentPress: PropTypes.func.isRequired,
+  onSharePress: PropTypes.func.isRequired,
+  nbrOfComments: PropTypes.number.isRequired,
   pollQuestion: PropTypes.string.isRequired,
   pollOptionPressed: PropTypes.func.isRequired,
   previewMode: PropTypes.bool
@@ -127,7 +154,18 @@ const styles = StyleSheet.create({
     padding: 5
   },
   buttonRow: {
+    flexDirection: 'row',
     marginTop: 10
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    paddingLeft: 5,
+    fontWeight: '700'
   }
 })
 

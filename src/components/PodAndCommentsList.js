@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
-import Post from './Post/Post'
+import Comment from './Comment/Comment'
 import CommentBar from './Comment/CommentBar'
 import Text from './common/Text'
 import PodDetail from './Podcast/PodDetail'
@@ -31,10 +31,9 @@ class PodAndCommentsList extends Component {
         ListHeaderComponent={this.renderTop()}
         renderItem={({ item }) => (
           <View style={styles.comment}>
-            <Post
-              type="comment"
+            <Comment
               parentPostId={id}
-              likeButtonPressed={likeButtonPressed}
+              onLikePress={() => likeButtonPressed(item.id, id)}
               {...item}
             />
           </View>
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
     marginVertical: 15
   },
   commentBar: {
-    marginTop: 15
+    marginVertical: 15
   }
 })
 

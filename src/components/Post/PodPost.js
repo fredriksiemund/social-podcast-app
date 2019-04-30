@@ -1,14 +1,14 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { TERTIARY_COLOR } from '../../styles/common'
+import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
 import PostHeader from './PostHeader'
 import PostRow from './PostRow'
 import Text from '../common/Text'
-import ButtonRow from './ButtonRow'
+import Icon from '../common/Icon'
 
 const PodPost = ({
-  episodeName, episodeDescription, previewMode, buttonRow, ...headerProps
+  episodeName, episodeDescription, previewMode, onMorePress, ...headerProps
 }) => (
   <View>
     <PostHeader {...headerProps} tag="New episode" />
@@ -19,7 +19,18 @@ const PodPost = ({
           {episodeDescription}
         </Text>
         <View style={styles.buttonRow}>
-          <ButtonRow buttons={buttonRow} />
+          <TouchableOpacity style={styles.button}>
+            <Icon name="play-circle" color={PRIMARY_COLOR} size={40} />
+            <Text style={styles.buttonText}>Play</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Icon name="add-circle" color={PRIMARY_COLOR} size={40} />
+            <Text style={styles.buttonText}>Queue</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={onMorePress}>
+            <Icon name="information-circle" color={PRIMARY_COLOR} size={40} />
+            <Text style={styles.buttonText}>More</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </PostRow>
@@ -32,15 +43,9 @@ PodPost.propTypes = {
   timePosted: PropTypes.number.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
-  buttonRow: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-      text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      size: PropTypes.number,
-      onPress: PropTypes.func
-    })
-  ).isRequired,
+  onPlayPress: PropTypes.func.isRequired,
+  onQueuePress: PropTypes.func.isRequired,
+  onMorePress: PropTypes.func.isRequired,
   previewMode: PropTypes.bool
 }
 
@@ -68,7 +73,18 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   buttonRow: {
-    marginVertical: 5
+    flexDirection: 'row',
+    marginTop: 10
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    paddingLeft: 5,
+    fontWeight: '700'
   }
 })
 

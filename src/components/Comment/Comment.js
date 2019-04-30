@@ -1,9 +1,12 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
-import utcToString from '../../../assets/utcToString'
+import {
+  View, StyleSheet, Image, TouchableOpacity
+} from 'react-native'
+import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
+import utcToString from '../../../assets/utcToString'
 import Text from '../common/Text'
-import IconButton from '../common/IconButton'
+import Icon from '../common/Icon'
 
 const Comment = ({
   author,
@@ -12,7 +15,7 @@ const Comment = ({
   postContent,
   liked,
   nbrOfLikes,
-  onLikeButtonPress
+  onLikePress
 }) => {
   let nbrOfLikesText = nbrOfLikes === 0 ? '' : `${nbrOfLikes} like`
   if (nbrOfLikes > 1) nbrOfLikesText += 's'
@@ -29,14 +32,25 @@ const Comment = ({
         </View>
         <Text style={styles.likes}>{nbrOfLikesText}</Text>
       </View>
-      <IconButton
-        iconName={liked ? 'heart' : 'heart-empty'}
-        iconColor={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
-        style={styles.likeButton}
-        onPress={onLikeButtonPress}
-      />
+      <TouchableOpacity style={styles.likeButton} onPress={onLikePress}>
+        <Icon
+          name={liked ? 'heart' : 'heart-empty'}
+          color={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
+          size={25}
+        />
+      </TouchableOpacity>
     </View>
   )
+}
+
+Comment.propTypes = {
+  author: PropTypes.string.isRequired,
+  authorImageUri: PropTypes.string.isRequired,
+  timePosted: PropTypes.number.isRequired,
+  postContent: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  nbrOfLikes: PropTypes.number.isRequired,
+  onLikePress: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

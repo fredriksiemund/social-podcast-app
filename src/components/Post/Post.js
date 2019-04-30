@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
 import PostContainer from './PostContainer'
 import TextPost from './TextPost'
 import PodPost from './PodPost'
 import PollPost from './PollPost'
-import Comment from '../Comment/Comment'
 
 class Post extends Component {
   constructor(props) {
@@ -30,7 +28,7 @@ class Post extends Component {
     navigation.navigate('PostView')
   }
 
-  onInfoPress = (id) => {
+  onMorePress = (id) => {
     const { navigation, goToPost } = this.props
     goToPost(id)
     navigation.navigate('PodDetailView')
@@ -39,59 +37,6 @@ class Post extends Component {
   onCommentLikeButtonPress = (id, parentPostId) => {
     const { likeButtonPressed } = this.props
     likeButtonPressed(id, parentPostId)
-  }
-
-  textAndPollPostButtonRow = () => {
-    const {
-      liked, comments, nbrOfLikes, id, likeButtonPressed, previewPost
-    } = this.props
-    const buttonRow = [
-      {
-        name: liked ? 'heart' : 'heart-empty',
-        color: liked ? SECONDARY_COLOR : PRIMARY_COLOR,
-        text: nbrOfLikes,
-        onPress: () => likeButtonPressed(id)
-      }
-    ]
-    if (previewPost) {
-      buttonRow.push({
-        name: 'chatboxes',
-        color: PRIMARY_COLOR,
-        text: comments.nbrOfComments,
-        onPress: () => this.onCommentPress(id)
-      })
-    }
-    buttonRow.push({
-      name: 'share-alt',
-      color: PRIMARY_COLOR,
-      text: 'Share'
-    })
-    return buttonRow
-  }
-
-  podPostButtonRow = () => {
-    const { id } = this.props
-    return [
-      {
-        name: 'play-circle',
-        color: PRIMARY_COLOR,
-        text: 'Play',
-        size: 40
-      },
-      {
-        name: 'add-circle',
-        color: PRIMARY_COLOR,
-        text: 'Queue',
-        size: 40
-      },
-      {
-        name: 'information-circle',
-        color: PRIMARY_COLOR,
-        text: 'More',
-        size: 40,
-        onPress: () => this.onInfoPress(id)
-      }
-    ]
   }
 
   renderPost = () => {
@@ -104,20 +49,19 @@ class Post extends Component {
       timePosted,
       postContent,
       liked,
+      likeButtonPressed,
       nbrOfLikes,
       previewPost,
       episodeName,
       episodeDescription,
+      comments,
       poll,
       pollQuestion,
-      pollOptionPressed,
-      parentPostId
+      pollOptionPressed
     } = this.props
-    let buttonRow
     let post
     switch (type) {
       case 'text-post':
-        buttonRow = this.textAndPollPostButtonRow()
         post = (
           <TextPost
             {...{
@@ -126,13 +70,19 @@ class Post extends Component {
               timePosted,
               postContent,
               previewMode,
-              buttonRow
+              liked,
+              likeButtonPressed,
+              nbrOfLikes,
+              previewPost,
+              nbrOfComments: comments.nbrOfComments,
+              onLikePress: () => likeButtonPressed(id),
+              onCommentPress: () => this.onCommentPress(id),
+              onSharePress: () => {}
             }}
           />
         )
         break
       case 'pod-post':
-        buttonRow = this.podPostButtonRow()
         post = (
           <PodPost
             {...{
@@ -142,14 +92,14 @@ class Post extends Component {
               episodeName,
               episodeDescription,
               previewMode,
-              buttonRow,
-              onInfoPress: () => this.onInfoPress(id)
+              onMorePress: () => this.onMorePress(id),
+              onPlayPress: () => {},
+              onQueuePress: () => {}
             }}
           />
         )
         break
       case 'poll-post':
-        buttonRow = this.textAndPollPostButtonRow()
         post = (
           <PollPost
             {...{
@@ -159,25 +109,17 @@ class Post extends Component {
               timePosted,
               postContent,
               previewMode,
-              buttonRow,
               poll,
               pollQuestion,
-              pollOptionPressed
-            }}
-          />
-        )
-        break
-      case 'comment':
-        post = (
-          <Comment
-            {...{
-              author,
-              authorImageUri,
-              timePosted,
-              postContent,
+              pollOptionPressed,
               liked,
+              likeButtonPressed,
               nbrOfLikes,
-              onLikeButtonPress: () => this.onCommentLikeButtonPress(id, parentPostId)
+              previewPost,
+              nbrOfComments: comments.nbrOfComments,
+              onLikePress: () => likeButtonPressed(id),
+              onCommentPress: () => this.onCommentPress(id),
+              onSharePress: () => {}
             }}
           />
         )
