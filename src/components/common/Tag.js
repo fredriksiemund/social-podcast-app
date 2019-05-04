@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   tagText: {
     color: BACKGROUND,
-    fontSize: 10
+    fontSize: 9
   }
 })
 

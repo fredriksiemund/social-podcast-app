@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
-import Post from './Post/Post'
 import Comment from './Comment/Comment'
 import CommentBar from './Comment/CommentBar'
 import Text from './common/Text'
+import PodDetail from './Podcast/PodDetail'
+import Post from './Post/Post'
 
-class PostAndCommentsList extends Component {
+class DetailAndCommentsList extends Component {
   renderTop = () => {
     const {
-      currentUser, comments, commentSubmitted, id
+      id, type, currentUser, comments, commentSubmitted
     } = this.props
+    let detail
+    if (type === 'pod-post') detail = <PodDetail {...this.props} />
+    else detail = <Post {...this.props} />
     return (
       <View>
-        <Post {...this.props} />
+        {detail}
         <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
         <View style={styles.commentBar}>
           <CommentBar {...{ currentUser, commentSubmitted }} postId={id} />
@@ -43,17 +47,29 @@ class PostAndCommentsList extends Component {
   }
 }
 
-PostAndCommentsList.propTypes = {
+DetailAndCommentsList.propTypes = {
   id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.number.isRequired,
-  postContent: PropTypes.string,
+  commentSubmitted: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}).isRequired,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,
     comments: PropTypes.arrayOf(PropTypes.shape({}))
   }).isRequired,
+  episodeName: PropTypes.string,
+  episodeDescription: PropTypes.string,
+  nbrOfListens: PropTypes.number,
+  length: PropTypes.number,
+  rating: PropTypes.shape({
+    totalRating: PropTypes.number.isRequired,
+    nbrOfRatings: PropTypes.number.isRequired,
+    userRating: PropTypes.number
+  }),
+  rateStarPressed: PropTypes.func,
+  postContent: PropTypes.string,
   nbrOfLikes: PropTypes.number,
   likeButtonPressed: PropTypes.func,
   liked: PropTypes.bool,
@@ -69,12 +85,16 @@ PostAndCommentsList.propTypes = {
     ).isRequired
   }),
   pollQuestion: PropTypes.string,
-  pollOptionPressed: PropTypes.func,
-  commentSubmitted: PropTypes.func.isRequired,
-  currentUser: PropTypes.shape({}).isRequired
+  pollOptionPressed: PropTypes.func
 }
 
-PostAndCommentsList.defaultProps = {
+DetailAndCommentsList.defaultProps = {
+  episodeName: null,
+  episodeDescription: null,
+  nbrOfListens: null,
+  length: null,
+  rating: null,
+  rateStarPressed: null,
   postContent: null,
   nbrOfLikes: null,
   likeButtonPressed: null,
@@ -98,4 +118,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PostAndCommentsList
+export default DetailAndCommentsList

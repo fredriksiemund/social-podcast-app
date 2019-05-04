@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   optionText: {
     paddingLeft: 30,
     paddingTop: 2,
-    fontSize: 14
+    fontSize: 13
   }
 })
 

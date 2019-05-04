@@ -1,158 +1,110 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import PostContainer from './PostContainer'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
+import PostHeader from './PostHeader'
+import PostRow from './PostRow'
 import TextPost from './TextPost'
-import PodPost from './PodPost'
 import PollPost from './PollPost'
+import Text from '../common/Text'
+import Icon from '../common/Icon'
 
 class Post extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { previewMode: false }
+  renderPost = () => {
+    const {
+      type, previewMode, postContent, id, poll, pollOptionPressed, pollQuestion
+    } = this.props
+    switch (type) {
+      case 'text-post':
+        return <TextPost {...{ previewMode, postContent }} />
+      case 'poll-post':
+        return (
+          <PollPost
+            {...{
+              id,
+              poll,
+              pollOptionPressed,
+              previewMode,
+              postContent,
+              pollQuestion
+            }}
+          />
+        )
+      default:
+        return null
+    }
   }
 
-  componentWillMount = () => {
-    const { previewPost } = this.props
-    this.setState({ previewMode: previewPost })
-  }
-
-  onPostPress = () => {
-    const { previewMode } = this.state
-    this.setState({ previewMode: !previewMode })
-  }
-
-  onCommentPress = (id) => {
-    const { navigation, goToPost } = this.props
+  onCommentPress = () => {
+    const { id, navigation, goToPost } = this.props
     goToPost(id)
     navigation.navigate('PostView')
   }
 
-  onMorePress = (id) => {
-    const { navigation, goToPost } = this.props
-    goToPost(id)
-    navigation.navigate('PodDetailView')
-  }
-
-  onCommentLikeButtonPress = (id, parentPostId) => {
-    const { likeButtonPressed } = this.props
-    likeButtonPressed(id, parentPostId)
-  }
-
-  renderPost = () => {
-    const { previewMode } = this.state
+  render() {
     const {
       id,
-      type,
-      author,
-      authorImageUri,
-      timePosted,
-      postContent,
       liked,
       likeButtonPressed,
+      onSharePress,
       nbrOfLikes,
-      previewPost,
-      episodeName,
-      episodeDescription,
       comments,
-      poll,
-      pollQuestion,
-      pollOptionPressed
+      feedPost,
+      author,
+      timePosted,
+      authorImageUri,
+      tag
     } = this.props
-    let post
-    switch (type) {
-      case 'text-post':
-        post = (
-          <TextPost
-            {...{
-              author,
-              authorImageUri,
-              timePosted,
-              postContent,
-              previewMode,
-              liked,
-              likeButtonPressed,
-              nbrOfLikes,
-              previewPost,
-              nbrOfComments: comments.nbrOfComments,
-              onLikePress: () => likeButtonPressed(id),
-              onCommentPress: () => this.onCommentPress(id),
-              onSharePress: () => {}
-            }}
-          />
-        )
-        break
-      case 'pod-post':
-        post = (
-          <PodPost
-            {...{
-              author,
-              authorImageUri,
-              timePosted,
-              episodeName,
-              episodeDescription,
-              previewMode,
-              onMorePress: () => this.onMorePress(id),
-              onPlayPress: () => {},
-              onQueuePress: () => {}
-            }}
-          />
-        )
-        break
-      case 'poll-post':
-        post = (
-          <PollPost
-            {...{
-              id,
-              author,
-              authorImageUri,
-              timePosted,
-              postContent,
-              previewMode,
-              poll,
-              pollQuestion,
-              pollOptionPressed,
-              liked,
-              likeButtonPressed,
-              nbrOfLikes,
-              previewPost,
-              nbrOfComments: comments.nbrOfComments,
-              onLikePress: () => likeButtonPressed(id),
-              onCommentPress: () => this.onCommentPress(id),
-              onSharePress: () => {}
-            }}
-          />
-        )
-        break
-      default:
-        break
-    }
+    const commentButton = feedPost ? (
+      <TouchableOpacity style={styles.button} onPress={() => this.onCommentPress()}>
+        <Icon name="chatboxes" color={PRIMARY_COLOR} size={25} />
+        <Text style={styles.buttonText}>{comments.nbrOfComments}</Text>
+      </TouchableOpacity>
+    ) : null
     return (
-      <PostContainer previewPost={previewPost} onPress={this.onPostPress}>
-        {post}
-      </PostContainer>
+      <View>
+        <PostHeader
+          {...{
+            author,
+            timePosted,
+            authorImageUri,
+            tag
+          }}
+        />
+        <PostRow>{this.renderPost()}</PostRow>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.button} onPress={() => likeButtonPressed(id)}>
+            <Icon
+              name={liked ? 'heart' : 'heart-empty'}
+              color={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
+              size={25}
+            />
+            <Text style={styles.buttonText}>{nbrOfLikes}</Text>
+          </TouchableOpacity>
+          {commentButton}
+          <TouchableOpacity style={styles.button} onPress={onSharePress}>
+            <Icon name="share-alt" color={PRIMARY_COLOR} size={25} />
+            <Text style={styles.buttonText}>Share</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     )
-  }
-
-  render() {
-    return <View>{this.renderPost(this.props)}</View>
   }
 }
 
 Post.propTypes = {
   id: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
+  postContent: PropTypes.string.isRequired,
   timePosted: PropTypes.number.isRequired,
-  postContent: PropTypes.string,
+  nbrOfLikes: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,
     comments: PropTypes.arrayOf(PropTypes.shape({}))
-  }),
-  nbrOfLikes: PropTypes.number,
-  likeButtonPressed: PropTypes.func,
-  liked: PropTypes.bool,
+  }).isRequired,
+  feedPost: PropTypes.bool,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(
@@ -166,29 +118,32 @@ Post.propTypes = {
   }),
   pollQuestion: PropTypes.string,
   pollOptionPressed: PropTypes.func,
-  episodeDescription: PropTypes.string,
-  episodeName: PropTypes.string,
-  previewPost: PropTypes.bool,
-  goToPost: PropTypes.func,
-  navigation: PropTypes.shape({}),
-  parentPostId: PropTypes.number
+  previewMode: PropTypes.bool
 }
 
 Post.defaultProps = {
-  previewPost: false,
-  goToPost: null,
-  navigation: null,
-  postContent: null,
-  comments: null,
-  nbrOfLikes: null,
-  likeButtonPressed: null,
-  liked: null,
+  previewMode: false,
+  feedPost: false,
   poll: null,
   pollQuestion: null,
-  episodeDescription: null,
-  episodeName: null,
-  pollOptionPressed: null,
-  parentPostId: null
+  pollOptionPressed: null
 }
+
+const styles = StyleSheet.create({
+  buttonRow: {
+    flexDirection: 'row',
+    marginTop: 10
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    paddingLeft: 5,
+    fontWeight: '700'
+  }
+})
 
 export default Post

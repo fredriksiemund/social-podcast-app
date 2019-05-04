@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Post from './Post/Post'
+import FeedListItem from './Post/FeedListItem'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {
@@ -18,7 +18,7 @@ class FeedList extends Component {
     }
     return (
       <View style={styles.post}>
-        <Post {...postProps} />
+        <FeedListItem {...postProps} />
       </View>
     )
   }

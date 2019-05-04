@@ -13,7 +13,9 @@ const PostHeader = ({
     <PostRow>
       <Image source={{ uri: authorImageUri }} style={styles.postImage} />
       <View style={styles.postHeader}>
-        <Text numberOfLines={2} style={styles.headerAuthor}>{author}</Text>
+        <Text numberOfLines={2} style={styles.headerAuthor}>
+          {author}
+        </Text>
         <View style={styles.headerSubheader}>
           <Text style={styles.headerTime}>{utcToString(timePosted)}</Text>
           {tag ? <Tag content={tag} /> : null}
@@ -41,11 +43,13 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   postHeader: {
+    flexShrink: 1,
+    flexWrap: 'wrap',
     justifyContent: 'center',
     paddingLeft: 10
   },
   headerAuthor: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '700'
   },
   headerSubheader: {
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   headerTime: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: '400'
   }
 })

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     backgroundColor: BACKGROUND,
-    paddingHorizontal: 10
+    paddingHorizontal: 15
   }
 })
 

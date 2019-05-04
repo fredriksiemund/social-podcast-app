@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ScreenContainer from '../../components/common/ScreenContainer'
-import PostAndCommentsList from '../../components/PostAndCommentsList'
+import DetailAndCommentsList from '../../components/DetailAndCommentsList'
 
 const PostScreen = ({
   selectedPost,
@@ -14,7 +14,7 @@ const PostScreen = ({
   const post = feed.find(x => x.id === selectedPost)
   return (
     <ScreenContainer>
-      <PostAndCommentsList
+      <DetailAndCommentsList
         {...{
           ...post,
           likeButtonPressed,

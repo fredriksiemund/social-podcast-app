@@ -1,6 +1,6 @@
 import React from 'react'
 import ScreenContainer from '../../components/common/ScreenContainer'
-import PodAndCommentsList from '../../components/PodAndCommentsList'
+import DetailAndCommentsList from '../../components/DetailAndCommentsList'
 
 const PodDetailScreen = ({
   selectedPost,
@@ -13,7 +13,7 @@ const PodDetailScreen = ({
   const post = feed.find(x => x.id === selectedPost)
   return (
     <ScreenContainer>
-      <PodAndCommentsList
+      <DetailAndCommentsList
         {...{
           ...post,
           currentUser,
