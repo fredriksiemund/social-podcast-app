@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
-import PostContainer from './PostContainer'
+import TouchableContainer from './TouchableContainer'
 import Post from './Post'
 import EpisodePreview from './EpisodePreview'
 
@@ -31,7 +31,7 @@ class FeedListItem extends Component {
     } = this.props
     if (type === 'episode') {
       return (
-        <PostContainer onPress={this.onPostPress} feedPost>
+        <TouchableContainer onPress={this.onPostPress} feedPost>
           <EpisodePreview
             {...{
               id,
@@ -46,13 +46,13 @@ class FeedListItem extends Component {
               detailSelected
             }}
           />
-        </PostContainer>
+        </TouchableContainer>
       )
     }
     return (
-      <PostContainer onPress={this.onPostPress}>
+      <TouchableContainer onPress={this.onPostPress}>
         <Post {...this.props} previewMode={previewMode} feedPost />
-      </PostContainer>
+      </TouchableContainer>
     )
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import FeedListItem from './Post/FeedListItem'
+import FeedListItem from './Feed/FeedListItem'
 
 class FeedList extends Component {
   renderItem = ({ item }) => {

@@ -3,6 +3,7 @@ export default [
     id: 200,
     type: 'episode',
     author: 'Freakonomics Radio',
+    authorId: 700,
     authorImageUri:
       'http://mediad.publicbroadcasting.net/p/wnij/files/styles/small/public/201307/freakonomics_1.jpg',
     episodeName: '373. Why Rent Control Doesn’t Work',
@@ -23,6 +24,7 @@ export default [
     id: 201,
     type: 'episode',
     author: 'Mads & Monopolet',
+    authorId: 702,
     authorImageUri:
       'https://s3.amazonaws.com/podcasts-image-uploads/5593ddbe05640c5e4ff2cb61f03eaf7d.jpg',
     episodeName: '02/04/2019',
@@ -42,6 +44,7 @@ export default [
     id: 202,
     type: 'episode',
     author: 'Millionær Klubben',
+    authorId: 703,
     authorImageUri: 'https://arkiv.radio24syv.dk/files/podcastimage-3784851.jpg',
     episodeName: '373. Why Rent Control Doesn’t Work',
     episodeDescription:

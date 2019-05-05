@@ -2,28 +2,43 @@ import React, { Component } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
-import PostHeader from './PostHeader'
-import PostRow from './PostRow'
+import Header from '../common/Header'
+import Row from '../common/Row'
 import Text from '../common/Text'
 import Icon from '../common/Icon'
 
 class EpisodePreview extends Component {
   onMorePress = () => {
-    const {
-      id, type, navigation, detailSelected
-    } = this.props
-    detailSelected({ id, type })
-    navigation.navigate('DetailView')
+    const { id, type, navigation } = this.props
+    navigation.navigate('DetailView', { id, type })
+  }
+
+  onHeaderPress = () => {
+    const { authorId, navigation } = this.props
+    navigation.navigate('PodcastView', { authorId })
   }
 
   render() {
     const {
-      episodeName, episodeDescription, previewMode, onMorePress, ...headerProps
+      episodeName,
+      episodeDescription,
+      previewMode,
+      author,
+      timePosted,
+      authorImageUri
     } = this.props
     return (
       <View>
-        <PostHeader {...headerProps} tag="New episode" />
-        <PostRow>
+        <Header
+          {...{
+            author,
+            timePosted,
+            authorImageUri,
+            tag: 'New episode',
+            onPress: () => this.onHeaderPress()
+          }}
+        />
+        <Row>
           <View style={styles.podContainer}>
             <Text style={styles.podTitle}>{episodeName}</Text>
             <Text style={styles.podDescription} numberOfLines={previewMode ? 1 : null}>
@@ -44,7 +59,7 @@ class EpisodePreview extends Component {
               </TouchableOpacity>
             </View>
           </View>
-        </PostRow>
+        </Row>
       </View>
     )
   }

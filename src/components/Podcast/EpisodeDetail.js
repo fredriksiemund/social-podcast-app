@@ -10,9 +10,9 @@ import Text from '../common/Text'
 import Icon from '../common/Icon'
 import FiveStarRating from './FiveStarRating'
 import Rate from './Rate'
-import PostHeader from '../Post/PostHeader'
+import Header from '../common/Header'
 
-class PodDetail extends Component {
+class EpisodeDetail extends Component {
   constructor(props) {
     super(props)
     this.state = { fullDescription: false }
@@ -21,6 +21,11 @@ class PodDetail extends Component {
   onRateStarPress = (rating) => {
     const { id, rateStarPressed } = this.props
     rateStarPressed({ postId: id, rating })
+  }
+
+  onHeaderPress = () => {
+    const { authorId, navigation } = this.props
+    navigation.navigate('PodcastView', { authorId })
   }
 
   render() {
@@ -38,7 +43,10 @@ class PodDetail extends Component {
     const { fullDescription } = this.state
     return (
       <View>
-        <PostHeader {...{ author, authorImageUri, timePosted }} />
+        <Header {...{
+          author, authorImageUri, timePosted, onPress: () => this.onHeaderPress()
+        }}
+        />
         <Text style={styles.episodeName}>{episodeName}</Text>
         <Text style={styles.infoText}>{`${numberToString(nbrOfListens)} listens`}</Text>
         <View style={styles.buttonRow}>
@@ -91,7 +99,7 @@ class PodDetail extends Component {
   }
 }
 
-PodDetail.propTypes = {
+EpisodeDetail.propTypes = {
   id: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
@@ -179,4 +187,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PodDetail
+export default EpisodeDetail

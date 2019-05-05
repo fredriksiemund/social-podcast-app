@@ -7,27 +7,31 @@ const DetailScreen = ({
   posts,
   comments,
   episodes,
+  navigation,
   currentUser,
-  selectedDetail,
+  detailSelected,
   rateStarPressed,
   likeButtonPressed,
   pollOptionPressed,
   commentSubmitted,
   commentLikeButtonPressed
 }) => {
+  const { id, type } = navigation.state.params
   let item
-  if (selectedDetail.type === 'episode') {
-    item = episodes.find(x => x.id === selectedDetail.id)
+  if (type === 'episode') {
+    item = episodes.find(x => x.id === id)
   } else {
-    item = posts.find(x => x.id === selectedDetail.id)
+    item = posts.find(x => x.id === id)
   }
-  const commentList = comments.find(x => x.itemId === selectedDetail.id)
+  const commentList = comments.find(x => x.itemId === id)
   return (
     <ScreenContainer>
       <DetailAndCommentsList
         {...{
           ...item,
+          navigation,
           currentUser,
+          detailSelected,
           likeButtonPressed,
           pollOptionPressed,
           commentSubmitted,
@@ -44,10 +48,6 @@ const DetailScreen = ({
 }
 
 DetailScreen.propTypes = {
-  selectedDetail: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired
-  }).isRequired,
   currentUser: PropTypes.shape({}).isRequired,
   likeButtonPressed: PropTypes.func.isRequired,
   pollOptionPressed: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@ export default [
     id: 100,
     type: 'poll-post',
     author: 'Oprah’s SuperSoul Conversations',
+    authorId: 704,
     authorImageUri: 'http://imglogo.podbean.com/dir-logo/361887/361887_300x300.jpeg',
     postContent: 'What do you want me to talk about on the next episode?',
     pollQuestion: 'What should i talk about on the next episode?',
@@ -44,6 +45,7 @@ export default [
     id: 101,
     type: 'text-post',
     author: 'The Joe Rogan Experience',
+    authorId: 705,
     authorImageUri:
       'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
     postContent:
@@ -57,6 +59,7 @@ export default [
     id: 102,
     type: 'poll-post',
     author: 'TED Talks',
+    authorId: 706,
     authorImageUri: 'https://pl.tedcdn.com/rss_feed_images/ted_talks_main_podcast/audio.png',
     postContent: 'We are constantly on the move! Should we visit your home town next?',
     pollQuestion: 'Where should our next event be?',
@@ -92,6 +95,7 @@ export default [
     id: 103,
     type: 'text-post',
     author: 'Views podcast',
+    authorId: 706,
     authorImageUri:
       'https://content.production.cdn.art19.com/images/c0/b4/fa/08/c0b4fa08-1788-45bc-9c85-36a64f9658a0/1ea263069b2cd2746b55460ac6ee2d25d3f4c9aecbc1e651439fb050d102b8bb4c82ee123f9d04286c43ac5cd18dabf5514405aedfbc5a7ac28612e65f379c76.jpeg',
     postContent:
@@ -105,6 +109,7 @@ export default [
     id: 104,
     type: 'text-post',
     author: 'StarTalk Radio',
+    authorId: 707,
     authorImageUri: 'https://i1.sndcdn.com/avatars-000100403534-873grd-t500x500.jpg',
     postContent:
       "Did you guys see the Blackhole picture!? We're definitely making a special episode on Friday dedicated to it.",
@@ -117,6 +122,7 @@ export default [
     id: 105,
     type: 'text-post',
     author: 'Stuff You Should Know',
+    authorId: 708,
     authorImageUri:
       'http://www.astortheatreperth.com/wp-content/uploads/2018/04/SYSK-AT-600x600-EDM-NoDate.jpg',
     postContent:

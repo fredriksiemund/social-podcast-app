@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { TERTIARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
-import PostRow from './PostRow'
+import Row from '../common/Row'
 import PollOption from './PollOption'
 
 class PollPost extends Component {
@@ -41,17 +41,17 @@ class PollPost extends Component {
     const { postContent, pollQuestion, previewMode } = this.props
     return (
       <View style={{ flex: 1 }}>
-        <PostRow>
+        <Row>
           <Text style={styles.textSection} numberOfLines={previewMode ? 1 : null}>
             {postContent}
           </Text>
-        </PostRow>
-        <PostRow>
+        </Row>
+        <Row>
           <View style={styles.pollContainer}>
             <Text style={styles.pollQuestion}>{pollQuestion}</Text>
             {this.renderPoll()}
           </View>
-        </PostRow>
+        </Row>
       </View>
     )
   }

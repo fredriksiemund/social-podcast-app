@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
-import PostHeader from './PostHeader'
-import PostRow from './PostRow'
+import Header from '../common/Header'
+import Row from '../common/Row'
 import TextPost from './TextPost'
 import PollPost from './PollPost'
 import Text from '../common/Text'
@@ -36,11 +36,13 @@ class Post extends Component {
   }
 
   onCommentPress = () => {
-    const {
-      id, navigation, detailSelected, type
-    } = this.props
-    detailSelected({ id, type })
-    navigation.navigate('DetailView')
+    const { id, navigation, type } = this.props
+    navigation.navigate('DetailView', { id, type })
+  }
+
+  onHeaderPress = () => {
+    const { authorId, navigation } = this.props
+    navigation.navigate('PodcastView', { authorId })
   }
 
   render() {
@@ -65,15 +67,16 @@ class Post extends Component {
     ) : null
     return (
       <View>
-        <PostHeader
+        <Header
           {...{
             author,
             timePosted,
             authorImageUri,
-            tag
+            tag,
+            onPress: () => this.onHeaderPress()
           }}
         />
-        <PostRow>{this.renderPost()}</PostRow>
+        <Row>{this.renderPost()}</Row>
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.button} onPress={() => likeButtonPressed(id)}>
             <Icon

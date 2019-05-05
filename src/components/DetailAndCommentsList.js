@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import Comment from './Comment/Comment'
 import CommentBar from './Comment/CommentBar'
 import Text from './common/Text'
-import PodDetail from './Podcast/PodDetail'
-import Post from './Post/Post'
+import EpisodeDetail from './Podcast/EpisodeDetail'
+import Post from './Feed/Post'
 
 class DetailAndCommentsList extends Component {
   renderTop = () => {
@@ -13,8 +13,11 @@ class DetailAndCommentsList extends Component {
       id, type, currentUser, comments, commentSubmitted
     } = this.props
     let detail
-    if (type === 'episode') detail = <PodDetail {...this.props} />
-    else detail = <Post {...this.props} />
+    if (type === 'episode') {
+      detail = <EpisodeDetail {...this.props} />
+    } else {
+      detail = <Post {...this.props} />
+    }
     return (
       <View>
         {detail}
