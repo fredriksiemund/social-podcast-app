@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types'
 import secondsToString from '../../../assets/secondsToString'
 import numberToString from '../../../assets/numberToString'
-import { TERTIARY_COLOR, PRIMARY_COLOR, BACKGROUND } from '../../styles/common'
+import { PRIMARY_COLOR, BACKGROUND } from '../../styles/common'
 import Text from '../common/Text'
 import Icon from '../common/Icon'
 import FiveStarRating from './FiveStarRating'
@@ -65,7 +65,7 @@ class PodDetail extends Component {
         <TouchableWithoutFeedback
           onPress={() => this.setState({ fullDescription: !fullDescription })}
         >
-          <View style={styles.borderedContainer}>
+          <View style={styles.detailRow}>
             <Text style={styles.descriptionText}>Episode description:</Text>
             <Text numberOfLines={fullDescription ? null : 5}>
               {episodeDescription}
@@ -74,15 +74,15 @@ class PodDetail extends Component {
           </View>
         </TouchableWithoutFeedback>
         <View style={{ flexDirection: 'row' }}>
-          <View style={[styles.rating, styles.borderedContainer]}>
+          <View style={[styles.rating, styles.detailRow]}>
             <Text style={styles.totalRating}>{`${rating.totalRating}  `}</Text>
             <View style={styles.starContainer}>
               <FiveStarRating rating={rating.totalRating} />
               <Text>{`${numberToString(rating.nbrOfRatings)} ratings`}</Text>
             </View>
           </View>
-          <View style={[styles.borderedContainer, styles.rate]}>
-            <Text>Rate:</Text>
+          <View style={[styles.detailRow, styles.rate]}>
+            <Text style={styles.descriptionText}>Rate:</Text>
             <Rate size={30} userRating={rating.userRating} onRateStarPress={this.onRateStarPress} />
           </View>
         </View>
@@ -169,12 +169,8 @@ const styles = StyleSheet.create({
   starContainer: {
     alignItems: 'center'
   },
-  borderedContainer: {
-    marginTop: 15,
-    padding: 5,
-    borderWidth: 1,
-    borderColor: TERTIARY_COLOR,
-    borderRadius: 5
+  detailRow: {
+    marginTop: 15
   },
   rate: {
     flex: 1,

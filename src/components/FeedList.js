@@ -6,13 +6,13 @@ import FeedListItem from './Post/FeedListItem'
 class FeedList extends Component {
   renderItem = ({ item }) => {
     const {
-      likeButtonPressed, pollOptionPressed, goToPost, navigation
+      likeButtonPressed, pollOptionPressed, detailSelected, navigation
     } = this.props
     const postProps = {
       ...item,
       likeButtonPressed,
       pollOptionPressed,
-      goToPost,
+      detailSelected,
       navigation,
       previewPost: true
     }
@@ -24,10 +24,14 @@ class FeedList extends Component {
   }
 
   render() {
-    const { feed } = this.props
+    const { feed, posts, episodes } = this.props
+    const feedData = feed.map((entry) => {
+      if (entry.type === 'episode') return episodes.find(x => x.id === entry.itemId)
+      return posts.find(x => x.id === entry.itemId)
+    })
     return (
       <FlatList
-        data={feed}
+        data={feedData}
         keyExtractor={item => item.id.toString()}
         renderItem={this.renderItem}
       />

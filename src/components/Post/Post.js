@@ -36,9 +36,11 @@ class Post extends Component {
   }
 
   onCommentPress = () => {
-    const { id, navigation, goToPost } = this.props
-    goToPost(id)
-    navigation.navigate('PostView')
+    const {
+      id, navigation, detailSelected, type
+    } = this.props
+    detailSelected({ id, type })
+    navigation.navigate('DetailView')
   }
 
   render() {
@@ -48,7 +50,7 @@ class Post extends Component {
       likeButtonPressed,
       onSharePress,
       nbrOfLikes,
-      comments,
+      nbrOfComments,
       feedPost,
       author,
       timePosted,
@@ -58,7 +60,7 @@ class Post extends Component {
     const commentButton = feedPost ? (
       <TouchableOpacity style={styles.button} onPress={() => this.onCommentPress()}>
         <Icon name="chatboxes" color={PRIMARY_COLOR} size={25} />
-        <Text style={styles.buttonText}>{comments.nbrOfComments}</Text>
+        <Text style={styles.buttonText}>{nbrOfComments}</Text>
       </TouchableOpacity>
     ) : null
     return (
@@ -100,10 +102,21 @@ Post.propTypes = {
   timePosted: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
-  comments: PropTypes.shape({
-    nbrOfComments: PropTypes.number.isRequired,
-    comments: PropTypes.arrayOf(PropTypes.shape({}))
-  }).isRequired,
+  nbrOfComments: PropTypes.number.isRequired,
+  // comments: PropTypes.shape({
+  //   nbrOfComments: PropTypes.number.isRequired,
+  //   comments: PropTypes.arrayOf(
+  //     PropTypes.shape({
+  //       id: PropTypes.number.isRequired,
+  //       author: PropTypes.string.isRequired,
+  //       authorImageUri: PropTypes.string.isRequired,
+  //       timePosted: PropTypes.number.isRequired,
+  //       postContent: PropTypes.string.isRequired,
+  //       nbrOfLikes: PropTypes.number.isRequired,
+  //       liked: PropTypes.bool.isRequired
+  //     })
+  //   ).isRequired
+  // }).isRequired,
   feedPost: PropTypes.bool,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,

@@ -7,11 +7,13 @@ import PostRow from './PostRow'
 import Text from '../common/Text'
 import Icon from '../common/Icon'
 
-class PodPost extends Component {
+class EpisodePreview extends Component {
   onMorePress = () => {
-    const { id, navigation, goToPost } = this.props
-    goToPost(id)
-    navigation.navigate('PodDetailView')
+    const {
+      id, type, navigation, detailSelected
+    } = this.props
+    detailSelected({ id, type })
+    navigation.navigate('DetailView')
   }
 
   render() {
@@ -48,7 +50,7 @@ class PodPost extends Component {
   }
 }
 
-PodPost.propTypes = {
+EpisodePreview.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.number.isRequired,
@@ -57,7 +59,7 @@ PodPost.propTypes = {
   previewMode: PropTypes.bool
 }
 
-PodPost.defaultProps = {
+EpisodePreview.defaultProps = {
   previewMode: false
 }
 
@@ -93,4 +95,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PodPost
+export default EpisodePreview

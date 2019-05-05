@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import PostContainer from './PostContainer'
 import Post from './Post'
-import PodPost from './PodPost'
+import EpisodePreview from './EpisodePreview'
 
 class FeedListItem extends Component {
   constructor(props) {
@@ -26,23 +26,24 @@ class FeedListItem extends Component {
       timePosted,
       episodeName,
       episodeDescription,
-      goToPost,
+      detailSelected,
       navigation
     } = this.props
-    if (type === 'pod-post') {
+    if (type === 'episode') {
       return (
         <PostContainer onPress={this.onPostPress} feedPost>
-          <PodPost
+          <EpisodePreview
             {...{
+              id,
+              type,
               author,
               authorImageUri,
               timePosted,
               episodeName,
               episodeDescription,
               previewMode,
-              id,
               navigation,
-              goToPost
+              detailSelected
             }}
           />
         </PostContainer>
@@ -89,13 +90,13 @@ FeedListItem.propTypes = {
   pollOptionPressed: PropTypes.func,
   episodeDescription: PropTypes.string,
   episodeName: PropTypes.string,
-  goToPost: PropTypes.func,
+  detailSelected: PropTypes.func,
   navigation: PropTypes.shape({}),
   parentPostId: PropTypes.number
 }
 
 FeedListItem.defaultProps = {
-  goToPost: null,
+  detailSelected: null,
   navigation: null,
   postContent: null,
   comments: null,

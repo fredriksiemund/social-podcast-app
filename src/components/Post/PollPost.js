@@ -40,7 +40,7 @@ class PollPost extends Component {
   render() {
     const { postContent, pollQuestion, previewMode } = this.props
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <PostRow>
           <Text style={styles.textSection} numberOfLines={previewMode ? 1 : null}>
             {postContent}

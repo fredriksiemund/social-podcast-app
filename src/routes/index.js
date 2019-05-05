@@ -8,8 +8,7 @@ import Icon from '../components/common/Icon'
 import FeedScreen from '../screens/Feed/FeedScreen'
 import SearchScreen from '../screens/Search/SearchScreen'
 import ProfileScreen from '../screens/Profile/ProfileScreen'
-import PostScreen from '../containers/PostScreen'
-import PodDetailScreen from '../containers/PodDetailScreen'
+import DetailScreen from '../containers/DetailScreen'
 import {
   NAV_ACTIVE, NAV_INACTIVE, NAV_BACKGROUND, PRIMARY_COLOR
 } from '../styles/common'
@@ -33,14 +32,8 @@ const MainStack = createBottomTabNavigator(
             title: 'News'
           }
         },
-        PostView: {
-          screen: PostScreen,
-          navigationOptions: {
-            ...headerStyle
-          }
-        },
-        PodDetailView: {
-          screen: PodDetailScreen,
+        DetailView: {
+          screen: DetailScreen,
           navigationOptions: {
             ...headerStyle
           }

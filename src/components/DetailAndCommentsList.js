@@ -13,21 +13,21 @@ class DetailAndCommentsList extends Component {
       id, type, currentUser, comments, commentSubmitted
     } = this.props
     let detail
-    if (type === 'pod-post') detail = <PodDetail {...this.props} />
+    if (type === 'episode') detail = <PodDetail {...this.props} />
     else detail = <Post {...this.props} />
     return (
       <View>
         {detail}
         <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
         <View style={styles.commentBar}>
-          <CommentBar {...{ currentUser, commentSubmitted }} postId={id} />
+          <CommentBar {...{ currentUser, commentSubmitted }} itemId={id} />
         </View>
       </View>
     )
   }
 
   render() {
-    const { comments, id, likeButtonPressed } = this.props
+    const { comments, id, commentLikeButtonPressed } = this.props
     return (
       <FlatList
         data={comments.comments}
@@ -35,11 +35,7 @@ class DetailAndCommentsList extends Component {
         ListHeaderComponent={this.renderTop()}
         renderItem={({ item }) => (
           <View style={styles.comment}>
-            <Comment
-              parentPostId={id}
-              onLikePress={() => likeButtonPressed(item.id, id)}
-              {...item}
-            />
+            <Comment onLikePress={() => commentLikeButtonPressed(item.id, id)} {...item} />
           </View>
         )}
       />
@@ -54,6 +50,7 @@ DetailAndCommentsList.propTypes = {
   authorImageUri: PropTypes.string.isRequired,
   timePosted: PropTypes.number.isRequired,
   commentSubmitted: PropTypes.func.isRequired,
+  commentLikeButtonPressed: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({}).isRequired,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,

@@ -16,7 +16,7 @@ class CommentBar extends Component {
 
   render() {
     const { text, height } = this.state
-    const { currentUser, commentSubmitted, postId } = this.props
+    const { currentUser, commentSubmitted, itemId } = this.props
     const { name, userImageUri } = currentUser
     return (
       <View style={styles.commentContainer}>
@@ -42,7 +42,7 @@ class CommentBar extends Component {
           onPress={() => {
             this.setState({ text: '', height: 28 })
             commentSubmitted({
-              postId,
+              itemId,
               author: name,
               authorImageUri: userImageUri,
               postContent: text
@@ -63,7 +63,7 @@ CommentBar.propTypes = {
     userImageUri: PropTypes.string.isRequired
   }).isRequired,
   commentSubmitted: PropTypes.func.isRequired,
-  postId: PropTypes.number.isRequired
+  itemId: PropTypes.number.isRequired
 }
 
 const styles = StyleSheet.create({
