@@ -106,20 +106,6 @@ Post.propTypes = {
   nbrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
   nbrOfComments: PropTypes.number.isRequired,
-  // comments: PropTypes.shape({
-  //   nbrOfComments: PropTypes.number.isRequired,
-  //   comments: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       author: PropTypes.string.isRequired,
-  //       authorImageUri: PropTypes.string.isRequired,
-  //       timePosted: PropTypes.number.isRequired,
-  //       postContent: PropTypes.string.isRequired,
-  //       nbrOfLikes: PropTypes.number.isRequired,
-  //       liked: PropTypes.bool.isRequired
-  //     })
-  //   ).isRequired
-  // }).isRequired,
   feedPost: PropTypes.bool,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,

@@ -1,6 +1,9 @@
 export default (utc) => {
   const currentTime = new Date().getTime() - utc
   let time
+  if (currentTime < 0) {
+    return 'Invalid time'
+  }
   if (currentTime < 60000) {
     return 'Right now'
   }

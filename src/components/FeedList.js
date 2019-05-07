@@ -46,7 +46,7 @@ FeedList.propTypes = {
 
 const styles = StyleSheet.create({
   post: {
-    marginVertical: 7
+    marginBottom: 15
   }
 })
 

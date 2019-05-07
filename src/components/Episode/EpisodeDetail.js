@@ -5,12 +5,11 @@ import {
 import PropTypes from 'prop-types'
 import secondsToString from '../../../assets/secondsToString'
 import numberToString from '../../../assets/numberToString'
-import { PRIMARY_COLOR, BACKGROUND } from '../../styles/common'
+import { PRIMARY_COLOR, BACKGROUND, SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 import Icon from '../common/Icon'
-import FiveStarRating from './FiveStarRating'
-import Rate from './Rate'
 import Header from '../common/Header'
+import RateSection from './RateSection'
 
 class EpisodeDetail extends Component {
   constructor(props) {
@@ -43,15 +42,19 @@ class EpisodeDetail extends Component {
     const { fullDescription } = this.state
     return (
       <View>
-        <Header {...{
-          author, authorImageUri, timePosted, onPress: () => this.onHeaderPress()
-        }}
+        <Header
+          {...{
+            author,
+            authorImageUri,
+            timePosted,
+            onPress: () => this.onHeaderPress()
+          }}
         />
         <Text style={styles.episodeName}>{episodeName}</Text>
         <Text style={styles.infoText}>{`${numberToString(nbrOfListens)} listens`}</Text>
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.playButton}>
-            <Icon name="play-circle" color={BACKGROUND} size={40} />
+            <Icon name="play-circle" color={SECONDARY_COLOR} size={40} />
             <View style={styles.playButtonText}>
               <Text style={styles.playText}>Play</Text>
               <Text style={styles.lengthText}>{`${secondsToString(length)}`}</Text>
@@ -73,7 +76,7 @@ class EpisodeDetail extends Component {
         <TouchableWithoutFeedback
           onPress={() => this.setState({ fullDescription: !fullDescription })}
         >
-          <View style={styles.detailRow}>
+          <View style={styles.row}>
             <Text style={styles.descriptionText}>Episode description:</Text>
             <Text numberOfLines={fullDescription ? null : 5}>
               {episodeDescription}
@@ -81,18 +84,8 @@ class EpisodeDetail extends Component {
             </Text>
           </View>
         </TouchableWithoutFeedback>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={[styles.rating, styles.detailRow]}>
-            <Text style={styles.totalRating}>{`${rating.totalRating}  `}</Text>
-            <View style={styles.starContainer}>
-              <FiveStarRating rating={rating.totalRating} />
-              <Text>{`${numberToString(rating.nbrOfRatings)} ratings`}</Text>
-            </View>
-          </View>
-          <View style={[styles.detailRow, styles.rate]}>
-            <Text style={styles.descriptionText}>Rate:</Text>
-            <Rate size={30} userRating={rating.userRating} onRateStarPress={this.onRateStarPress} />
-          </View>
+        <View style={styles.row}>
+          <RateSection rating={rating} onRateStarPress={this.onRateStarPress} />
         </View>
       </View>
     )
@@ -165,26 +158,27 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: BACKGROUND
   },
-  rating: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10
-  },
-  totalRating: {
-    fontSize: 25,
-    fontWeight: '300'
-  },
-  starContainer: {
-    alignItems: 'center'
-  },
-  detailRow: {
+  // rating: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingHorizontal: 10
+  // },
+  // totalRating: {
+  //   fontSize: 25,
+  //   fontWeight: '300',
+  //   marginRight: 6
+  // },
+  // starContainer: {
+  //   alignItems: 'center'
+  // },
+  row: {
     marginTop: 15
-  },
-  rate: {
-    flex: 1,
-    paddingHorizontal: 10,
-    marginLeft: 3
   }
+  // rate: {
+  //   flex: 1,
+  //   paddingHorizontal: 10,
+  //   marginLeft: 3
+  // }
 })
 
 export default EpisodeDetail

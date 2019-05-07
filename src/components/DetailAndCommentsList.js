@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Comment from './Comment/Comment'
 import CommentBar from './Comment/CommentBar'
 import Text from './common/Text'
-import EpisodeDetail from './Podcast/EpisodeDetail'
+import EpisodeDetail from './Episode/EpisodeDetail'
 import Post from './Feed/Post'
 
 class DetailAndCommentsList extends Component {
