@@ -19,7 +19,7 @@ class DetailAndCommentsList extends Component {
       detail = <Post {...this.props} />
     }
     return (
-      <View>
+      <View style={{ marginTop: 15 }}>
         {detail}
         <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
         <View style={styles.commentBar}>

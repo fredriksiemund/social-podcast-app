@@ -4,6 +4,7 @@ import {
 } from 'react-native'
 import { SECONDARY_COLOR, BACKGROUND, TERTIARY_COLOR } from '../styles/common'
 import Text from '../components/common/Text'
+import Icon from '../components/common/Icon'
 import secondsToString from '../../assets/secondsToString'
 import utcToString from '../../assets/utcToString'
 import ScreenContainer from '../components/common/ScreenContainer'
@@ -67,7 +68,7 @@ class PodcastScreen extends Component {
     } = podcast
     return (
       <ScreenContainer>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 15 }}>
           <Text style={styles.podcastName}>{podcastName}</Text>
           <Text style={styles.producer}>{`By ${creator}`}</Text>
           <View style={[styles.row, { flexDirection: 'row' }]}>
@@ -106,13 +107,26 @@ class PodcastScreen extends Component {
             </Section>
           </View>
           <View style={styles.row}>
-            <RateSection rating={rating} onRateStarPress={() => {}} />
+            <Section heading="Average rating">
+              <RateSection rating={rating} onRateStarPress={() => {}} />
+            </Section>
           </View>
           <View style={styles.row}>
             <Section heading="Latest Reviews" onPress={() => {}}>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {this.renderLatestReviews(podcast)}
               </ScrollView>
+            </Section>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.writeReviewContainer}>
+              <Icon name="create" color={SECONDARY_COLOR} size={25} />
+              <Text style={styles.writeReview}>Write a review</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <Section heading="Discussion Group">
+              <View />
             </Section>
           </View>
         </ScrollView>
@@ -152,6 +166,17 @@ const styles = StyleSheet.create({
   row: {
     flex: 1,
     marginTop: 20
+  },
+  writeReviewContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  writeReview: {
+    fontSize: 20,
+    fontWeight: '300',
+    color: SECONDARY_COLOR,
+    marginLeft: 5
   }
 })
 

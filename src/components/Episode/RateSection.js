@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   rating: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 10
+    marginRight: 10
   },
   totalRating: {
     fontSize: 25,

@@ -34,6 +34,7 @@ class FeedList extends Component {
         data={feedData}
         keyExtractor={item => item.id.toString()}
         renderItem={this.renderItem}
+        showsVerticalScrollIndicator={false}
       />
     )
   }
@@ -46,7 +47,7 @@ FeedList.propTypes = {
 
 const styles = StyleSheet.create({
   post: {
-    marginBottom: 15
+    marginVertical: 15
   }
 })
 

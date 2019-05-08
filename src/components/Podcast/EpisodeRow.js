@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 10,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderBottomColor: TERTIARY_COLOR
   },
   nameRow: {

@@ -4,23 +4,32 @@ import PropTypes from 'prop-types'
 import { SECONDARY_COLOR } from '../../styles/common'
 import Text from '../common/Text'
 
-const Section = ({ heading, onPress, children }) => (
-  <View>
-    <View style={styles.sectionHeader}>
-      <Text style={styles.subHeading}>{heading}</Text>
-      <TouchableOpacity onPress={onPress}>
-        <Text style={[styles.showAllText]}>{'Show all >'}</Text>
-      </TouchableOpacity>
+const Section = ({ heading, onPress, children }) => {
+  const button = (
+    <TouchableOpacity onPress={onPress}>
+      <Text style={[styles.showAllText]}>{'Show all >'}</Text>
+    </TouchableOpacity>
+  )
+  return (
+    <View>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.subHeading}>{heading}</Text>
+        {onPress ? button : null}
+      </View>
+      <View style={{ marginTop: 5 }}>{children}</View>
     </View>
-    <View style={{ marginTop: 5 }}>{children}</View>
-  </View>
-)
+  )
+}
 
 Section.propTypes = {
   heading: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
     .isRequired
+}
+
+Section.defaultProps = {
+  onPress: null
 }
 
 const styles = StyleSheet.create({
