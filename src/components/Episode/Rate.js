@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from '../common/Icon'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
+import { Icon } from '../common'
+import { COLOR1, COLOR2 } from '../../styles/common'
 
 class Rate extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Rate extends Component {
           <Icon
             name={counter > 0 ? 'star' : 'star-outline'}
             size={size}
-            color={counter > 0 ? SECONDARY_COLOR : PRIMARY_COLOR}
+            color={counter > 0 ? COLOR2 : COLOR1}
           />
         </TouchableOpacity>
       )

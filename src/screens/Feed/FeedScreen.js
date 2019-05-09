@@ -1,5 +1,5 @@
 import React from 'react'
-import ScreenContainer from '../../components/common/ScreenContainer'
+import { ScreenContainer } from '../../components/common'
 import FeedList from '../../containers/FeedList'
 
 const FeedScreen = ({ navigation }) => (

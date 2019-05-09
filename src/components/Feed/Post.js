@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
-import Header from '../common/Header'
-import Row from '../common/Row'
+import { COLOR1, COLOR2 } from '../../styles/common'
+import {
+  Header, Row, Text, Icon
+} from '../common'
 import TextPost from './TextPost'
 import PollPost from './PollPost'
-import Text from '../common/Text'
-import Icon from '../common/Icon'
 
 class Post extends Component {
   renderPost = () => {
@@ -55,13 +54,13 @@ class Post extends Component {
       nbrOfComments,
       feedPost,
       author,
-      timePosted,
+      timeStamp,
       authorImageUri,
       tag
     } = this.props
     const commentButton = feedPost ? (
       <TouchableOpacity style={styles.button} onPress={() => this.onCommentPress()}>
-        <Icon name="chatboxes" color={PRIMARY_COLOR} size={25} />
+        <Icon name="chatboxes" color={COLOR1} size={25} />
         <Text style={styles.buttonText}>{nbrOfComments}</Text>
       </TouchableOpacity>
     ) : null
@@ -70,7 +69,7 @@ class Post extends Component {
         <Header
           {...{
             author,
-            timePosted,
+            timeStamp,
             authorImageUri,
             tag,
             onPress: () => this.onHeaderPress()
@@ -81,14 +80,14 @@ class Post extends Component {
           <TouchableOpacity style={styles.button} onPress={() => likeButtonPressed(id)}>
             <Icon
               name={liked ? 'heart' : 'heart-empty'}
-              color={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
+              color={liked ? COLOR2 : COLOR1}
               size={25}
             />
             <Text style={styles.buttonText}>{nbrOfLikes}</Text>
           </TouchableOpacity>
           {commentButton}
           <TouchableOpacity style={styles.button} onPress={onSharePress}>
-            <Icon name="share-alt" color={PRIMARY_COLOR} size={25} />
+            <Icon name="share-alt" color={COLOR1} size={25} />
             <Text style={styles.buttonText}>Share</Text>
           </TouchableOpacity>
         </View>
@@ -102,7 +101,7 @@ Post.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   postContent: PropTypes.string.isRequired,
-  timePosted: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
   nbrOfComments: PropTypes.number.isRequired,

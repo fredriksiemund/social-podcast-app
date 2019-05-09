@@ -9,7 +9,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -19,7 +19,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -29,7 +29,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -46,7 +46,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -56,7 +56,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -66,7 +66,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -83,7 +83,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -93,7 +93,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -103,7 +103,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -120,7 +120,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -130,7 +130,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -140,7 +140,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -157,7 +157,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -167,7 +167,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -177,7 +177,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -194,7 +194,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -204,7 +204,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -214,7 +214,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -231,7 +231,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -241,7 +241,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -251,7 +251,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false
@@ -268,7 +268,7 @@ export default [
         author: 'John Johnsson',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:24:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:24:00').getTime(),
         postContent: 'I would love to hear more about your personal experience with meditation!',
         nbrOfLikes: 3,
         liked: false
@@ -278,7 +278,7 @@ export default [
         author: 'Lisa McDonalds',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T16:35:00').getTime(),
+        timeStamp: new Date('2019-04-27T16:35:00').getTime(),
         postContent: 'Make one episode of each!',
         nbrOfLikes: 1,
         liked: false
@@ -288,7 +288,7 @@ export default [
         author: 'McKenzie Smith',
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-        timePosted: new Date('2019-04-27T17:03:00').getTime(),
+        timeStamp: new Date('2019-04-27T17:03:00').getTime(),
         postContent: 'Oh yes!',
         nbrOfLikes: 0,
         liked: false

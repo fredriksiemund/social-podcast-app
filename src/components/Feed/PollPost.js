@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import { TERTIARY_COLOR } from '../../styles/common'
-import Text from '../common/Text'
-import Row from '../common/Row'
+import { COLOR3 } from '../../styles/common'
+import { Text, Row } from '../common'
 import PollOption from './PollOption'
 
 class PollPost extends Component {
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     borderWidth: 1,
-    borderColor: TERTIARY_COLOR,
+    borderColor: COLOR3,
     borderRadius: 5
   },
   pollQuestion: {

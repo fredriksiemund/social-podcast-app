@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import { SECONDARY_COLOR } from '../../styles/common'
-import Text from '../common/Text'
+import { COLOR2 } from '../../styles/common'
+import { Text } from '../common'
 
 const Section = ({ heading, onPress, children }) => {
   const button = (
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   showAllText: {
     fontWeight: '700',
     fontSize: 17,
-    color: SECONDARY_COLOR
+    color: COLOR2
   }
 })
 

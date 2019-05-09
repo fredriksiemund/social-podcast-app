@@ -4,7 +4,7 @@ import ScreenContainer from '../../components/common/ScreenContainer'
 
 const ProfileScreen = () => (
   <ScreenContainer>
-    <Text>Test</Text>
+    <Text>Profile</Text>
   </ScreenContainer>
 )
 

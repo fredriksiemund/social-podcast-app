@@ -3,9 +3,9 @@ import {
   View, TextInput, StyleSheet, Image, TouchableOpacity
 } from 'react-native'
 import PropTypes from 'prop-types'
-import Text from '../common/Text'
+import { Text } from '../common'
 import {
-  PRIMARY_COLOR, TERTIARY_COLOR, SECONDARY_COLOR, BACKGROUND
+  COLOR1, COLOR3, COLOR2, BACKGROUND
 } from '../../styles/common'
 
 class CommentBar extends Component {
@@ -26,8 +26,8 @@ class CommentBar extends Component {
         <TextInput
           style={[styles.input, { height: Math.max(28, height) }]}
           placeholder="Comment..."
-          placeholderTextColor={TERTIARY_COLOR}
-          selectionColor={SECONDARY_COLOR}
+          placeholderTextColor={COLOR3}
+          selectionColor={COLOR2}
           multiline
           onChangeText={(input) => {
             this.setState({ text: input })
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
   commentContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    color: PRIMARY_COLOR,
+    color: COLOR1,
     borderRadius: 5,
-    backgroundColor: PRIMARY_COLOR
+    backgroundColor: COLOR1
   },
   input: {
     flex: 1,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 7,
     borderRadius: 5,
-    backgroundColor: SECONDARY_COLOR,
+    backgroundColor: COLOR2,
     paddingHorizontal: 15,
     paddingVertical: 5
   },

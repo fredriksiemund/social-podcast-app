@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {
   View, StyleSheet, Image, TouchableOpacity, ScrollView
 } from 'react-native'
-import { SECONDARY_COLOR, BACKGROUND, TERTIARY_COLOR } from '../styles/common'
-import Text from '../components/common/Text'
-import Icon from '../components/common/Icon'
+import { COLOR2, BACKGROUND, COLOR3 } from '../styles/common'
+import {
+  Text, Icon, ScreenContainer, ScreenItemContainer
+} from '../components/common'
 import secondsToString from '../../assets/secondsToString'
 import utcToString from '../../assets/utcToString'
-import ScreenContainer from '../components/common/ScreenContainer'
 import EpisodeRow from '../components/Podcast/EpisodeRow'
 import Card from '../components/Podcast/Card'
 import Section from '../components/Podcast/Section'
@@ -32,7 +32,7 @@ class PodcastScreen extends Component {
     <Card
       key={entry.id}
       type={entry.type}
-      timePosted={entry.timePosted}
+      timeStamp={entry.timeStamp}
       postContent={entry.postContent}
       pollQuestion={entry.pollQuestion}
       author={podcast.podcastName}
@@ -44,7 +44,7 @@ class PodcastScreen extends Component {
     <Card
       key={entry.id}
       type={entry.type}
-      timePosted={entry.timePosted}
+      timeStamp={entry.timeStamp}
       postContent={entry.postContent}
       rating={entry.rating}
       author={entry.author}
@@ -69,66 +69,68 @@ class PodcastScreen extends Component {
     return (
       <ScreenContainer>
         <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 15 }}>
-          <Text style={styles.podcastName}>{podcastName}</Text>
-          <Text style={styles.producer}>{`By ${creator}`}</Text>
-          <View style={[styles.row, { flexDirection: 'row' }]}>
-            <Image
-              style={styles.podcastImage}
-              source={{
-                uri: podcastImageUri
-              }}
-            />
-            <View style={styles.infoBox}>
-              <Text style={{ fontWeight: '700' }}>About this podcast</Text>
-              <Text style={{ fontSize: 13 }} numberOfLines={4}>
-                {description}
-              </Text>
+          <ScreenItemContainer>
+            <Text style={styles.podcastName}>{podcastName}</Text>
+            <Text style={styles.producer}>{`By ${creator}`}</Text>
+            <View style={[styles.row, { flexDirection: 'row' }]}>
+              <Image
+                style={styles.podcastImage}
+                source={{
+                  uri: podcastImageUri
+                }}
+              />
+              <View style={styles.infoBox}>
+                <Text style={{ fontWeight: '700' }}>About this podcast</Text>
+                <Text style={{ fontSize: 13 }} numberOfLines={4}>
+                  {description}
+                </Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={{ alignItems: 'center' }}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Follow</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <Section heading="Latest Episodes" onPress={() => {}}>
-              <View style={{ borderTopColor: TERTIARY_COLOR, borderTopWidth: 1 }}>
-                {this.renderLatestEpisodes(latestEpisodes)}
-              </View>
-            </Section>
-          </View>
-          <View style={styles.row}>
-            <Section heading="Latest Posts" onPress={() => {}}>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {this.renderLatestPosts(podcast)}
-              </ScrollView>
-            </Section>
-          </View>
-          <View style={styles.row}>
-            <Section heading="Average rating">
-              <RateSection rating={rating} onRateStarPress={() => {}} />
-            </Section>
-          </View>
-          <View style={styles.row}>
-            <Section heading="Latest Reviews" onPress={() => {}}>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {this.renderLatestReviews(podcast)}
-              </ScrollView>
-            </Section>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.writeReviewContainer}>
-              <Icon name="create" color={SECONDARY_COLOR} size={25} />
-              <Text style={styles.writeReview}>Write a review</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <Section heading="Discussion Group">
-              <View />
-            </Section>
-          </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={{ alignItems: 'center' }}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Follow</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <Section heading="Latest Episodes" onPress={() => {}}>
+                <View style={{ borderTopColor: COLOR3, borderTopWidth: 1 }}>
+                  {this.renderLatestEpisodes(latestEpisodes)}
+                </View>
+              </Section>
+            </View>
+            <View style={styles.row}>
+              <Section heading="Latest Posts" onPress={() => {}}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  {this.renderLatestPosts(podcast)}
+                </ScrollView>
+              </Section>
+            </View>
+            <View style={styles.row}>
+              <Section heading="Average rating">
+                <RateSection rating={rating} onRateStarPress={() => {}} />
+              </Section>
+            </View>
+            <View style={styles.row}>
+              <Section heading="Latest Reviews" onPress={() => {}}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  {this.renderLatestReviews(podcast)}
+                </ScrollView>
+              </Section>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.writeReviewContainer}>
+                <Icon name="create" color={COLOR2} size={25} />
+                <Text style={styles.writeReview}>Write a review</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <Section heading="Discussion Group">
+                <View />
+              </Section>
+            </View>
+          </ScreenItemContainer>
         </ScrollView>
       </ScreenContainer>
     )
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 35,
     paddingVertical: 10,
     borderRadius: 20,
-    backgroundColor: SECONDARY_COLOR
+    backgroundColor: COLOR2
   },
   buttonText: {
     color: BACKGROUND,
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
   writeReview: {
     fontSize: 20,
     fontWeight: '300',
-    color: SECONDARY_COLOR,
+    color: COLOR2,
     marginLeft: 5
   }
 })

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
+import { ScreenItemContainer } from './common'
 import FeedListItem from './Feed/FeedListItem'
 
 class FeedList extends Component {
@@ -18,7 +19,9 @@ class FeedList extends Component {
     }
     return (
       <View style={styles.post}>
-        <FeedListItem {...postProps} />
+        <ScreenItemContainer>
+          <FeedListItem {...postProps} />
+        </ScreenItemContainer>
       </View>
     )
   }

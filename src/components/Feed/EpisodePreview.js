@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
-import Header from '../common/Header'
-import Row from '../common/Row'
-import Text from '../common/Text'
-import Icon from '../common/Icon'
+import { COLOR1, COLOR3 } from '../../styles/common'
+import {
+  Header, Row, Text, Icon
+} from '../common'
 
 class EpisodePreview extends Component {
   onMorePress = () => {
@@ -24,7 +23,7 @@ class EpisodePreview extends Component {
       episodeDescription,
       previewMode,
       author,
-      timePosted,
+      timeStamp,
       authorImageUri
     } = this.props
     return (
@@ -32,7 +31,7 @@ class EpisodePreview extends Component {
         <Header
           {...{
             author,
-            timePosted,
+            timeStamp,
             authorImageUri,
             tag: 'New episode',
             onPress: () => this.onHeaderPress()
@@ -46,15 +45,15 @@ class EpisodePreview extends Component {
             </Text>
             <View style={styles.buttonRow}>
               <TouchableOpacity style={styles.button}>
-                <Icon name="play-circle" color={PRIMARY_COLOR} size={40} />
+                <Icon name="play-circle" color={COLOR1} size={40} />
                 <Text style={styles.buttonText}>Play</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button}>
-                <Icon name="add-circle" color={PRIMARY_COLOR} size={40} />
+                <Icon name="add-circle" color={COLOR1} size={40} />
                 <Text style={styles.buttonText}>Queue</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button} onPress={() => this.onMorePress()}>
-                <Icon name="information-circle" color={PRIMARY_COLOR} size={40} />
+                <Icon name="information-circle" color={COLOR1} size={40} />
                 <Text style={styles.buttonText}>More</Text>
               </TouchableOpacity>
             </View>
@@ -68,7 +67,7 @@ class EpisodePreview extends Component {
 EpisodePreview.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
   previewMode: PropTypes.bool
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     borderWidth: 1,
-    borderColor: TERTIARY_COLOR,
+    borderColor: COLOR3,
     borderRadius: 5
   },
   podHeader: {

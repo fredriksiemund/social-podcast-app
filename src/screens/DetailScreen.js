@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ScreenContainer from '../components/common/ScreenContainer'
+import { ScreenContainer } from '../components/common'
 import DetailAndCommentsList from '../components/DetailAndCommentsList'
 
 const DetailScreen = ({

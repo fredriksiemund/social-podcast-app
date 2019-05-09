@@ -5,10 +5,8 @@ import {
 import PropTypes from 'prop-types'
 import secondsToString from '../../../assets/secondsToString'
 import numberToString from '../../../assets/numberToString'
-import { PRIMARY_COLOR, BACKGROUND, SECONDARY_COLOR } from '../../styles/common'
-import Text from '../common/Text'
-import Icon from '../common/Icon'
-import Header from '../common/Header'
+import { COLOR1, BACKGROUND, COLOR2 } from '../../styles/common'
+import { Text, Icon, Header } from '../common'
 import RateSection from './RateSection'
 
 class EpisodeDetail extends Component {
@@ -33,7 +31,7 @@ class EpisodeDetail extends Component {
       authorImageUri,
       episodeName,
       episodeDescription,
-      timePosted,
+      timeStamp,
       nbrOfListens,
       length,
       size,
@@ -46,7 +44,7 @@ class EpisodeDetail extends Component {
           {...{
             author,
             authorImageUri,
-            timePosted,
+            timeStamp,
             onPress: () => this.onHeaderPress()
           }}
         />
@@ -54,22 +52,22 @@ class EpisodeDetail extends Component {
         <Text style={styles.infoText}>{`${numberToString(nbrOfListens)} listens`}</Text>
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.playButton}>
-            <Icon name="play-circle" color={SECONDARY_COLOR} size={40} />
+            <Icon name="play-circle" color={COLOR2} size={40} />
             <View style={styles.playButtonText}>
               <Text style={styles.playText}>Play</Text>
               <Text style={styles.lengthText}>{`${secondsToString(length)}`}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
-            <Icon name="add-circle" color={PRIMARY_COLOR} size={30} />
+            <Icon name="add-circle" color={COLOR1} size={30} />
             <Text style={styles.buttonText}>Queue</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
-            <Icon name="cloud-download" color={PRIMARY_COLOR} size={30} />
+            <Icon name="cloud-download" color={COLOR1} size={30} />
             <Text style={styles.buttonText}>Download</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
-            <Icon name="share-alt" color={PRIMARY_COLOR} size={30} />
+            <Icon name="share-alt" color={COLOR1} size={30} />
             <Text style={styles.buttonText}>Share</Text>
           </TouchableOpacity>
         </View>
@@ -96,7 +94,7 @@ EpisodeDetail.propTypes = {
   id: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number.isRequired,
   episodeName: PropTypes.string.isRequired,
   episodeDescription: PropTypes.string.isRequired,
   nbrOfListens: PropTypes.number.isRequired,
@@ -141,7 +139,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingVertical: 3,
     borderRadius: 30,
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: COLOR1,
     opacity: 0.9
   },
   playButtonText: {

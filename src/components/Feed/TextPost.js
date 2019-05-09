@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Text from '../common/Text'
+import { Text } from '../common'
 
 const TextPost = ({ postContent, previewMode }) => (
   <Text numberOfLines={previewMode ? 5 : null}>{postContent}</Text>

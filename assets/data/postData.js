@@ -37,7 +37,7 @@ export default [
       ]
     },
     nbrOfLikes: 902,
-    timePosted: new Date('2019-04-27T16:24:00').getTime(),
+    timeStamp: new Date('2019-04-27T16:24:00').getTime(),
     liked: false,
     nbrOfComments: 102
   },
@@ -51,7 +51,7 @@ export default [
     postContent:
       "I'm doing a Q&A next in my next episode! Which questions do you have? Can be absolutely anything. Hit me with your questions in the comments!",
     nbrOfLikes: 53,
-    timePosted: new Date('2019-04-27T15:12:00').getTime(),
+    timeStamp: new Date('2019-04-27T15:12:00').getTime(),
     liked: false,
     nbrOfComments: 32
   },
@@ -63,7 +63,7 @@ export default [
     authorImageUri: 'https://pl.tedcdn.com/rss_feed_images/ted_talks_main_podcast/audio.png',
     postContent: 'We are constantly on the move! Should we visit your home town next?',
     pollQuestion: 'Where should our next event be?',
-    timePosted: new Date('2019-04-27T06:24:00').getTime(),
+    timeStamp: new Date('2019-04-27T06:24:00').getTime(),
     nbrOfLikes: 294,
     liked: false,
     poll: {
@@ -101,7 +101,7 @@ export default [
     postContent:
       'We are do exited to tell you guys that from now on we will be posting twice a week! Jason might not like It but he needs the money haha.',
     nbrOfLikes: 549,
-    timePosted: new Date('2019-04-26T23:24:00').getTime(),
+    timeStamp: new Date('2019-04-26T23:24:00').getTime(),
     liked: false,
     nbrOfComments: 211
   },
@@ -114,7 +114,7 @@ export default [
     postContent:
       "Did you guys see the Blackhole picture!? We're definitely making a special episode on Friday dedicated to it.",
     nbrOfLikes: 213,
-    timePosted: new Date('2019-04-23T16:24:00').getTime(),
+    timeStamp: new Date('2019-04-23T16:24:00').getTime(),
     liked: false,
     nbrOfComments: 102
   },
@@ -128,7 +128,7 @@ export default [
     postContent:
       'Just wishing you all a happy Chinese New Year! Did you know that during the Chinese New Year production closes for a month? ',
     nbrOfLikes: 34,
-    timePosted: new Date('2019-04-18T18:24:00').getTime(),
+    timeStamp: new Date('2019-04-18T18:24:00').getTime(),
     liked: false,
     nbrOfComments: 102
   }

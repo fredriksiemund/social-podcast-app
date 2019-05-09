@@ -8,8 +8,7 @@ const ScreenContainer = ({ children }) => <View style={styles.screenContainer}>{
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: BACKGROUND,
-    paddingHorizontal: 15
+    backgroundColor: BACKGROUND
   }
 })
 

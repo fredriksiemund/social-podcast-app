@@ -15,7 +15,7 @@ export default (state = commentData, action) => {
             author,
             authorImageUri,
             postContent,
-            timePosted: new Date().getTime(),
+            timeStamp: new Date().getTime(),
             nbrOfLikes: 0,
             liked: false
           })

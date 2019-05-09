@@ -1,14 +1,13 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND } from '../../styles/common'
-import Icon from '../common/Icon'
-import Text from '../common/Text'
+import { COLOR1, COLOR2, BACKGROUND } from '../../styles/common'
+import { Icon, Text } from '../common'
 
 const PollOption = ({
   selected, progress, optionText, onPress, preview
 }) => {
-  const color = selected ? SECONDARY_COLOR : PRIMARY_COLOR
+  const color = selected ? COLOR2 : COLOR1
   const progressStyle = { ...styles.progress, flex: progress, borderColor: color }
   const Tag = preview ? View : TouchableOpacity
   return (
@@ -16,9 +15,7 @@ const PollOption = ({
       <Tag style={styles.pollOption} onPress={onPress}>
         <Icon name={selected ? 'radio-button-on' : 'radio-button-off'} size={25} color={color} />
         <View style={styles.progressBar}>
-          <View
-            style={[progressStyle, { backgroundColor: selected ? SECONDARY_COLOR : BACKGROUND }]}
-          />
+          <View style={[progressStyle, { backgroundColor: selected ? COLOR2 : BACKGROUND }]} />
         </View>
       </Tag>
       <Text style={styles.optionText}>{optionText}</Text>
@@ -51,7 +48,7 @@ const styles = StyleSheet.create({
   },
   progress: {
     flexDirection: 'row',
-    backgroundColor: SECONDARY_COLOR,
+    backgroundColor: COLOR2,
     borderWidth: 1,
     borderRadius: 5,
     height: 25

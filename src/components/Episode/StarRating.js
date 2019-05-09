@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from '../common/Icon'
-import { PRIMARY_COLOR } from '../../styles/common'
+import { Icon } from '../common'
+import { COLOR1 } from '../../styles/common'
 
 class StarRating extends Component {
   renderStarRow = () => {
@@ -39,7 +39,7 @@ StarRating.propTypes = {
 }
 
 StarRating.defaultProps = {
-  color: PRIMARY_COLOR
+  color: COLOR1
 }
 
 const styles = StyleSheet.create({

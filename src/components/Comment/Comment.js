@@ -3,15 +3,14 @@ import {
   View, StyleSheet, Image, TouchableOpacity
 } from 'react-native'
 import PropTypes from 'prop-types'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../styles/common'
+import { COLOR1, COLOR2 } from '../../styles/common'
 import utcToString from '../../../assets/utcToString'
-import Text from '../common/Text'
-import Icon from '../common/Icon'
+import { Text, Icon } from '../common'
 
 const Comment = ({
   author,
   authorImageUri,
-  timePosted,
+  timeStamp,
   postContent,
   liked,
   nbrOfLikes,
@@ -26,18 +25,14 @@ const Comment = ({
         <View style={styles.post}>
           <View style={styles.commentHeader}>
             <Text style={styles.author}>{`${author}  `}</Text>
-            <Text style={styles.timePosted}>{utcToString(timePosted)}</Text>
+            <Text style={styles.timeStamp}>{utcToString(timeStamp)}</Text>
           </View>
           <Text style={styles.content}>{postContent}</Text>
         </View>
         <Text style={styles.likes}>{nbrOfLikesText}</Text>
       </View>
       <TouchableOpacity style={styles.likeButton} onPress={onLikePress}>
-        <Icon
-          name={liked ? 'heart' : 'heart-empty'}
-          color={liked ? SECONDARY_COLOR : PRIMARY_COLOR}
-          size={25}
-        />
+        <Icon name={liked ? 'heart' : 'heart-empty'} color={liked ? COLOR2 : COLOR1} size={25} />
       </TouchableOpacity>
     </View>
   )
@@ -46,7 +41,7 @@ const Comment = ({
 Comment.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number.isRequired,
   postContent: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
@@ -82,7 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  timePosted: {
+  timeStamp: {
     fontSize: 12
   },
   likes: {

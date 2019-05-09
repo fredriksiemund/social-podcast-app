@@ -10,16 +10,14 @@ import SearchScreen from '../screens/Search/SearchScreen'
 import ProfileScreen from '../screens/Profile/ProfileScreen'
 import DetailScreen from '../containers/DetailScreen'
 import PodcastScreen from '../containers/PodcastScreen'
-import {
-  NAV_ACTIVE, NAV_INACTIVE, NAV_BACKGROUND, PRIMARY_COLOR
-} from '../styles/common'
+import { COLOR2, COLOR1, NAV_BACKGROUND } from '../styles/common'
 
 const headerStyle = {
   headerStyle: {
     backgroundColor: NAV_BACKGROUND,
     borderBottomWidth: 0
   },
-  headerTintColor: PRIMARY_COLOR
+  headerTintColor: COLOR1
 }
 
 const MainStack = createBottomTabNavigator(
@@ -82,8 +80,8 @@ const MainStack = createBottomTabNavigator(
   {
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: NAV_ACTIVE,
-      inactiveTintColor: NAV_INACTIVE,
+      activeTintColor: COLOR2,
+      inactiveTintColor: COLOR1,
       style: {
         backgroundColor: NAV_BACKGROUND
       }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
-import Text from '../common/Text'
-import Icon from '../common/Icon'
-import { PRIMARY_COLOR, TERTIARY_COLOR } from '../../styles/common'
+import { Text, Icon } from '../common'
+import { COLOR1, COLOR3 } from '../../styles/common'
 
 const EpisodeRow = ({ timeStamp, episodeName, length }) => (
   <View style={styles.previewRow}>
@@ -10,11 +9,11 @@ const EpisodeRow = ({ timeStamp, episodeName, length }) => (
       <Text>{timeStamp}</Text>
       <View style={styles.nameRow}>
         <Text style={styles.episodeName}>{episodeName}</Text>
-        <Text style={{ fontSize: 13 }}>{` ${length}`}</Text>
+        <Text style={{ fontSize: 13, marginBottom: 1 }}>{`  ${length}`}</Text>
       </View>
     </View>
     <TouchableOpacity>
-      <Icon name="play-circle" color={PRIMARY_COLOR} size={35} />
+      <Icon name="play-circle" color={COLOR1} size={35} />
     </TouchableOpacity>
   </View>
 )
@@ -27,15 +26,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: TERTIARY_COLOR
+    borderBottomColor: COLOR3
   },
   nameRow: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'flex-end'
   },
   episodeName: {
     fontSize: 16,
-    fontWeight: '700'
+    fontWeight: '600'
   }
 })
 

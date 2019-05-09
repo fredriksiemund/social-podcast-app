@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
+import { Text, ScreenItemContainer } from './common'
 import Comment from './Comment/Comment'
 import CommentBar from './Comment/CommentBar'
-import Text from './common/Text'
 import EpisodeDetail from './Episode/EpisodeDetail'
 import Post from './Feed/Post'
 
@@ -20,11 +20,13 @@ class DetailAndCommentsList extends Component {
     }
     return (
       <View style={{ marginTop: 15 }}>
-        {detail}
-        <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
-        <View style={styles.commentBar}>
-          <CommentBar {...{ currentUser, commentSubmitted }} itemId={id} />
-        </View>
+        <ScreenItemContainer>
+          {detail}
+          <Text style={styles.nbrOfComments}>{`${comments.nbrOfComments} comments`}</Text>
+          <View style={styles.commentBar}>
+            <CommentBar {...{ currentUser, commentSubmitted }} itemId={id} />
+          </View>
+        </ScreenItemContainer>
       </View>
     )
   }
@@ -38,7 +40,9 @@ class DetailAndCommentsList extends Component {
         ListHeaderComponent={this.renderTop()}
         renderItem={({ item }) => (
           <View style={styles.comment}>
-            <Comment onLikePress={() => commentLikeButtonPressed(item.id, id)} {...item} />
+            <ScreenItemContainer>
+              <Comment onLikePress={() => commentLikeButtonPressed(item.id, id)} {...item} />
+            </ScreenItemContainer>
           </View>
         )}
       />
@@ -51,7 +55,7 @@ DetailAndCommentsList.propTypes = {
   type: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  timePosted: PropTypes.number.isRequired,
+  timeStamp: PropTypes.number.isRequired,
   commentSubmitted: PropTypes.func.isRequired,
   commentLikeButtonPressed: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({}).isRequired,
