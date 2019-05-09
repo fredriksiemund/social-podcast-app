@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     fontWeight: '300'
   },
   showAllText: {
-    fontWeight: '700',
-    fontSize: 17,
+    fontWeight: '300',
+    fontSize: 20,
     color: COLOR2
   }
 })

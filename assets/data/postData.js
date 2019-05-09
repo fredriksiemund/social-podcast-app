@@ -9,30 +9,27 @@ export default [
     pollQuestion: 'What should i talk about on the next episode?',
     poll: {
       totalVotes: 665,
+      userVoteId: null,
       options: [
         {
           id: 0,
           option: 'Meditation',
-          votes: 487,
-          selected: false
+          votes: 487
         },
         {
           id: 1,
           option: 'Spirituality',
-          votes: 103,
-          selected: false
+          votes: 103
         },
         {
           id: 2,
           option: 'Health',
-          votes: 55,
-          selected: false
+          votes: 55
         },
         {
           id: 3,
           option: 'Food',
-          votes: 20,
-          selected: false
+          votes: 20
         }
       ]
     },
@@ -68,24 +65,23 @@ export default [
     liked: false,
     poll: {
       totalVotes: 9593,
+      userVoteId: null,
+      hasVoted: false,
       options: [
         {
           id: 0,
           option: 'London',
-          votes: 2653,
-          selected: false
+          votes: 2653
         },
         {
           id: 1,
           option: 'New York',
-          votes: 2042,
-          selected: false
+          votes: 2042
         },
         {
           id: 2,
           option: 'Copenhagen',
-          votes: 4530,
-          selected: false
+          votes: 4530
         }
       ]
     },

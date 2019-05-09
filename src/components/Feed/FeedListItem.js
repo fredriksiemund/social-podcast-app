@@ -77,12 +77,12 @@ FeedListItem.propTypes = {
   liked: PropTypes.bool,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
+    userVoteId: PropTypes.number,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         option: PropTypes.string.isRequired,
-        votes: PropTypes.number.isRequired,
-        selected: PropTypes.bool.isRequired
+        votes: PropTypes.number.isRequired
       })
     ).isRequired
   }),

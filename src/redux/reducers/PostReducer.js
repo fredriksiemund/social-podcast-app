@@ -19,23 +19,26 @@ export default (state = postData, action) => {
       })
     case POLL_OPTION_PRESSED:
       return state.map((entry) => {
-        let changeValue
         if (entry.id === action.payload.postId) {
+          if (action.payload.optionId === entry.poll.userVoteId) return entry
+          let totalChange = 1
+          if (entry.poll.userVoteId) totalChange = 0
           const newPoll = entry.poll.options.map((pollEntry) => {
-            if (pollEntry.id === action.payload.optionId) {
-              if (pollEntry.selected) changeValue = -1
-              else changeValue = 1
-              return {
-                ...pollEntry,
-                votes: pollEntry.votes + changeValue,
-                selected: !pollEntry.selected
-              }
+            let localChange = 0
+            if (pollEntry.id === action.payload.optionId) localChange = 1
+            if (pollEntry.id === entry.poll.userVoteId) localChange = -1
+            return {
+              ...pollEntry,
+              votes: pollEntry.votes + localChange
             }
-            return pollEntry
           })
           return {
             ...entry,
-            poll: { totalVotes: entry.poll.totalVotes + changeValue, options: newPoll }
+            poll: {
+              totalVotes: entry.poll.totalVotes + totalChange,
+              userVoteId: action.payload.optionId,
+              options: newPoll
+            }
           }
         }
         return entry

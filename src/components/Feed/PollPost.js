@@ -18,7 +18,7 @@ class PollPost extends Component {
       pollList.push(
         <PollOption
           key={option.id}
-          selected={option.selected}
+          selected={option.id === poll.userVoteId}
           progress={Math.round((option.votes / total) * 100) / 100}
           optionText={`${option.option} (${option.votes} votes)`}
           onPress={() => pollOptionPressed({ postId: id, optionId: option.id })}
@@ -61,12 +61,12 @@ PollPost.propTypes = {
   content: PropTypes.string.isRequired,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
+    userVoteId: PropTypes.number,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         option: PropTypes.string.isRequired,
-        votes: PropTypes.number.isRequired,
-        selected: PropTypes.bool.isRequired
+        votes: PropTypes.number.isRequired
       })
     ).isRequired
   }).isRequired,

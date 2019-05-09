@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
   View, StyleSheet, Image, TouchableOpacity, ScrollView
 } from 'react-native'
-import { COLOR2, BACKGROUND, COLOR3 } from '../styles/common'
+import { COLOR2, COLOR3, BACKGROUND } from '../styles/common'
 import {
   Text, Icon, ScreenContainer, ScreenItemContainer
 } from '../components/common'
@@ -13,9 +13,10 @@ import Section from '../components/Podcast/Section'
 import RateSection from '../components/Episode/RateSection'
 
 class PodcastScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
+  onRateStarPress = (rating) => {
+    const { podcastRateStarPressed, navigation } = this.props
+    const { authorId } = navigation.state.params
+    podcastRateStarPressed({ id: authorId, rating })
   }
 
   renderLatestEpisodes = latestEpisodes => latestEpisodes.map(entry => (
@@ -107,8 +108,8 @@ class PodcastScreen extends Component {
               </Section>
             </View>
             <View style={styles.row}>
-              <Section heading="Average rating">
-                <RateSection rating={rating} onRateStarPress={() => {}} />
+              <Section heading="Average Rating">
+                <RateSection rating={rating} onRateStarPress={this.onRateStarPress} />
               </Section>
             </View>
             <View style={styles.row}>

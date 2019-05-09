@@ -5,7 +5,7 @@ export default (state = episodeData, action) => {
   switch (action.type) {
     case RATE_STAR_PRESSED:
       return state.map((entry) => {
-        if (entry.id === action.payload.postId) {
+        if (entry.id === action.payload.id) {
           const { rating } = entry
           const { nbrOfRatings, totalRating, userRating } = rating
           let newNbrOfRating

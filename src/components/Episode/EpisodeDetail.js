@@ -16,7 +16,7 @@ class EpisodeDetail extends Component {
 
   onRateStarPress = (rating) => {
     const { id, rateStarPressed } = this.props
-    rateStarPressed({ postId: id, rating })
+    rateStarPressed({ id, rating })
   }
 
   onHeaderPress = () => {

@@ -9,15 +9,15 @@ const PollOption = ({
 }) => {
   const color = selected ? COLOR2 : COLOR1
   const progressStyle = { ...styles.progress, flex: progress, borderColor: color }
-  const Tag = preview ? View : TouchableOpacity
+  const Container = preview ? View : TouchableOpacity
   return (
     <View>
-      <Tag style={styles.pollOption} onPress={onPress}>
+      <Container style={styles.pollOption} onPress={onPress}>
         <Icon name={selected ? 'radio-button-on' : 'radio-button-off'} size={25} color={color} />
         <View style={styles.progressBar}>
           <View style={[progressStyle, { backgroundColor: selected ? COLOR2 : BACKGROUND }]} />
         </View>
-      </Tag>
+      </Container>
       <Text style={styles.optionText}>{optionText}</Text>
     </View>
   )

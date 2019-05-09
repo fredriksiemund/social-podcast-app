@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import PodcastScreen from '../screens/PodcastScreen'
+import { podcastRateStarPressed } from '../redux/actions'
 
 const mapStateToProps = state => ({
   podcasts: state.podcasts
@@ -7,5 +8,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { podcastRateStarPressed }
 )(PodcastScreen)
