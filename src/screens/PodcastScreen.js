@@ -6,8 +6,7 @@ import { COLOR2, BACKGROUND, COLOR3 } from '../styles/common'
 import {
   Text, Icon, ScreenContainer, ScreenItemContainer
 } from '../components/common'
-import secondsToString from '../../assets/secondsToString'
-import utcToString from '../../assets/utcToString'
+import { secondsToString, unixTimeToString } from '../../assets/functions'
 import EpisodeRow from '../components/Podcast/EpisodeRow'
 import Card from '../components/Podcast/Card'
 import Section from '../components/Podcast/Section'
@@ -22,7 +21,7 @@ class PodcastScreen extends Component {
   renderLatestEpisodes = latestEpisodes => latestEpisodes.map(entry => (
     <EpisodeRow
       key={entry.id}
-      timeStamp={utcToString(entry.timeStamp)}
+      timeStamp={unixTimeToString(entry.timeStamp)}
       episodeName={entry.episodeName}
       length={secondsToString(entry.length)}
     />
@@ -33,7 +32,7 @@ class PodcastScreen extends Component {
       key={entry.id}
       type={entry.type}
       timeStamp={entry.timeStamp}
-      postContent={entry.postContent}
+      content={entry.content}
       pollQuestion={entry.pollQuestion}
       author={podcast.podcastName}
       authorImageUri={podcast.podcastImageUri}
@@ -45,7 +44,7 @@ class PodcastScreen extends Component {
       key={entry.id}
       type={entry.type}
       timeStamp={entry.timeStamp}
-      postContent={entry.postContent}
+      content={entry.content}
       rating={entry.rating}
       author={entry.author}
       authorImageUri={entry.authorImageUri}

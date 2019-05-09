@@ -3,7 +3,7 @@ import {
   View, Image, StyleSheet, TouchableWithoutFeedback
 } from 'react-native'
 import PropTypes from 'prop-types'
-import utcToString from '../../../assets/utcToString'
+import { unixTimeToString } from '../../../assets/functions'
 import Tag from './Tag'
 import Text from './Text'
 
@@ -21,7 +21,7 @@ const Header = ({
           {author}
         </Text>
         <View style={styles.headerSubheader}>
-          <Text style={styles.headerTime}>{utcToString(timeStamp)}</Text>
+          <Text style={styles.headerTime}>{unixTimeToString(timeStamp)}</Text>
           {tag ? <Tag content={tag} /> : null}
         </View>
       </View>

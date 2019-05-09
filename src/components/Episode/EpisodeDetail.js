@@ -3,8 +3,7 @@ import {
   View, StyleSheet, TouchableWithoutFeedback, TouchableOpacity
 } from 'react-native'
 import PropTypes from 'prop-types'
-import secondsToString from '../../../assets/secondsToString'
-import numberToString from '../../../assets/numberToString'
+import { secondsToString, numberToString } from '../../../assets/functions'
 import { COLOR1, BACKGROUND, COLOR2 } from '../../styles/common'
 import { Text, Icon, Header } from '../common'
 import RateSection from './RateSection'

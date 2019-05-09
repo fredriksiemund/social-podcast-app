@@ -11,11 +11,11 @@ import PollPost from './PollPost'
 class Post extends Component {
   renderPost = () => {
     const {
-      type, previewMode, postContent, id, poll, pollOptionPressed, pollQuestion
+      type, previewMode, content, id, poll, pollOptionPressed, pollQuestion
     } = this.props
     switch (type) {
       case 'text-post':
-        return <TextPost {...{ previewMode, postContent }} />
+        return <TextPost {...{ previewMode, content }} />
       case 'poll-post':
         return (
           <PollPost
@@ -24,7 +24,7 @@ class Post extends Component {
               poll,
               pollOptionPressed,
               previewMode,
-              postContent,
+              content,
               pollQuestion
             }}
           />
@@ -100,7 +100,7 @@ Post.propTypes = {
   id: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  postContent: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   timeStamp: PropTypes.number.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,

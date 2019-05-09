@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import numberToString from '../../../assets/numberToString'
+import { numberToString } from '../../../assets/functions'
 import { Text } from '../common'
 import StarRating from './StarRating'
 import Rate from './Rate'

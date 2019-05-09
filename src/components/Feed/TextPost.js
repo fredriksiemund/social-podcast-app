@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Text } from '../common'
 
-const TextPost = ({ postContent, previewMode }) => (
-  <Text numberOfLines={previewMode ? 5 : null}>{postContent}</Text>
+const TextPost = ({ content, previewMode }) => (
+  <Text numberOfLines={previewMode ? 5 : null}>{content}</Text>
 )
 
 TextPost.propTypes = {
-  postContent: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   previewMode: PropTypes.bool
 }
 

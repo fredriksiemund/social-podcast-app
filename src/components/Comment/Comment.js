@@ -4,14 +4,14 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { COLOR1, COLOR2 } from '../../styles/common'
-import utcToString from '../../../assets/utcToString'
+import { unixTimeToString } from '../../../assets/functions'
 import { Text, Icon } from '../common'
 
 const Comment = ({
   author,
   authorImageUri,
   timeStamp,
-  postContent,
+  content,
   liked,
   nbrOfLikes,
   onLikePress
@@ -25,9 +25,9 @@ const Comment = ({
         <View style={styles.post}>
           <View style={styles.commentHeader}>
             <Text style={styles.author}>{`${author}  `}</Text>
-            <Text style={styles.timeStamp}>{utcToString(timeStamp)}</Text>
+            <Text style={styles.timeStamp}>{unixTimeToString(timeStamp)}</Text>
           </View>
-          <Text style={styles.content}>{postContent}</Text>
+          <Text style={styles.content}>{content}</Text>
         </View>
         <Text style={styles.likes}>{nbrOfLikesText}</Text>
       </View>
@@ -42,7 +42,7 @@ Comment.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   timeStamp: PropTypes.number.isRequired,
-  postContent: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   liked: PropTypes.bool.isRequired,
   nbrOfLikes: PropTypes.number.isRequired,
   onLikePress: PropTypes.func.isRequired

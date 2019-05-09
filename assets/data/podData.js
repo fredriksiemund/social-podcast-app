@@ -31,7 +31,7 @@ export default [
       {
         id: 101,
         type: 'text-post',
-        postContent:
+        content:
           "I'm doing a Q&A next in my next episode! Which questions do you have? Can be absolutely anything. Hit me with your questions in the comments!",
         nbrOfLikes: 53,
         timeStamp: new Date('2019-05-06T10:12:00').getTime(),
@@ -41,7 +41,7 @@ export default [
       {
         id: 102,
         type: 'poll-post',
-        postContent:
+        content:
           'I had a discussion with Mark the other day about who is the best UFC fighter but we disagreed so I thought I ask you guys what you think',
         pollQuestion: "Who's the best UFC fighter??",
         timeStamp: new Date('2019-05-06T08:12:00').getTime()
@@ -60,7 +60,7 @@ export default [
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
         rating: 5,
-        postContent:
+        content:
           "Revising my initial review. After a good deal of troubleshooting, I was able to get them to work. I've already discussed edits to the manual with customer service as well. I will give them credit, they were responsive and really tried to help me. For those who are buying, remember to take the protective tape off the earbuds or they won't connect to the case!",
         timeStamp: new Date('2019-05-06T10:12:00').getTime()
       },
@@ -71,7 +71,7 @@ export default [
         authorImageUri:
           'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
         rating: 4,
-        postContent:
+        content:
           'These earbuds are great. They provide awesome sound, are easy to connect to, and are comfortable. I would recommend these over and over again.',
         timeStamp: new Date('2019-05-06T08:12:00').getTime()
       }

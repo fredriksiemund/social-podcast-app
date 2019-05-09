@@ -73,7 +73,7 @@ DetailAndCommentsList.propTypes = {
     userRating: PropTypes.number
   }),
   rateStarPressed: PropTypes.func,
-  postContent: PropTypes.string,
+  content: PropTypes.string,
   nbrOfLikes: PropTypes.number,
   likeButtonPressed: PropTypes.func,
   liked: PropTypes.bool,
@@ -99,7 +99,7 @@ DetailAndCommentsList.defaultProps = {
   length: null,
   rating: null,
   rateStarPressed: null,
-  postContent: null,
+  content: null,
   nbrOfLikes: null,
   likeButtonPressed: null,
   liked: null,

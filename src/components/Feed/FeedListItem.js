@@ -67,7 +67,7 @@ FeedListItem.propTypes = {
   author: PropTypes.string.isRequired,
   authorImageUri: PropTypes.string.isRequired,
   timeStamp: PropTypes.number.isRequired,
-  postContent: PropTypes.string,
+  content: PropTypes.string,
   comments: PropTypes.shape({
     nbrOfComments: PropTypes.number.isRequired,
     comments: PropTypes.arrayOf(PropTypes.shape({}))
@@ -98,7 +98,7 @@ FeedListItem.propTypes = {
 FeedListItem.defaultProps = {
   detailSelected: null,
   navigation: null,
-  postContent: null,
+  content: null,
   comments: null,
   nbrOfLikes: null,
   likeButtonPressed: null,

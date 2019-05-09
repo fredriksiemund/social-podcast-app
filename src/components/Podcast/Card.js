@@ -15,11 +15,11 @@ class Card extends Component {
   }
 
   renderContent = () => {
-    const { type, postContent, pollQuestion } = this.props
+    const { type, content, pollQuestion } = this.props
     if (type === 'review') {
       return (
         <View>
-          <Text numberOfLines={4}>{postContent}</Text>
+          <Text numberOfLines={4}>{content}</Text>
         </View>
       )
     }
@@ -30,7 +30,7 @@ class Card extends Component {
     )
     return (
       <View>
-        <Text numberOfLines={type === 'poll-post' ? 2 : 4}>{postContent}</Text>
+        <Text numberOfLines={type === 'poll-post' ? 2 : 4}>{content}</Text>
         {type === 'poll-post' ? question : null}
       </View>
     )
@@ -59,7 +59,7 @@ Card.propTypes = {
   author: PropTypes.string.isRequired,
   timeStamp: PropTypes.number.isRequired,
   authorImageUri: PropTypes.string.isRequired,
-  postContent: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   pollQuestion: PropTypes.string,
   rating: PropTypes.number
 }

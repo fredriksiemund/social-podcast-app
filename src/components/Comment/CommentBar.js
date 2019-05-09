@@ -45,7 +45,7 @@ class CommentBar extends Component {
               itemId,
               author: name,
               authorImageUri: userImageUri,
-              postContent: text
+              content: text
             })
           }}
         >

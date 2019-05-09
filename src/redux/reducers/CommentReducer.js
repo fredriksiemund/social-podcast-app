@@ -6,7 +6,7 @@ export default (state = commentData, action) => {
     case COMMENT_SUBMITTED:
       return state.map((entry) => {
         const {
-          itemId, author, authorImageUri, postContent
+          itemId, author, authorImageUri, content
         } = action.payload
         if (entry.itemId === itemId) {
           const newComments = entry.comments
@@ -14,7 +14,7 @@ export default (state = commentData, action) => {
             id: entry.comments.length + 1,
             author,
             authorImageUri,
-            postContent,
+            content,
             timeStamp: new Date().getTime(),
             nbrOfLikes: 0,
             liked: false

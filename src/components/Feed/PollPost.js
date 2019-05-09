@@ -37,12 +37,12 @@ class PollPost extends Component {
   }
 
   render() {
-    const { postContent, pollQuestion, previewMode } = this.props
+    const { content, pollQuestion, previewMode } = this.props
     return (
       <View style={{ flex: 1 }}>
         <Row>
           <Text style={styles.textSection} numberOfLines={previewMode ? 1 : null}>
-            {postContent}
+            {content}
           </Text>
         </Row>
         <Row>
@@ -58,7 +58,7 @@ class PollPost extends Component {
 
 PollPost.propTypes = {
   id: PropTypes.number.isRequired,
-  postContent: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   poll: PropTypes.shape({
     totalVotes: PropTypes.number.isRequired,
     options: PropTypes.arrayOf(
