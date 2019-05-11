@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, TouchableOpacity, StyleSheet } from 'react-native'
 import { Text, Icon } from '../common'
-import { COLOR1, COLOR3 } from '../../styles/common'
+import { COLOR1 } from '../../styles/common'
 
 const EpisodeRow = ({ timeStamp, episodeName, length }) => (
-  <View style={styles.previewRow}>
+  <View style={styles.episodeRow}>
     <View>
       <Text>{timeStamp}</Text>
       <View style={styles.nameRow}>
@@ -19,14 +19,12 @@ const EpisodeRow = ({ timeStamp, episodeName, length }) => (
 )
 
 const styles = StyleSheet.create({
-  previewRow: {
+  episodeRow: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: COLOR3
+    paddingVertical: 10
   },
   nameRow: {
     flexDirection: 'row',

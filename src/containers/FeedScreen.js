@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import FeedList from '../components/FeedList'
+import FeedScreen from '../screens/Feed/FeedScreen'
 import { likeButtonPressed, pollOptionPressed } from '../redux/actions'
 
 const mapStateToProps = state => ({
@@ -11,4 +11,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { likeButtonPressed, pollOptionPressed }
-)(FeedList)
+)(FeedScreen)

@@ -40,11 +40,7 @@ class PollPost extends Component {
     const { content, pollQuestion, previewMode } = this.props
     return (
       <View style={{ flex: 1 }}>
-        <Row>
-          <Text style={styles.textSection} numberOfLines={previewMode ? 1 : null}>
-            {content}
-          </Text>
-        </Row>
+        <Text numberOfLines={previewMode ? 1 : null}>{content}</Text>
         <Row>
           <View style={styles.pollContainer}>
             <Text style={styles.pollQuestion}>{pollQuestion}</Text>
@@ -80,9 +76,6 @@ PollPost.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  textSection: {
-    fontSize: 15
-  },
   pollContainer: {
     flex: 1,
     padding: 8,

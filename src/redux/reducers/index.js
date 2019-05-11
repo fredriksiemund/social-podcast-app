@@ -5,6 +5,7 @@ import CurrentUserReducer from './CurrentUserReducer'
 import PostReducer from './PostReducer'
 import EpisodeReducer from './EpisodeReducer'
 import PodcastReducer from './PodcastReducer'
+import ReviewReducer from './ReviewReducer'
 
 export default combineReducers({
   feed: FeedReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   podcasts: PodcastReducer,
   episodes: EpisodeReducer,
   comments: CommentReducer,
-  currentUser: CurrentUserReducer
+  currentUser: CurrentUserReducer,
+  reviews: ReviewReducer
 })

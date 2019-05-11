@@ -7,7 +7,7 @@ import { Text } from '../common'
 const Section = ({ heading, onPress, children }) => {
   const button = (
     <TouchableOpacity onPress={onPress}>
-      <Text style={[styles.showAllText]}>{'Show all >'}</Text>
+      <Text style={styles.buttonText}>{'Show all >'}</Text>
     </TouchableOpacity>
   )
   return (
@@ -16,7 +16,7 @@ const Section = ({ heading, onPress, children }) => {
         <Text style={styles.subHeading}>{heading}</Text>
         {onPress ? button : null}
       </View>
-      <View style={{ marginTop: 5 }}>{children}</View>
+      <View style={{ marginTop: 10 }}>{children}</View>
     </View>
   )
 }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: '300'
   },
-  showAllText: {
+  buttonText: {
     fontWeight: '300',
     fontSize: 20,
     color: COLOR2

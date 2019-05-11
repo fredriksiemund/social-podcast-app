@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import {
   View, StyleSheet, Image, TouchableOpacity, ScrollView
 } from 'react-native'
-import { COLOR2, COLOR3, BACKGROUND } from '../styles/common'
+import { COLOR2, BACKGROUND } from '../../styles/common'
 import {
   Text, Icon, ScreenContainer, ScreenItemContainer
-} from '../components/common'
-import { secondsToString, unixTimeToString } from '../../assets/functions'
-import EpisodeRow from '../components/Podcast/EpisodeRow'
-import Card from '../components/Podcast/Card'
-import Section from '../components/Podcast/Section'
-import RateSection from '../components/Episode/RateSection'
+} from '../../components/common'
+import { secondsToString, unixTimeToString } from '../../../assets/functions'
+import EpisodeRow from '../../components/Podcast/EpisodeRow'
+import GroupRow from '../../components/Podcast/GroupRow'
+import Card from '../../components/Podcast/Card'
+import Section from '../../components/Podcast/Section'
+import RateSection from '../../components/Episode/RateSection'
 
 class PodcastScreen extends Component {
   onRateStarPress = (rating) => {
@@ -28,32 +29,30 @@ class PodcastScreen extends Component {
     />
   ))
 
-  renderLatestPosts = podcast => podcast.latestPosts.map(entry => (
-    <Card
-      key={entry.id}
-      type={entry.type}
-      timeStamp={entry.timeStamp}
-      content={entry.content}
-      pollQuestion={entry.pollQuestion}
-      author={podcast.podcastName}
-      authorImageUri={podcast.podcastImageUri}
-    />
-  ))
+  renderCard = (list, data) => list.map((entry) => {
+    const post = data.find(x => x.id === entry.id)
+    return (
+      <Card
+        key={post.id}
+        type={post.type}
+        timeStamp={post.timeStamp}
+        content={post.content}
+        author={post.author}
+        authorImageUri={post.authorImageUri}
+        rating={post.rating}
+        pollQuestion={post.pollQuestion}
+      />
+    )
+  })
 
-  renderLatestReviews = podcast => podcast.latestReviews.map(entry => (
-    <Card
-      key={entry.id}
-      type={entry.type}
-      timeStamp={entry.timeStamp}
-      content={entry.content}
-      rating={entry.rating}
-      author={entry.author}
-      authorImageUri={entry.authorImageUri}
-    />
+  renderGroupRows = discussionGroups => discussionGroups.map(entry => (
+    <GroupRow key={entry.id} name={entry.name} groupImageUri={entry.groupImageUri} />
   ))
 
   render() {
-    const { navigation, podcasts } = this.props
+    const {
+      navigation, podcasts, posts, reviews
+    } = this.props
     const { authorId } = navigation.state.params
     const podcast = podcasts.find(x => x.id === authorId)
     if (!podcast) {
@@ -64,12 +63,20 @@ class PodcastScreen extends Component {
       )
     }
     const {
-      podcastName, creator, podcastImageUri, description, latestEpisodes, rating
+      podcastName,
+      creator,
+      podcastImageUri,
+      description,
+      latestEpisodes,
+      discussionGroups,
+      latestReviews,
+      latestPosts,
+      rating
     } = podcast
     return (
       <ScreenContainer>
-        <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 15 }}>
-          <ScreenItemContainer>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <ScreenItemContainer style={{ marginVertical: 15 }}>
             <Text style={styles.podcastName}>{podcastName}</Text>
             <Text style={styles.producer}>{`By ${creator}`}</Text>
             <View style={[styles.row, { flexDirection: 'row' }]}>
@@ -95,15 +102,13 @@ class PodcastScreen extends Component {
             </View>
             <View style={styles.row}>
               <Section heading="Latest Episodes" onPress={() => {}}>
-                <View style={{ borderTopColor: COLOR3, borderTopWidth: 1 }}>
-                  {this.renderLatestEpisodes(latestEpisodes)}
-                </View>
+                {this.renderLatestEpisodes(latestEpisodes)}
               </Section>
             </View>
             <View style={styles.row}>
               <Section heading="Latest Posts" onPress={() => {}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {this.renderLatestPosts(podcast)}
+                  {this.renderCard(latestPosts, posts)}
                 </ScrollView>
               </Section>
             </View>
@@ -115,19 +120,19 @@ class PodcastScreen extends Component {
             <View style={styles.row}>
               <Section heading="Latest Reviews" onPress={() => {}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {this.renderLatestReviews(podcast)}
+                  {this.renderCard(latestReviews, reviews)}
                 </ScrollView>
               </Section>
             </View>
             <View style={styles.row}>
-              <TouchableOpacity style={styles.writeReviewContainer}>
+              <TouchableOpacity style={styles.textButtonContainer}>
                 <Icon name="create" color={COLOR2} size={25} />
-                <Text style={styles.writeReview}>Write a review</Text>
+                <Text style={styles.textButton}>Write a review</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.row}>
-              <Section heading="Discussion Group">
-                <View />
+              <Section heading="Discussion Groups">
+                {this.renderGroupRows(discussionGroups)}
               </Section>
             </View>
           </ScreenItemContainer>
@@ -169,16 +174,16 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20
   },
-  writeReviewContainer: {
+  textButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  writeReview: {
+  textButton: {
     fontSize: 20,
     fontWeight: '300',
     color: COLOR2,
-    marginLeft: 5
+    marginLeft: 7
   }
 })
 

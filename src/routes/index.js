@@ -5,7 +5,7 @@ import {
   createStackNavigator
 } from 'react-navigation'
 import Icon from '../components/common/Icon'
-import FeedScreen from '../screens/Feed/FeedScreen'
+import FeedScreen from '../containers/FeedScreen'
 import SearchScreen from '../screens/Search/SearchScreen'
 import ProfileScreen from '../screens/Profile/ProfileScreen'
 import DetailScreen from '../containers/DetailScreen'

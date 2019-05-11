@@ -91,7 +91,7 @@ export default [
     id: 103,
     type: 'text-post',
     author: 'Views podcast',
-    authorId: 706,
+    authorId: 707,
     authorImageUri:
       'https://content.production.cdn.art19.com/images/c0/b4/fa/08/c0b4fa08-1788-45bc-9c85-36a64f9658a0/1ea263069b2cd2746b55460ac6ee2d25d3f4c9aecbc1e651439fb050d102b8bb4c82ee123f9d04286c43ac5cd18dabf5514405aedfbc5a7ac28612e65f379c76.jpeg',
     content:
@@ -127,5 +127,36 @@ export default [
     timeStamp: new Date('2019-04-18T18:24:00').getTime(),
     liked: false,
     nbrOfComments: 102
-  }
+  },
+  {
+    id: 106,
+    type: 'text-post',
+    author: 'The Joe Rogan Experience',
+    authorId: 705,
+    authorImageUri:
+      'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
+    content: 'I had a discussion with Mark the other day about who is the best UFC fighter but we disagreed so I thought I ask you guys what you think',
+    pollQuestion: "Who's the best UFC fighter??",
+    timeStamp: new Date('2019-05-06T08:12:00').getTime(),
+    nbrOfLikes: 104,
+    liked: false,
+    poll: {
+      totalVotes: 1023,
+      userVoteId: null,
+      hasVoted: false,
+      options: [
+        {
+          id: 0,
+          option: 'Joe',
+          votes: 523
+        },
+        {
+          id: 1,
+          option: 'Mark',
+          votes: 500
+        }
+      ]
+    },
+    nbrOfComments: 29
+  },
 ]

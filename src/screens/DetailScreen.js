@@ -1,50 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import { ScreenContainer } from '../components/common'
-import DetailAndCommentsList from '../components/DetailAndCommentsList'
+import { ScreenContainer, ScreenItemContainer, Text } from '../components/common'
+import Comment from '../components/Comment/Comment'
+import Post from '../components/Feed/Post'
+import EpisodeDetail from '../components/Episode/EpisodeDetail'
+import CommentBar from '../components/Comment/CommentBar'
 
-const DetailScreen = ({
-  posts,
-  comments,
-  episodes,
-  navigation,
-  currentUser,
-  detailSelected,
-  rateStarPressed,
-  likeButtonPressed,
-  pollOptionPressed,
-  commentSubmitted,
-  commentLikeButtonPressed
-}) => {
-  const { id, type } = navigation.state.params
-  let item
-  if (type === 'episode') {
-    item = episodes.find(x => x.id === id)
-  } else {
-    item = posts.find(x => x.id === id)
+class DetailScreen extends Component {
+  renderTop = (nbrOfComments) => {
+    const {
+      navigation,
+      currentUser,
+      posts,
+      episodes,
+      rateStarPressed,
+      likeButtonPressed,
+      pollOptionPressed,
+      commentSubmitted
+    } = this.props
+    const { id, type } = navigation.state.params
+    let data
+    let detail
+    if (type === 'episode') {
+      data = episodes.find(x => x.id === id)
+      detail = <EpisodeDetail {...{ ...data, rateStarPressed }} />
+    } else {
+      data = posts.find(x => x.id === id)
+      detail = <Post {...{ ...data, likeButtonPressed, pollOptionPressed }} />
+    }
+    return (
+      <View style={{ marginTop: 15 }}>
+        <ScreenItemContainer>
+          {detail}
+          <Text style={styles.nbrOfComments}>{`${nbrOfComments} comments`}</Text>
+          <View style={styles.commentBar}>
+            <CommentBar {...{ currentUser, commentSubmitted }} itemId={id} />
+          </View>
+        </ScreenItemContainer>
+      </View>
+    )
   }
-  const commentList = comments.find(x => x.itemId === id)
-  return (
-    <ScreenContainer>
-      <DetailAndCommentsList
-        {...{
-          ...item,
-          navigation,
-          currentUser,
-          detailSelected,
-          likeButtonPressed,
-          pollOptionPressed,
-          commentSubmitted,
-          rateStarPressed,
-          commentLikeButtonPressed,
-          comments: {
-            nbrOfComments: commentList.nbrOfComments,
-            comments: commentList.comments
-          }
-        }}
-      />
-    </ScreenContainer>
-  )
+
+  render() {
+    const { comments, navigation, commentLikeButtonPressed } = this.props
+    const { id } = navigation.state.params
+    const commentList = comments.find(x => x.itemId === id)
+    return (
+      <ScreenContainer>
+        <FlatList
+          data={commentList.comments}
+          keyExtractor={item => item.id.toString()}
+          ListHeaderComponent={this.renderTop(commentList.nbrOfComments)}
+          renderItem={({ item }) => (
+            <View style={styles.comment}>
+              <ScreenItemContainer>
+                <Comment onLikePress={() => commentLikeButtonPressed(item.id, id)} {...item} />
+              </ScreenItemContainer>
+            </View>
+          )}
+        />
+      </ScreenContainer>
+    )
+  }
 }
 
 DetailScreen.propTypes = {
@@ -54,5 +72,19 @@ DetailScreen.propTypes = {
   commentSubmitted: PropTypes.func.isRequired,
   commentLikeButtonPressed: PropTypes.func.isRequired
 }
+
+const styles = StyleSheet.create({
+  nbrOfComments: {
+    fontSize: 30,
+    fontWeight: '300',
+    marginTop: 30
+  },
+  comment: {
+    marginVertical: 15
+  },
+  commentBar: {
+    marginVertical: 15
+  }
+})
 
 export default DetailScreen
