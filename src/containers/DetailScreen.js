@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import DetailScreen from '../screens/DetailScreen'
+import DetailScreen from '../screens/Detail/DetailScreen'
 import {
   rateStarPressed,
   commentSubmitted,

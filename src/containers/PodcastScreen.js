@@ -5,7 +5,8 @@ import { podcastRateStarPressed } from '../redux/actions'
 const mapStateToProps = state => ({
   podcasts: state.podcasts,
   posts: state.posts,
-  reviews: state.reviews
+  reviews: state.reviews,
+  episodes: state.episodes
 })
 
 export default connect(

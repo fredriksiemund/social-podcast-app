@@ -59,5 +59,68 @@ export default [
       userRating: null
     },
     nbrOfComments: 35
+  },
+  {
+    id: 312,
+    type: 'episode',
+    author: 'The Joe Rogan Experience',
+    authorId: 705,
+    authorImageUri:
+      'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
+    episodeName: '#1290 - Bryan Callen',
+    episodeDescription:
+      "#1290. Bryan Callen is an actor and stand-up comedian, and together with Brendan Schaub he also hosts 'The Fighter & The Kid' podcast. His new stand up special 'Complicated Apes' is now available to download on iTunes, Amazon, and various other platforms.",
+    timeStamp: new Date('2019-05-05T15:12:00').getTime(),
+    nbrOfListens: 644,
+    length: 2640,
+    size: 26.4,
+    rating: {
+      totalRating: 4.6,
+      nbrOfRatings: 44,
+      userRating: null
+    },
+    nbrOfComments: 35
+  },
+  {
+    id: 311,
+    type: 'episode',
+    author: 'The Joe Rogan Experience',
+    authorId: 705,
+    authorImageUri:
+      'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
+    episodeName: '#1289 - Eddie Izzard',
+    episodeDescription:
+      "#1289. Eddie Izzard is a British stand-up comedian, actor, writer and political activist. He's currently on a world tour with his show 'WUNDERBAR' and can be seen in the US this summer.",
+    timeStamp: new Date('2019-05-04T15:12:00').getTime(),
+    nbrOfListens: 644,
+    length: 2640,
+    size: 26.4,
+    rating: {
+      totalRating: 4.6,
+      nbrOfRatings: 44,
+      userRating: null
+    },
+    nbrOfComments: 35
+  },
+  {
+    id: 310,
+    type: 'episode',
+    author: 'The Joe Rogan Experience',
+    authorId: 705,
+    authorImageUri:
+      'https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/The_Joe_Rogan_Experience_logo.jpg/220px-The_Joe_Rogan_Experience_logo.jpg',
+    episodeName: '#1288 - Jon Reep',
+    episodeDescription:
+      '#1288. Jon Reep is an American stand-up comedian and actor. Check out his podcast "Fried with Jon Reep" available on Apple Podcasts and Soundcloud.',
+    timeStamp: new Date('2019-05-03T15:12:00').getTime(),
+    nbrOfListens: 644,
+    length: 2640,
+    size: 26.4,
+    rating: {
+      totalRating: 4.6,
+      nbrOfRatings: 44,
+      userRating: null
+    },
+    nbrOfComments: 35
   }
 ]

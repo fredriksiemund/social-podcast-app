@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { FlatList, View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import { ScreenContainer, ScreenItemContainer, Text } from '../components/common'
-import Comment from '../components/Comment/Comment'
-import Post from '../components/Feed/Post'
-import EpisodeDetail from '../components/Episode/EpisodeDetail'
-import CommentBar from '../components/Comment/CommentBar'
+import { ScreenContainer, ScreenItemContainer, Text } from '../../components/common'
+import Comment from '../../components/Comment/Comment'
+import Post from '../../components/Feed/Post'
+import EpisodeDetail from '../../components/Episode/EpisodeDetail'
+import CommentBar from '../../components/Comment/CommentBar'
 
 class DetailScreen extends Component {
   renderTop = (nbrOfComments) => {
@@ -24,10 +24,16 @@ class DetailScreen extends Component {
     let detail
     if (type === 'episode') {
       data = episodes.find(x => x.id === id)
-      detail = <EpisodeDetail {...{ ...data, rateStarPressed }} />
+      detail = <EpisodeDetail {...{ ...data, rateStarPressed, navigation }} />
     } else {
       data = posts.find(x => x.id === id)
-      detail = <Post {...{ ...data, likeButtonPressed, pollOptionPressed }} />
+      const postProps = {
+        ...data,
+        likeButtonPressed,
+        pollOptionPressed,
+        navigation
+      }
+      detail = <Post {...postProps} />
     }
     return (
       <View style={{ marginTop: 15 }}>

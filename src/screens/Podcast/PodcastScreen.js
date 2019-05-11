@@ -20,17 +20,24 @@ class PodcastScreen extends Component {
     podcastRateStarPressed({ id: authorId, rating })
   }
 
-  renderLatestEpisodes = latestEpisodes => latestEpisodes.map(entry => (
-    <EpisodeRow
-      key={entry.id}
-      timeStamp={unixTimeToString(entry.timeStamp)}
-      episodeName={entry.episodeName}
-      length={secondsToString(entry.length)}
-    />
-  ))
+  renderLatestEpisodes = (list, data) => list.map((entry) => {
+    const { navigation } = this.props
+    const episode = data.find(x => x.id === entry)
+    return (
+      <View style={{ paddingVertical: 10 }}>
+        <EpisodeRow
+          key={episode.id}
+          timeStamp={unixTimeToString(episode.timeStamp)}
+          episodeName={episode.episodeName}
+          length={secondsToString(episode.length)}
+          onPress={() => navigation.push('DetailView', { id: episode.id, type: episode.type })}
+        />
+      </View>
+    )
+  })
 
   renderCard = (list, data) => list.map((entry) => {
-    const post = data.find(x => x.id === entry.id)
+    const post = data.find(x => x.id === entry)
     return (
       <Card
         key={post.id}
@@ -45,13 +52,13 @@ class PodcastScreen extends Component {
     )
   })
 
-  renderGroupRows = discussionGroups => discussionGroups.map(entry => (
+  renderGroupRows = list => list.map(entry => (
     <GroupRow key={entry.id} name={entry.name} groupImageUri={entry.groupImageUri} />
   ))
 
   render() {
     const {
-      navigation, podcasts, posts, reviews
+      navigation, podcasts, posts, reviews, episodes
     } = this.props
     const { authorId } = navigation.state.params
     const podcast = podcasts.find(x => x.id === authorId)
@@ -63,15 +70,7 @@ class PodcastScreen extends Component {
       )
     }
     const {
-      podcastName,
-      creator,
-      podcastImageUri,
-      description,
-      latestEpisodes,
-      discussionGroups,
-      latestReviews,
-      latestPosts,
-      rating
+      podcastName, creator, podcastImageUri, description, discussionGroups, rating
     } = podcast
     return (
       <ScreenContainer>
@@ -101,14 +100,30 @@ class PodcastScreen extends Component {
               </TouchableOpacity>
             </View>
             <View style={styles.row}>
-              <Section heading="Latest Episodes" onPress={() => {}}>
-                {this.renderLatestEpisodes(latestEpisodes)}
+              <Section
+                heading="Latest Episodes"
+                onPress={() => navigation.navigate('DetailListView', {
+                  id: authorId,
+                  type: 'episode',
+                  list: podcast.episodes
+                })
+                }
+              >
+                {this.renderLatestEpisodes(podcast.episodes, episodes)}
               </Section>
             </View>
             <View style={styles.row}>
-              <Section heading="Latest Posts" onPress={() => {}}>
+              <Section
+                heading="Latest Posts"
+                onPress={() => navigation.navigate('DetailListView', {
+                  id: authorId,
+                  type: 'post',
+                  list: podcast.posts
+                })
+                }
+              >
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {this.renderCard(latestPosts, posts)}
+                  {this.renderCard(podcast.posts, posts)}
                 </ScrollView>
               </Section>
             </View>
@@ -120,7 +135,7 @@ class PodcastScreen extends Component {
             <View style={styles.row}>
               <Section heading="Latest Reviews" onPress={() => {}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {this.renderCard(latestReviews, reviews)}
+                  {this.renderCard(podcast.reviews, reviews)}
                 </ScrollView>
               </Section>
             </View>

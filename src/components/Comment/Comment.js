@@ -16,8 +16,8 @@ const Comment = ({
   nbrOfLikes,
   onLikePress
 }) => {
-  let nbrOfLikesText = nbrOfLikes === 0 ? '' : `${nbrOfLikes} like`
-  if (nbrOfLikes > 1) nbrOfLikesText += 's'
+  let likesText = 'like'
+  if (nbrOfLikes > 1) likesText += 's'
   return (
     <View style={styles.commentContainer}>
       <Image style={styles.authorImage} source={{ uri: authorImageUri }} />
@@ -29,7 +29,7 @@ const Comment = ({
           </View>
           <Text style={styles.content}>{content}</Text>
         </View>
-        <Text style={styles.likes}>{nbrOfLikesText}</Text>
+        {nbrOfLikes ? <Text style={styles.likes}>{`${nbrOfLikes} ${likesText}`}</Text> : null}
       </View>
       <TouchableOpacity style={styles.likeButton} onPress={onLikePress}>
         <Icon name={liked ? 'heart' : 'heart-empty'} color={liked ? COLOR2 : COLOR1} size={25} />

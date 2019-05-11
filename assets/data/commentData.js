@@ -298,7 +298,25 @@ export default [
   {
     id: 8,
     itemId: 202,
-    nbrOfComments: 102,
+    nbrOfComments: 12,
+    comments: []
+  },
+  {
+    id: 9,
+    itemId: 312,
+    nbrOfComments: 0,
+    comments: []
+  },
+  {
+    id: 10,
+    itemId: 311,
+    nbrOfComments: 0,
+    comments: []
+  },
+  {
+    id: 11,
+    itemId: 310,
+    nbrOfComments: 0,
     comments: []
   }
 ]

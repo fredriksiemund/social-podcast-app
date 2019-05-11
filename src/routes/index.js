@@ -10,6 +10,7 @@ import SearchScreen from '../screens/Search/SearchScreen'
 import ProfileScreen from '../screens/Profile/ProfileScreen'
 import DetailScreen from '../containers/DetailScreen'
 import PodcastScreen from '../containers/PodcastScreen'
+import DetailListScreen from '../containers/DetailListScreen'
 import { COLOR2, COLOR1, NAV_BACKGROUND } from '../styles/common'
 
 const headerStyle = {
@@ -39,6 +40,12 @@ const MainStack = createBottomTabNavigator(
         },
         PodcastView: {
           screen: PodcastScreen,
+          navigationOptions: {
+            ...headerStyle
+          }
+        },
+        DetailListView: {
+          screen: DetailListScreen,
           navigationOptions: {
             ...headerStyle
           }
