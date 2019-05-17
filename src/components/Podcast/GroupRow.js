@@ -6,15 +6,15 @@ import { Text } from '../common'
 
 const GroupRow = ({ groupImageUri, name }) => (
   <TouchableWithoutFeedback>
-  <View style={styles.groupRow}>
-    <Image source={{ uri: groupImageUri }} style={styles.image} />
-    <View style={styles.groupNameContainer}>
-      <Text style={styles.groupName} numberOfLines={1}>
-        {name}
-      </Text>
+    <View style={styles.groupRow}>
+      <Image source={{ uri: groupImageUri }} style={styles.image} />
+      <View style={styles.groupNameContainer}>
+        <Text style={styles.groupName} numberOfLines={1}>
+          {name}
+        </Text>
+      </View>
+      <Text style={styles.buttonText}>{'>'}</Text>
     </View>
-    <Text style={styles.buttonText}>{'>'}</Text>
-  </View>
   </TouchableWithoutFeedback>
 )
 

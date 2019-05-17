@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { View, Dimensions, StyleSheet } from 'react-native'
+import {
+  View, Dimensions, StyleSheet, TouchableWithoutFeedback
+} from 'react-native'
 import PropTypes from 'prop-types'
 import { COLOR3, COLOR2 } from '../../styles/common'
 import { Header, Text } from '../common'
@@ -37,19 +39,23 @@ class Card extends Component {
   }
 
   render() {
-    const { author, timeStamp, authorImageUri } = this.props
+    const {
+      author, timeStamp, authorImageUri, onPress
+    } = this.props
     const { width } = Dimensions.get('window')
 
     return (
-      <View style={[styles.cardContainer, { width: width - 45 }]}>
-        <View>
-          <View style={styles.cardHeader}>
-            <Header author={author} timeStamp={timeStamp} authorImageUri={authorImageUri} small />
-            <View style={{ marginLeft: 15 }}>{this.renderStarRating()}</View>
+      <TouchableWithoutFeedback onPress={onPress}>
+        <View style={[styles.cardContainer, { width: width - 45 }]}>
+          <View>
+            <View style={styles.cardHeader}>
+              <Header author={author} timeStamp={timeStamp} authorImageUri={authorImageUri} small />
+              <View style={{ marginLeft: 15 }}>{this.renderStarRating()}</View>
+            </View>
+            <View style={{ marginTop: 10 }}>{this.renderContent()}</View>
           </View>
-          <View style={{ marginTop: 10 }}>{this.renderContent()}</View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     )
   }
 }
@@ -61,12 +67,14 @@ Card.propTypes = {
   authorImageUri: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   pollQuestion: PropTypes.string,
-  rating: PropTypes.number
+  rating: PropTypes.number,
+  onPress: PropTypes.func
 }
 
 Card.defaultProps = {
   pollQuestion: null,
-  rating: 0
+  rating: 0,
+  onPress: () => {}
 }
 
 const styles = StyleSheet.create({

@@ -4,26 +4,36 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { Text, Icon } from '../common'
-import { COLOR1 } from '../../styles/common'
+import { COLOR1, COLOR2 } from '../../styles/common'
+import StarRating from '../Episode/StarRating'
 
 const EpisodeRow = ({
-  timeStamp, episodeName, episodeDescription, length, onPress, preview
+  timeStamp,
+  episodeName,
+  episodeDescription,
+  length,
+  onPress,
+  preview,
+  totalRating
 }) => (
   <TouchableWithoutFeedback onPress={onPress}>
-    <View>
-      <View style={styles.episodeRow}>
-        <View>
+    <View style={styles.episodeRow}>
+      <View style={{ flexShrink: 1 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text>{timeStamp}</Text>
-          <View style={styles.nameRow}>
-            <Text style={styles.episodeName}>{episodeName}</Text>
-            <Text style={{ fontSize: 13, marginBottom: 1 }}>{`  ${length}`}</Text>
+          <View style={{ marginLeft: 10 }}>
+            {preview ? null : <StarRating rating={totalRating} color={COLOR2} size={15} />}
           </View>
         </View>
-        <TouchableOpacity>
-          <Icon name="play-circle" color={COLOR1} size={35} />
-        </TouchableOpacity>
+        <View style={styles.nameRow}>
+          <Text style={styles.episodeName}>{episodeName}</Text>
+          <Text style={{ fontSize: 13, marginBottom: 1 }}>{`  ${length}`}</Text>
+        </View>
+        {preview ? null : <Text numberOfLines={2}>{episodeDescription}</Text>}
       </View>
-      {preview ? null : <Text numberOfLines={3}>{episodeDescription}</Text>}
+      <TouchableOpacity>
+        <Icon name="play-circle" color={COLOR1} size={35} />
+      </TouchableOpacity>
     </View>
   </TouchableWithoutFeedback>
 )
@@ -41,6 +51,7 @@ EpisodeRow.defaultProps = {
 const styles = StyleSheet.create({
   episodeRow: {
     flex: 1,
+    flexShrink: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'

@@ -20,11 +20,12 @@ class DetailListScreen extends Component {
           <View style={{ marginVertical: 10 }}>
             <EpisodeRow
               key={item.id}
+              preview={false}
               timeStamp={unixTimeToString(item.timeStamp)}
               episodeName={item.episodeName}
               length={secondsToString(item.length)}
               episodeDescription={item.episodeDescription}
-              preview={false}
+              totalRating={item.rating.totalRating}
               onPress={() => navigation.push('DetailView', { id: item.id, type: item.type })}
             />
           </View>

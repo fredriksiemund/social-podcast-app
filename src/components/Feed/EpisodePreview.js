@@ -45,15 +45,15 @@ class EpisodePreview extends Component {
             </Text>
             <View style={styles.buttonRow}>
               <TouchableOpacity style={styles.button}>
-                <Icon name="play-circle" color={COLOR1} size={40} />
+                <Icon name="play-circle" color={COLOR1} size={35} />
                 <Text style={styles.buttonText}>Play</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button}>
-                <Icon name="add-circle" color={COLOR1} size={40} />
+                <Icon name="add-circle" color={COLOR1} size={35} />
                 <Text style={styles.buttonText}>Queue</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.button} onPress={() => this.onMorePress()}>
-                <Icon name="information-circle" color={COLOR1} size={40} />
+                <Icon name="information-circle" color={COLOR1} size={35} />
                 <Text style={styles.buttonText}>More</Text>
               </TouchableOpacity>
             </View>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   buttonRow: {
     flexDirection: 'row',
-    marginTop: 10
+    marginTop: 8
   },
   button: {
     flex: 1,

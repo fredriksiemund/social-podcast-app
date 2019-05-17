@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
   },
   headerAuthorLarge: {
     fontSize: 17,
-    fontWeight: '700'
+    fontWeight: '500'
   },
   headerAuthorSmall: {
     fontSize: 15,
-    fontWeight: '700'
+    fontWeight: '500'
   },
   headerSubheader: {
     flexDirection: 'row',

@@ -60,7 +60,7 @@ class Post extends Component {
     } = this.props
     const commentButton = feedPost ? (
       <TouchableOpacity style={styles.button} onPress={() => this.onCommentPress()}>
-        <Icon name="chatboxes" color={COLOR1} size={25} />
+        <Icon name="chatboxes" color={COLOR1} size={20} />
         <Text style={styles.buttonText}>{nbrOfComments}</Text>
       </TouchableOpacity>
     ) : null
@@ -81,13 +81,13 @@ class Post extends Component {
             <Icon
               name={liked ? 'heart' : 'heart-empty'}
               color={liked ? COLOR2 : COLOR1}
-              size={25}
+              size={20}
             />
             <Text style={styles.buttonText}>{nbrOfLikes}</Text>
           </TouchableOpacity>
           {commentButton}
           <TouchableOpacity style={styles.button} onPress={onSharePress}>
-            <Icon name="share-alt" color={COLOR1} size={25} />
+            <Icon name="share-alt" color={COLOR1} size={20} />
             <Text style={styles.buttonText}>Share</Text>
           </TouchableOpacity>
         </View>

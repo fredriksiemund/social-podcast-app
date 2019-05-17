@@ -20,17 +20,22 @@ class PodcastScreen extends Component {
     podcastRateStarPressed({ id: authorId, rating })
   }
 
-  renderLatestEpisodes = (list, data) => list.map((entry) => {
+  goToDetail = (id, type) => {
     const { navigation } = this.props
+    if (type === 'review') return null // Temporary solution
+    navigation.push('DetailView', { id, type })
+    return null
+  }
+
+  renderLatestEpisodes = (list, data) => list.map((entry) => {
     const episode = data.find(x => x.id === entry)
     return (
-      <View style={{ paddingVertical: 10 }}>
+      <View key={episode.id} style={{ paddingVertical: 10 }}>
         <EpisodeRow
-          key={episode.id}
           timeStamp={unixTimeToString(episode.timeStamp)}
           episodeName={episode.episodeName}
           length={secondsToString(episode.length)}
-          onPress={() => navigation.push('DetailView', { id: episode.id, type: episode.type })}
+          onPress={() => this.goToDetail(episode.id, episode.type)}
         />
       </View>
     )
@@ -48,6 +53,7 @@ class PodcastScreen extends Component {
         authorImageUri={post.authorImageUri}
         rating={post.rating}
         pollQuestion={post.pollQuestion}
+        onPress={() => this.goToDetail(post.id, post.type)}
       />
     )
   })
@@ -113,15 +119,7 @@ class PodcastScreen extends Component {
               </Section>
             </View>
             <View style={styles.row}>
-              <Section
-                heading="Latest Posts"
-                onPress={() => navigation.navigate('DetailListView', {
-                  id: authorId,
-                  type: 'post',
-                  list: podcast.posts
-                })
-                }
-              >
+              <Section heading="Latest Posts">
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {this.renderCard(podcast.posts, posts)}
                 </ScrollView>
@@ -133,7 +131,7 @@ class PodcastScreen extends Component {
               </Section>
             </View>
             <View style={styles.row}>
-              <Section heading="Latest Reviews" onPress={() => {}}>
+              <Section heading="Latest Reviews">
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {this.renderCard(podcast.reviews, reviews)}
                 </ScrollView>
